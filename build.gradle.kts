@@ -71,6 +71,10 @@ kotlin {
     }
 }
 
+val emptyJavadocJar by tasks.registering(Jar::class) {
+    archiveClassifier.set("javadoc")
+}
+
 publishing {
     repositories {
         maven {
@@ -84,6 +88,8 @@ publishing {
     }
     publications {
         publications.withType<MavenPublication> {
+            artifact(emptyJavadocJar)
+
             pom {
                 name.set("GW2ChatLinks")
                 description.set("Kotlin Multiplatform library for parsing and generating GW2 chat links")
