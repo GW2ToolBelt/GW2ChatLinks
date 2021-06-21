@@ -22,7 +22,7 @@ A `ChatLink` object may be encoded into a string using the `encodeChatLink` func
 
 ```kotlin
 val chatLink: Result<String> = encodeChatLink(ChatLink.Coin(amount = 10203u))
-assertEquals("[&AdsnAAA=]", chatLink.getOrThow())
+assertEquals("[&AdsnAAA=]", chatLink.getOrThrow())
 ```
 
 
@@ -32,7 +32,7 @@ A `ChatLink` object may be decoded from a string using the `decodeChatLink` func
 
 ```kotlin
 val chatLink: Result<ChatLink> = decodeChatLink("[&AdsnAAA=]")
-assertEquals(ChatLink.Coin(amount = 10203u), chatLink.getOrThow())
+assertEquals(ChatLink.Coin(amount = 10203u), chatLink.getOrThrow())
 ```
 
 
