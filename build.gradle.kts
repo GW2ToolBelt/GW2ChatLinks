@@ -75,6 +75,12 @@ val emptyJavadocJar by tasks.registering(Jar::class) {
     archiveClassifier.set("javadoc")
 }
 
+val jvmJar by tasks.getting(Jar::class) {
+    manifest {
+        attributes("Automatic-Module-Name" to "com.gw2tb.gw2chatlinks")
+    }
+}
+
 publishing {
     repositories {
         maven {
