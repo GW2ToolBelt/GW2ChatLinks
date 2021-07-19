@@ -29,7 +29,7 @@ plugins {
     `maven-publish`
 }
 
-val nextVersion = "0.1.0"
+val nextVersion = "0.2.0"
 
 group = "com.gw2tb.gw2chatlinks"
 version = when (deployment.type) {
