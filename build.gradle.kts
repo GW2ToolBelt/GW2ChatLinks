@@ -23,7 +23,7 @@ import com.gw2tb.gw2chatlinks.build.*
 import com.gw2tb.gw2chatlinks.build.BuildType
 
 plugins {
-    kotlin("multiplatform") version "1.5.10"
+    kotlin("multiplatform") version "1.5.21"
     id("org.jetbrains.dokka") version "1.4.32"
     signing
     `maven-publish`
