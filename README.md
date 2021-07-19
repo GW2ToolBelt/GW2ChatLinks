@@ -12,7 +12,7 @@ available for JVM (Java 8 or later) and JS (both, legacy and IR) targets.
 
 ## Usage
 
-Return values a wrapped in [Result](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-result/)
+Return values are wrapped in [Result](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-result/)
 objects for convenient error handling.
 
 
