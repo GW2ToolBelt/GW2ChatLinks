@@ -59,7 +59,7 @@ kotlin {
     sourceSets {
         all {
             languageSettings.apply {
-                useExperimentalAnnotation("kotlin.RequiresOptIn")
+                optIn("kotlin.RequiresOptIn")
             }
         }
 
