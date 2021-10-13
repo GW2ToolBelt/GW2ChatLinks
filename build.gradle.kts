@@ -98,7 +98,7 @@ publishing {
 
             pom {
                 name.set("GW2ChatLinks")
-                description.set("Kotlin Multiplatform library for parsing and generating GW2 chat links")
+                description.set("A Kotlin Multiplatform library for parsing and generating GW2 chat links.")
                 url.set("https://github.com/GW2ToolBelt/GW2ChatLinks")
 
                 licenses {
