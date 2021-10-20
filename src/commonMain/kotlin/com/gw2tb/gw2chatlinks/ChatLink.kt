@@ -23,7 +23,7 @@ package com.gw2tb.gw2chatlinks
 
 import com.gw2tb.gw2chatlinks.internal.*
 
-private const val UINT_48BIT_MAX_VALUE = 167771215u
+private const val UINT_24BIT_MAX_VALUE = 0xFFFFFF16u
 
 /**
  * Attempts to decode a [ChatLink] object from a chat link string.
@@ -416,10 +416,10 @@ public sealed class ChatLink {
         }
 
         init {
-            require(itemID < UINT_48BIT_MAX_VALUE) { "Item `itemID` must be in unsigned 24bit range (0..167771215)" }
-            require(skinID == null || skinID < UINT_48BIT_MAX_VALUE) { "Item `skinID` must be in unsigned 24bit range (0..167771215)" }
-            require(firstUpgradeSlot == null || firstUpgradeSlot < UINT_48BIT_MAX_VALUE) { "Item `firstUpgradeSlot` must be in unsigned 24bit range (0..167771215)" }
-            require(secondUpgradeSlot == null || secondUpgradeSlot < UINT_48BIT_MAX_VALUE) { "Item `secondUpgradeSlot` must be in unsigned 24bit range (0..167771215)" }
+            require(itemID < UINT_24BIT_MAX_VALUE) { "Item `itemID` must be in unsigned 24bit range (0..167771215)" }
+            require(skinID == null || skinID < UINT_24BIT_MAX_VALUE) { "Item `skinID` must be in unsigned 24bit range (0..167771215)" }
+            require(firstUpgradeSlot == null || firstUpgradeSlot < UINT_24BIT_MAX_VALUE) { "Item `firstUpgradeSlot` must be in unsigned 24bit range (0..167771215)" }
+            require(secondUpgradeSlot == null || secondUpgradeSlot < UINT_24BIT_MAX_VALUE) { "Item `secondUpgradeSlot` must be in unsigned 24bit range (0..167771215)" }
         }
 
         @ExperimentalUnsignedTypes
@@ -486,7 +486,7 @@ public sealed class ChatLink {
         }
 
         init {
-            require(textID < UINT_48BIT_MAX_VALUE) { "NPCText `textID` must be in unsigned 24bit range (0..167771215)" }
+            require(textID < UINT_24BIT_MAX_VALUE) { "NPCText `textID` must be in unsigned 24bit range (0..167771215)" }
         }
 
         @ExperimentalUnsignedTypes
@@ -523,7 +523,7 @@ public sealed class ChatLink {
         }
 
         init {
-            require(outfitID < UINT_48BIT_MAX_VALUE) { "Outfit `outfitID` must be in unsigned 24bit range (0..167771215)" }
+            require(outfitID < UINT_24BIT_MAX_VALUE) { "Outfit `outfitID` must be in unsigned 24bit range (0..167771215)" }
         }
 
         @ExperimentalUnsignedTypes
@@ -562,7 +562,7 @@ public sealed class ChatLink {
         }
 
         init {
-            require(poiID < UINT_48BIT_MAX_VALUE) { "PoI `poiID` must be in unsigned 24bit range (0..167771215)" }
+            require(poiID < UINT_24BIT_MAX_VALUE) { "PoI `poiID` must be in unsigned 24bit range (0..167771215)" }
         }
 
         @ExperimentalUnsignedTypes
@@ -616,7 +616,7 @@ public sealed class ChatLink {
         }
 
         init {
-            require(recipeID < UINT_48BIT_MAX_VALUE) { "Recipe `recipeID` must be in unsigned 24bit range (0..167771215)" }
+            require(recipeID < UINT_24BIT_MAX_VALUE) { "Recipe `recipeID` must be in unsigned 24bit range (0..167771215)" }
         }
 
         @ExperimentalUnsignedTypes
@@ -653,7 +653,7 @@ public sealed class ChatLink {
         }
 
         init {
-            require(skillID < UINT_48BIT_MAX_VALUE) { "Skill `skillID` must be in unsigned 24bit range (0..167771215)" }
+            require(skillID < UINT_24BIT_MAX_VALUE) { "Skill `skillID` must be in unsigned 24bit range (0..167771215)" }
         }
 
         @ExperimentalUnsignedTypes
@@ -690,7 +690,7 @@ public sealed class ChatLink {
         }
 
         init {
-            require(skinID < UINT_48BIT_MAX_VALUE) { "Skin `skinID` must be in unsigned 24bit range (0..167771215)" }
+            require(skinID < UINT_24BIT_MAX_VALUE) { "Skin `skinID` must be in unsigned 24bit range (0..167771215)" }
         }
 
         @ExperimentalUnsignedTypes
@@ -727,7 +727,7 @@ public sealed class ChatLink {
         }
 
         init {
-            require(traitID < UINT_48BIT_MAX_VALUE) { "Trait `traitID` must be in unsigned 24bit range (0..167771215)" }
+            require(traitID < UINT_24BIT_MAX_VALUE) { "Trait `traitID` must be in unsigned 24bit range (0..167771215)" }
         }
 
         @ExperimentalUnsignedTypes
@@ -824,8 +824,8 @@ public sealed class ChatLink {
         }
 
         init {
-            require(objectiveID < UINT_48BIT_MAX_VALUE) { "WvWObjective `objectiveID` must be in unsigned 24bit range (0..167771215)" }
-            require(mapID < UINT_48BIT_MAX_VALUE) { "WvWObjective `mapID` must be in unsigned 24bit range (0..167771215)" }
+            require(objectiveID < UINT_24BIT_MAX_VALUE) { "WvWObjective `objectiveID` must be in unsigned 24bit range (0..167771215)" }
+            require(mapID < UINT_24BIT_MAX_VALUE) { "WvWObjective `mapID` must be in unsigned 24bit range (0..167771215)" }
         }
 
         @ExperimentalUnsignedTypes
