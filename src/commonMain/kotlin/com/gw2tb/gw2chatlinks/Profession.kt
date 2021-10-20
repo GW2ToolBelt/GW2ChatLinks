@@ -163,7 +163,7 @@ public enum class Profession(
          * @since   0.1.0
          */
         public fun valueOf(paletteID: UByte): Profession = values().let { values ->
-            if (paletteID.toUInt() == 0u || paletteID > values.size.toUByte())
+            if (paletteID.toUInt() == 0u || paletteID >= values.size.toUByte())
                 UNKNOWN
             else
                 values[paletteID.toInt()]
