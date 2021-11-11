@@ -740,7 +740,7 @@ public sealed class ChatLink {
     }
 
     /**
-     * A link to an user.
+     * A link to a user.
      *
      * User links are - at the time of writing - disabled and cannot be fully tested.
      *
