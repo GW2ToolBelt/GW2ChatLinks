@@ -1,11 +1,12 @@
-### 0.1.0
+### 0.2.0
 
-_Released 2021 Jun 21_
+_Released 2021 Nov 13_
 
-#### Overview
+#### Improvements
 
-GW2ChatLinks is a Kotlin multiplatform library for de- and encoding Guild Wars 2
-[chat links](https://wiki.guildwars2.com/wiki/Chat_link_format).
+- The JVM artifact is now a multi-release Jar with an explicit module descriptor
+  for Java 9 and later.
 
-The library is fully written in common Kotlin code. Prebuilt binaries are
-available for JVM (Java 8 or later) and JS (both, legacy and IR) targets.
+#### Fixes
+
+- Fixed an index-out-of-bounds error when calling `Profession.valueOf` with a value of 10.
