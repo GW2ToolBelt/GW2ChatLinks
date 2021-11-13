@@ -21,6 +21,10 @@
  */
 import com.gw2tb.gw2chatlinks.build.*
 import com.gw2tb.gw2chatlinks.build.BuildType
+import com.gw2tb.gw2chatlinks.build.tasks.*
+
+import org.jetbrains.kotlin.gradle.plugin.mpp.*
+import org.jetbrains.kotlin.gradle.targets.jvm.*
 
 plugins {
     kotlin("multiplatform") version "1.5.31"
@@ -39,7 +43,7 @@ version = when (deployment.type) {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(8))
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 
@@ -54,7 +58,11 @@ kotlin {
         }
         nodejs()
     }
-    jvm()
+    jvm {
+        compilations.all {
+            kotlinOptions.jvmTarget = "1.8"
+        }
+    }
 
     sourceSets {
         all {
@@ -69,16 +77,49 @@ kotlin {
             }
         }
     }
+
+    targets.filter { it is KotlinJvmTarget || it is KotlinWithJavaTarget<*> }.forEach { target ->
+        val artifactTask = tasks.getByName<Jar>(target.artifactsTaskName) {
+            manifest {
+                attributes(mapOf(
+                    "Name" to project.name,
+                    "Specification-Version" to project.version,
+                    "Specification-Vendor" to "Leon Linhart <themrmilchmann@gmail.com>",
+                    "Implementation-Version" to project.version,
+                    "Implementation-Vendor" to "Leon Linhart <themrmilchmann@gmail.com>",
+                    "Multi-Release" to "true"
+                ))
+            }
+        }
+
+        target.compilations.forEach compilation@{ compilation ->
+            val defaultSourceSet = compilation.defaultSourceSet
+
+            val inputFile = file("src/${defaultSourceSet.name}/java-jdk9/module-info.java")
+            if (!inputFile.isFile) return@compilation
+
+            val compileModuleInfo = tasks.register<CompileModuleInfo>("compile${defaultSourceSet.name}ModuleInfo") {
+                source.set(inputFile)
+                output.set(File(buildDir, "classes/java-jdk9/${compilation.name}/module-info.class"))
+                version.set(project.version.toString())
+            }
+
+            artifactTask.dependsOn(compileModuleInfo)
+            artifactTask.into("META-INF/versions/9") {
+                from(compileModuleInfo.get().output) {
+                    includeEmptyDirs = false
+                }
+            }
+        }
+    }
+}
+
+tasks.withType<JavaCompile> {
+    options.release.set(8)
 }
 
 val emptyJavadocJar by tasks.registering(Jar::class) {
     archiveClassifier.set("javadoc")
-}
-
-val jvmJar by tasks.getting(Jar::class) {
-    manifest {
-        attributes("Automatic-Module-Name" to "com.gw2tb.gw2chatlinks")
-    }
 }
 
 publishing {

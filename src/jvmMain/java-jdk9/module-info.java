@@ -19,15 +19,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-plugins {
-    `kotlin-dsl`
-}
+module com.gw2tb.gw2chatlinks {
 
-repositories {
-    mavenCentral()
-}
+    requires transitive kotlin.stdlib.jdk8;
 
-dependencies {
-    implementation(libs.asm)
-    implementation(libs.javaparser.core)
+    exports com.gw2tb.gw2chatlinks;
+
 }

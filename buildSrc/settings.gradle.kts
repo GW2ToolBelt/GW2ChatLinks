@@ -19,15 +19,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-plugins {
-    `kotlin-dsl`
-}
+@file:Suppress("UnstableApiUsage")
 
-repositories {
-    mavenCentral()
-}
+enableFeaturePreview("VERSION_CATALOGS")
 
-dependencies {
-    implementation(libs.asm)
-    implementation(libs.javaparser.core)
+dependencyResolutionManagement {
+    versionCatalogs {
+        create("libs") {
+            from(files("../gradle/libs.versions.toml"))
+        }
+    }
 }
