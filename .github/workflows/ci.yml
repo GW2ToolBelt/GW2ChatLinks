@@ -2,7 +2,7 @@ name: CI
 on: push
 
 jobs:
-  jdk16:
+  jdk17:
     name: OpenJDK 17 (Ubuntu)
     runs-on: ubuntu-latest
     steps:
