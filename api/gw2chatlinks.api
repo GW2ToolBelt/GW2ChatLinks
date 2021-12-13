@@ -1,0 +1,268 @@
+public abstract class com/gw2tb/gw2chatlinks/ChatLink {
+}
+
+public final class com/gw2tb/gw2chatlinks/ChatLink$BuildTemplate : com/gw2tb/gw2chatlinks/ChatLink {
+	public static final field BYTE_SIZE I
+	public static final field IDENTIFIER I
+	public synthetic fun <init> (BLjava/util/List;Ljava/util/List;Ljava/util/List;Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$ProfessionContext;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-w2LRezQ ()B
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Ljava/util/List;
+	public final fun component5 ()Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$ProfessionContext;
+	public final fun copy-7Y2zdO0 (BLjava/util/List;Ljava/util/List;Ljava/util/List;Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$ProfessionContext;)Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate;
+	public static synthetic fun copy-7Y2zdO0$default (Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate;BLjava/util/List;Ljava/util/List;Ljava/util/List;Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$ProfessionContext;ILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAquaticSkills ()Ljava/util/List;
+	public final fun getProfessionContext ()Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$ProfessionContext;
+	public final fun getProfessionID-w2LRezQ ()B
+	public final fun getSkills ()Ljava/util/List;
+	public final fun getSpecializations ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class com/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$ProfessionContext {
+}
+
+public final class com/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$RangerContext : com/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$ProfessionContext {
+	public fun <init> (Ljava/util/List;Ljava/util/List;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;Ljava/util/List;)Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$RangerContext;
+	public static synthetic fun copy$default (Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$RangerContext;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$RangerContext;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAquaticPets ()Ljava/util/List;
+	public final fun getPets ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$RevenantContext : com/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$ProfessionContext {
+	public fun <init> (Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;)Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$RevenantContext;
+	public static synthetic fun copy$default (Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$RevenantContext;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$RevenantContext;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAquaticLegends ()Ljava/util/List;
+	public final fun getInactiveAquaticLegendUtilitySkills ()Ljava/util/List;
+	public final fun getInactiveLegendUtilitySkills ()Ljava/util/List;
+	public final fun getLegends ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$Specialization {
+	public synthetic fun <init> (BLjava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-w2LRezQ ()B
+	public final fun component2 ()Ljava/util/List;
+	public final fun copy-0ky7B_Q (BLjava/util/List;)Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$Specialization;
+	public static synthetic fun copy-0ky7B_Q$default (Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$Specialization;BLjava/util/List;ILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$Specialization;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMajorTraits ()Ljava/util/List;
+	public final fun getSpecializationID-w2LRezQ ()B
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/gw2tb/gw2chatlinks/ChatLink$Coin : com/gw2tb/gw2chatlinks/ChatLink {
+	public static final field BYTE_SIZE I
+	public static final field IDENTIFIER I
+	public synthetic fun <init> (ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-pVg5ArA ()I
+	public final fun copy-WZ4Q5Ns (I)Lcom/gw2tb/gw2chatlinks/ChatLink$Coin;
+	public static synthetic fun copy-WZ4Q5Ns$default (Lcom/gw2tb/gw2chatlinks/ChatLink$Coin;IILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$Coin;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAmount-pVg5ArA ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/gw2tb/gw2chatlinks/ChatLink$Item : com/gw2tb/gw2chatlinks/ChatLink {
+	public static final field BASE_SIZE I
+	public static final field FIRST_UPGRADE_SLOT_IN_USE I
+	public static final field IDENTIFIER I
+	public static final field SECOND_UPGRADE_SLOT_IN_USE I
+	public static final field SKINNED I
+	public synthetic fun <init> (BILkotlin/UInt;Lkotlin/UInt;Lkotlin/UInt;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (BILkotlin/UInt;Lkotlin/UInt;Lkotlin/UInt;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-w2LRezQ ()B
+	public final fun component2-pVg5ArA ()I
+	public final fun component3-0hXNFcg ()Lkotlin/UInt;
+	public final fun component4-0hXNFcg ()Lkotlin/UInt;
+	public final fun component5-0hXNFcg ()Lkotlin/UInt;
+	public final fun copy-XzMiLTI (BILkotlin/UInt;Lkotlin/UInt;Lkotlin/UInt;)Lcom/gw2tb/gw2chatlinks/ChatLink$Item;
+	public static synthetic fun copy-XzMiLTI$default (Lcom/gw2tb/gw2chatlinks/ChatLink$Item;BILkotlin/UInt;Lkotlin/UInt;Lkotlin/UInt;ILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$Item;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAmount-w2LRezQ ()B
+	public final fun getFirstUpgradeSlot-0hXNFcg ()Lkotlin/UInt;
+	public final fun getItemID-pVg5ArA ()I
+	public final fun getSecondUpgradeSlot-0hXNFcg ()Lkotlin/UInt;
+	public final fun getSkinID-0hXNFcg ()Lkotlin/UInt;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/gw2tb/gw2chatlinks/ChatLink$NPCText : com/gw2tb/gw2chatlinks/ChatLink {
+	public static final field BYTE_SIZE I
+	public static final field IDENTIFIER I
+	public synthetic fun <init> (ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-pVg5ArA ()I
+	public final fun copy-WZ4Q5Ns (I)Lcom/gw2tb/gw2chatlinks/ChatLink$NPCText;
+	public static synthetic fun copy-WZ4Q5Ns$default (Lcom/gw2tb/gw2chatlinks/ChatLink$NPCText;IILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$NPCText;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getTextID-pVg5ArA ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/gw2tb/gw2chatlinks/ChatLink$Outfit : com/gw2tb/gw2chatlinks/ChatLink {
+	public static final field BYTE_SIZE I
+	public static final field IDENTIFIER I
+	public synthetic fun <init> (ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-pVg5ArA ()I
+	public final fun copy-WZ4Q5Ns (I)Lcom/gw2tb/gw2chatlinks/ChatLink$Outfit;
+	public static synthetic fun copy-WZ4Q5Ns$default (Lcom/gw2tb/gw2chatlinks/ChatLink$Outfit;IILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$Outfit;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getOutfitID-pVg5ArA ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/gw2tb/gw2chatlinks/ChatLink$PoI : com/gw2tb/gw2chatlinks/ChatLink {
+	public static final field BYTE_SIZE I
+	public static final field IDENTIFIER I
+	public synthetic fun <init> (ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-pVg5ArA ()I
+	public final fun copy-WZ4Q5Ns (I)Lcom/gw2tb/gw2chatlinks/ChatLink$PoI;
+	public static synthetic fun copy-WZ4Q5Ns$default (Lcom/gw2tb/gw2chatlinks/ChatLink$PoI;IILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$PoI;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getPoiID-pVg5ArA ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/gw2tb/gw2chatlinks/ChatLink$PvPGame : com/gw2tb/gw2chatlinks/ChatLink {
+	public static final field INSTANCE Lcom/gw2tb/gw2chatlinks/ChatLink$PvPGame;
+}
+
+public final class com/gw2tb/gw2chatlinks/ChatLink$Recipe : com/gw2tb/gw2chatlinks/ChatLink {
+	public static final field BYTE_SIZE I
+	public static final field IDENTIFIER I
+	public synthetic fun <init> (ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-pVg5ArA ()I
+	public final fun copy-WZ4Q5Ns (I)Lcom/gw2tb/gw2chatlinks/ChatLink$Recipe;
+	public static synthetic fun copy-WZ4Q5Ns$default (Lcom/gw2tb/gw2chatlinks/ChatLink$Recipe;IILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$Recipe;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getRecipeID-pVg5ArA ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/gw2tb/gw2chatlinks/ChatLink$Skill : com/gw2tb/gw2chatlinks/ChatLink {
+	public static final field BYTE_SIZE I
+	public static final field IDENTIFIER I
+	public synthetic fun <init> (ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-pVg5ArA ()I
+	public final fun copy-WZ4Q5Ns (I)Lcom/gw2tb/gw2chatlinks/ChatLink$Skill;
+	public static synthetic fun copy-WZ4Q5Ns$default (Lcom/gw2tb/gw2chatlinks/ChatLink$Skill;IILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$Skill;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getSkillID-pVg5ArA ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/gw2tb/gw2chatlinks/ChatLink$Skin : com/gw2tb/gw2chatlinks/ChatLink {
+	public static final field BYTE_SIZE I
+	public static final field IDENTIFIER I
+	public synthetic fun <init> (ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-pVg5ArA ()I
+	public final fun copy-WZ4Q5Ns (I)Lcom/gw2tb/gw2chatlinks/ChatLink$Skin;
+	public static synthetic fun copy-WZ4Q5Ns$default (Lcom/gw2tb/gw2chatlinks/ChatLink$Skin;IILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$Skin;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getSkinID-pVg5ArA ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/gw2tb/gw2chatlinks/ChatLink$Trait : com/gw2tb/gw2chatlinks/ChatLink {
+	public static final field BYTE_SIZE I
+	public static final field IDENTIFIER I
+	public synthetic fun <init> (ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-pVg5ArA ()I
+	public final fun copy-WZ4Q5Ns (I)Lcom/gw2tb/gw2chatlinks/ChatLink$Trait;
+	public static synthetic fun copy-WZ4Q5Ns$default (Lcom/gw2tb/gw2chatlinks/ChatLink$Trait;IILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$Trait;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getTraitID-pVg5ArA ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/gw2tb/gw2chatlinks/ChatLink$User : com/gw2tb/gw2chatlinks/ChatLink {
+	public static final field IDENTIFIER I
+	public synthetic fun <init> ([B[BLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-TcUX1vc ()[B
+	public final fun component2-TcUX1vc ()[B
+	public final fun copy-uo5YlkA ([B[B)Lcom/gw2tb/gw2chatlinks/ChatLink$User;
+	public static synthetic fun copy-uo5YlkA$default (Lcom/gw2tb/gw2chatlinks/ChatLink$User;[B[BILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$User;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAccountGUID-TcUX1vc ()[B
+	public final fun getCharacterName-TcUX1vc ()[B
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/gw2tb/gw2chatlinks/ChatLink$WvWObjective : com/gw2tb/gw2chatlinks/ChatLink {
+	public static final field BYTE_SIZE I
+	public static final field IDENTIFIER I
+	public synthetic fun <init> (IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-pVg5ArA ()I
+	public final fun component2-pVg5ArA ()I
+	public final fun copy-feOb9K0 (II)Lcom/gw2tb/gw2chatlinks/ChatLink$WvWObjective;
+	public static synthetic fun copy-feOb9K0$default (Lcom/gw2tb/gw2chatlinks/ChatLink$WvWObjective;IIILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$WvWObjective;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getApiID ()Ljava/lang/String;
+	public final fun getMapID-pVg5ArA ()I
+	public final fun getObjectiveID-pVg5ArA ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/gw2tb/gw2chatlinks/ChatLinkKt {
+	public static final fun decodeChatLink (Ljava/lang/String;)Ljava/lang/Object;
+	public static final fun encodeChatLink (Lcom/gw2tb/gw2chatlinks/ChatLink;)Ljava/lang/Object;
+}
+
+public final class com/gw2tb/gw2chatlinks/EncodingUnsupportedException : java/lang/UnsupportedOperationException {
+}
+
+public abstract interface annotation class com/gw2tb/gw2chatlinks/ExperimentalChatLinks : java/lang/annotation/Annotation {
+}
+
+public class com/gw2tb/gw2chatlinks/Profession : java/lang/Enum {
+	public static final field Companion Lcom/gw2tb/gw2chatlinks/Profession$Companion;
+	public static final field ELEMENTALIST Lcom/gw2tb/gw2chatlinks/Profession;
+	public static final field ENGINEER Lcom/gw2tb/gw2chatlinks/Profession;
+	public static final field GUARDIAN Lcom/gw2tb/gw2chatlinks/Profession;
+	public static final field MESMER Lcom/gw2tb/gw2chatlinks/Profession;
+	public static final field NECROMANCER Lcom/gw2tb/gw2chatlinks/Profession;
+	public static final field RANGER Lcom/gw2tb/gw2chatlinks/Profession;
+	public static final field REVENANT Lcom/gw2tb/gw2chatlinks/Profession;
+	public static final field THIEF Lcom/gw2tb/gw2chatlinks/Profession;
+	public static final field UNKNOWN Lcom/gw2tb/gw2chatlinks/Profession;
+	public static final field WARRIOR Lcom/gw2tb/gw2chatlinks/Profession;
+	public synthetic fun <init> (Ljava/lang/String;ILjava/lang/String;BLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getPaletteID-w2LRezQ ()B
+	public final fun getProfessionID ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lcom/gw2tb/gw2chatlinks/Profession;
+	public static fun values ()[Lcom/gw2tb/gw2chatlinks/Profession;
+}
+
+public final class com/gw2tb/gw2chatlinks/Profession$Companion {
+	public final fun valueOf (Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate;)Lcom/gw2tb/gw2chatlinks/Profession;
+	public final fun valueOf-7apg3OU (B)Lcom/gw2tb/gw2chatlinks/Profession;
+}
+
