@@ -24,6 +24,7 @@ import com.gw2tb.gw2chatlinks.build.BuildType
 import com.gw2tb.gw2chatlinks.build.tasks.*
 
 import org.jetbrains.kotlin.gradle.plugin.mpp.*
+import org.jetbrains.kotlin.gradle.targets.js.yarn.*
 import org.jetbrains.kotlin.gradle.targets.jvm.*
 
 plugins {
@@ -41,6 +42,9 @@ version = when (deployment.type) {
     BuildType.SNAPSHOT -> "$nextVersion-SNAPSHOT"
     else -> nextVersion
 }
+
+yarn.lockFileName = "kotlin-yarn.lock"
+yarn.lockFileDirectory = rootDir
 
 java {
     toolchain {
