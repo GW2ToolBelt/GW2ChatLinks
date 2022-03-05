@@ -21,8 +21,6 @@
  */
 rootProject.name = "gw2chatlinks"
 
-enableFeaturePreview("VERSION_CATALOGS")
-
 pluginManagement {
     repositories {
         gradlePluginPortal()
