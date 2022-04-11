@@ -1,6 +1,7 @@
 [versions]
 asm = "9.2"
-javaparser = "3.24.0"
+javaparser = "3.24.2"
+
 
 [libraries]
 # com.github.javaparser:javaparser-core - JavaParser
