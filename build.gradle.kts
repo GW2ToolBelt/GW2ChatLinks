@@ -28,9 +28,9 @@ import org.jetbrains.kotlin.gradle.targets.js.yarn.*
 import org.jetbrains.kotlin.gradle.targets.jvm.*
 
 plugins {
-    kotlin("multiplatform") version "1.6.20"
-    id("org.jetbrains.dokka") version "1.6.20"
-    id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.9.0"
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.dokka)
+    alias(libs.plugins.binary.compatibility.validator)
     signing
     `maven-publish`
 }

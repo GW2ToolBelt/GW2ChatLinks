@@ -1,6 +1,9 @@
 [versions]
 asm = "9.2"
+binary-compatibility-validator = "0.9.0"
+dokka = "1.6.20"
 javaparser = "3.24.2"
+kotlin = "1.6.20"
 
 
 [libraries]
@@ -9,3 +12,15 @@ javaparser-core = { module = "com.github.javaparser:javaparser-core", version.re
 
 # org.ow2.asm - ASM
 asm = { module = "org.ow2.asm:asm", version.ref = "asm" }
+
+
+[plugins]
+# org.jetbrains.kotlinx.binary-compatibility-validator - binary-compatibility-validator
+binary-compatibility-validator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "binary-compatibility-validator" }
+
+# org.jetbrains.dokka - dokka
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+
+# org.jetbrains.kotlin - Kotlin Gradle plugin
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
