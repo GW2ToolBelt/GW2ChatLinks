@@ -1,7 +1,7 @@
 [versions]
 asm = "9.2"
 binary-compatibility-validator = "0.9.0"
-dokka = "1.6.20"
+dokka = "1.6.21"
 javaparser = "3.24.2"
 kotlin = "1.6.21"
 
