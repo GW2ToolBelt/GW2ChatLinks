@@ -70,12 +70,6 @@ kotlin {
     }
 
     sourceSets {
-        all {
-            languageSettings.apply {
-                optIn("kotlin.RequiresOptIn")
-            }
-        }
-
         commonTest {
             dependencies {
                 implementation(kotlin("test"))
