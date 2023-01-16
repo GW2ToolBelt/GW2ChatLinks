@@ -56,7 +56,7 @@ java {
 kotlin {
     explicitApi()
 
-    js(BOTH) {
+    js(IR) {
         browser {
             testTask {
                 enabled = false
@@ -78,7 +78,7 @@ kotlin {
         }
     }
 
-    targets.filter { it is KotlinJvmTarget || it is KotlinWithJavaTarget<*> }.forEach { target ->
+    targets.filter { it is KotlinJvmTarget || it is KotlinWithJavaTarget<*, *> }.forEach { target ->
         val artifactTask = tasks.getByName<Jar>(target.artifactsTaskName) {
             manifest {
                 attributes(mapOf(
