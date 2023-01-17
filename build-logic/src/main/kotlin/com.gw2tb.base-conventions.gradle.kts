@@ -19,23 +19,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-import org.jetbrains.kotlin.gradle.tasks.*
+import com.gw2tb.build.*
+import com.gw2tb.build.BuildType
 
-plugins {
-    `kotlin-dsl`
-}
+group = "com.gw2tb.gw2chatlinks"
 
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(8))
-    }
+val nextVersion = "0.3.0"
+version = when (deployment.type) {
+    BuildType.SNAPSHOT -> "$nextVersion-SNAPSHOT"
+    else -> nextVersion
 }
 
 repositories {
     mavenCentral()
-}
-
-dependencies {
-    implementation(libs.asm)
-    implementation(libs.javaparser.core)
 }

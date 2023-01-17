@@ -1,36 +1,14 @@
-/*
- * Copyright (c) 2021-2023 Leon Linhart
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- */
-package com.gw2tb.gw2chatlinks.build.tasks
+package com.gw2tb.build.tasks
 
-import com.github.javaparser.*
-import com.github.javaparser.ast.*
-import com.github.javaparser.ast.expr.*
+import com.github.javaparser.JavaParser
+import com.github.javaparser.ParserConfiguration
+import com.github.javaparser.ast.Modifier
+import com.github.javaparser.ast.expr.Name
 import com.github.javaparser.ast.modules.*
-import org.gradle.api.*
-import org.gradle.api.file.*
+import org.gradle.api.DefaultTask
+import org.gradle.api.file.RegularFileProperty
 import org.gradle.api.tasks.*
 import org.gradle.kotlin.dsl.property
-import org.objectweb.asm.*
-import org.objectweb.asm.Opcodes.*
 
 private val String.asBinaryName get(): String {
     val parts = split('.')
@@ -69,16 +47,16 @@ open class CompileModuleInfo : DefaultTask() {
         val parser = JavaParser(ParserConfiguration().setLanguageLevel(ParserConfiguration.LanguageLevel.JAVA_9))
         val decl = parser.parseModuleDeclaration(source.get().asFile.readText()).result.get()
 
-        val classWriter = ClassWriter(0)
-        classWriter.visit(V9, ACC_MODULE, "module-info", null, null, null)
+        val classWriter = org.objectweb.asm.ClassWriter(0)
+        classWriter.visit(org.objectweb.asm.Opcodes.V9, org.objectweb.asm.Opcodes.ACC_MODULE, "module-info", null, null, null)
 
-        val moduleAccess: Int = if (decl.isOpen) ACC_SYNTHETIC or ACC_OPEN else ACC_SYNTHETIC
-        val mv: ModuleVisitor = classWriter.visitModule(decl.nameAsString, moduleAccess, version)
+        val moduleAccess: Int = if (decl.isOpen) org.objectweb.asm.Opcodes.ACC_SYNTHETIC or org.objectweb.asm.Opcodes.ACC_OPEN else org.objectweb.asm.Opcodes.ACC_SYNTHETIC
+        val mv: org.objectweb.asm.ModuleVisitor = classWriter.visitModule(decl.nameAsString, moduleAccess, version)
 
         decl.findAll(ModuleRequiresDirective::class.java).forEach {
             var mod = 0
-            if (it.hasModifier(Modifier.Keyword.STATIC)) mod = mod or ACC_STATIC_PHASE
-            if (it.hasModifier(Modifier.Keyword.TRANSITIVE)) mod = mod or ACC_TRANSITIVE
+            if (it.hasModifier(Modifier.Keyword.STATIC)) mod = mod or org.objectweb.asm.Opcodes.ACC_STATIC_PHASE
+            if (it.hasModifier(Modifier.Keyword.TRANSITIVE)) mod = mod or org.objectweb.asm.Opcodes.ACC_TRANSITIVE
 
             mv.visitRequire(it.nameAsString, mod, null)
         }
@@ -99,7 +77,7 @@ open class CompileModuleInfo : DefaultTask() {
             mv.visitOpen(it.nameAsString, 0, *it.moduleNames.map(Name::asString).toTypedArray())
         }
 
-        mv.visitRequire("java.base", ACC_MANDATED, null)
+        mv.visitRequire("java.base", org.objectweb.asm.Opcodes.ACC_MANDATED, null)
         mv.visitEnd()
 
         classWriter.visitEnd()

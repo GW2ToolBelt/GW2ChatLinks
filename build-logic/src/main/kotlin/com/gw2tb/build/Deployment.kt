@@ -19,7 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.gw2tb.gw2chatlinks.build
+package com.gw2tb.build
 
 data class Deployment internal constructor(
     val type: BuildType,

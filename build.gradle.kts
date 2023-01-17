@@ -19,10 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-import com.gw2tb.gw2chatlinks.build.*
-import com.gw2tb.gw2chatlinks.build.BuildType
-import com.gw2tb.gw2chatlinks.build.tasks.*
-
+import com.gw2tb.build.tasks.*
 import org.jetbrains.kotlin.gradle.plugin.mpp.*
 import org.jetbrains.kotlin.gradle.targets.js.yarn.*
 import org.jetbrains.kotlin.gradle.targets.jvm.*
@@ -32,16 +29,7 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.dokka)
     alias(libs.plugins.binary.compatibility.validator)
-    signing
-    `maven-publish`
-}
-
-val nextVersion = "0.3.0"
-
-group = "com.gw2tb.gw2chatlinks"
-version = when (deployment.type) {
-    BuildType.SNAPSHOT -> "$nextVersion-SNAPSHOT"
-    else -> nextVersion
+    id("com.gw2tb.maven-publish-conventions")
 }
 
 yarn.lockFileName = "kotlin-yarn.lock"
@@ -123,57 +111,9 @@ val emptyJavadocJar by tasks.registering(Jar::class) {
 }
 
 publishing {
-    repositories {
-        maven {
-            url = uri(deployment.repo)
-
-            credentials {
-                username = deployment.user
-                password = deployment.password
-            }
-        }
-    }
     publications {
         publications.withType<MavenPublication> {
             artifact(emptyJavadocJar)
-
-            pom {
-                name.set("GW2ChatLinks")
-                description.set("A Kotlin Multiplatform library for parsing and generating GW2 chat links.")
-                url.set("https://github.com/GW2ToolBelt/GW2ChatLinks")
-
-                licenses {
-                    license {
-                        name.set("MIT")
-                        url.set("https://github.com/GW2ToolBelt/GW2ChatLinks/blob/master/LICENSE")
-                        distribution.set("repo")
-                    }
-                }
-
-                developers {
-                    developer {
-                        id.set("TheMrMilchmann")
-                        name.set("Leon Linhart")
-                        email.set("themrmilchmann@gmail.com")
-                        url.set("https://github.com/TheMrMilchmann")
-                    }
-                }
-
-                scm {
-                    connection.set("scm:git:git://github.com/GW2ToolBelt/GW2ChatLinks.git")
-                    developerConnection.set("scm:git:git://github.com/GW2ToolBelt/GW2ChatLinks.git")
-                    url.set("https://github.com/GW2ToolBelt/GW2ChatLinks.git")
-                }
-            }
         }
     }
-}
-
-signing {
-    isRequired = (deployment.type === BuildType.RELEASE)
-    sign(publishing.publications)
-}
-
-repositories {
-    mavenCentral()
 }
