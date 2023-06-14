@@ -22,6 +22,8 @@
 package com.gw2tb.gw2chatlinks
 
 import com.gw2tb.gw2chatlinks.internal.*
+import kotlin.io.encoding.Base64
+import kotlin.io.encoding.ExperimentalEncodingApi
 
 private const val UINT_24BIT_MAX_VALUE = 0xFFFFFF16u
 
@@ -34,7 +36,7 @@ private const val UINT_24BIT_MAX_VALUE = 0xFFFFFF16u
  *
  * @since   0.1.0
  */
-@OptIn(ExperimentalChatLinks::class)
+@OptIn(ExperimentalChatLinks::class, ExperimentalEncodingApi::class)
 @ExperimentalUnsignedTypes
 public fun decodeChatLink(
     source: String
@@ -42,7 +44,7 @@ public fun decodeChatLink(
     require(source.startsWith("[&")) { "Input does not start with chat link prefix (\"[&\"): $source" }
     require(source.endsWith("]")) { "Input does not end with chat link suffix (\"]\"): $source" }
 
-    parseArray(decodeBase64(source.substring(startIndex = 2, endIndex = source.length - 1))) {
+    parseArray(Base64.decode(source.substring(startIndex = 2, endIndex = source.length - 1)).toUByteArray()) {
         when (val identifier = nextByte().toInt()) {
             ChatLink.Coin.IDENTIFIER -> ChatLink.Coin(amount = nextInt())
             ChatLink.Item.IDENTIFIER -> {
@@ -142,13 +144,14 @@ public fun decodeChatLink(
  *
  * @since   0.1.0
  */
+@OptIn(ExperimentalEncodingApi::class)
 @ExperimentalUnsignedTypes
 public fun encodeChatLink(
     chatLink: ChatLink
 ): Result<String> = runCatching {
     buildString {
         append("[&")
-        append(encodeBase64(chatLink.asUByteArray()))
+        Base64.encodeToAppendable(chatLink.asUByteArray().toByteArray(), destination = this)
         append("]")
     }
 }
