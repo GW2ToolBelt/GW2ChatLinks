@@ -1,5 +1,5 @@
 [versions]
-asm = "9.4"
+asm = "9.5"
 binary-compatibility-validator = "0.13.0"
 dokka = "1.7.20"
 javaparser = "3.24.10"
