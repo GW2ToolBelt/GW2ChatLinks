@@ -20,6 +20,8 @@
  * SOFTWARE.
  */
 import com.gw2tb.build.tasks.*
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.plugin.mpp.*
 import org.jetbrains.kotlin.gradle.targets.js.yarn.*
 import org.jetbrains.kotlin.gradle.targets.jvm.*
@@ -44,6 +46,15 @@ java {
 kotlin {
     explicitApi()
 
+    targets.configureEach {
+        compilations.configureEach {
+            compilerOptions.configure {
+                apiVersion.set(KotlinVersion.KOTLIN_1_8)
+                languageVersion.set(KotlinVersion.KOTLIN_1_8)
+            }
+        }
+    }
+
     js(IR) {
         browser {
             testTask {
@@ -52,9 +63,10 @@ kotlin {
         }
         nodejs()
     }
+
     jvm {
-        compilations.all {
-            kotlinOptions.jvmTarget = "1.8"
+        compilations.configureEach {
+            compilerOptions.options.jvmTarget.set(JvmTarget.JVM_1_8)
         }
     }
 
