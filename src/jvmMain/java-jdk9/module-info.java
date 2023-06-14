@@ -21,7 +21,7 @@
  */
 module com.gw2tb.gw2chatlinks {
 
-    requires transitive kotlin.stdlib.jdk8;
+    requires transitive kotlin.stdlib;
 
     exports com.gw2tb.gw2chatlinks;
 
