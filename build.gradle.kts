@@ -114,7 +114,7 @@ kotlin {
     }
 }
 
-tasks.withType<JavaCompile> {
+tasks.withType<JavaCompile>().configureEach {
     options.release.set(8)
 }
 
@@ -124,7 +124,7 @@ val emptyJavadocJar by tasks.registering(Jar::class) {
 
 publishing {
     publications {
-        publications.withType<MavenPublication> {
+        publications.withType<MavenPublication>().configureEach {
             artifact(emptyJavadocJar)
         }
     }
