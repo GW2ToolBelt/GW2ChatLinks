@@ -3,7 +3,7 @@ asm = "9.5"
 binary-compatibility-validator = "0.13.0"
 dokka = "1.7.20"
 javaparser = "3.24.10"
-kotlin = "1.8.10"
+kotlin = "1.8.21"
 
 
 [libraries]
