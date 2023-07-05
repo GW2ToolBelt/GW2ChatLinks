@@ -1,11 +1,9 @@
 /.gradle
+
 !/.idea
 /.idea/*
 !/.idea/copyright
+!/.idea/runConfigurations
 !/.idea/scopes
-/build
-/out
 
-/buildSrc/.gradle
-/buildSrc/build
-/buildSrc/out
+/build
