@@ -19,9 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-group = "com.gw2tb.gw2chatlinks"
-version = "0.3.0"
-
 repositories {
     mavenCentral()
 }
