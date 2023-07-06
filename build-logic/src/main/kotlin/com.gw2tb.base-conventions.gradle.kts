@@ -19,16 +19,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-import com.gw2tb.build.*
-import com.gw2tb.build.BuildType
-
 group = "com.gw2tb.gw2chatlinks"
-
-val nextVersion = "0.3.0"
-version = when (deployment.type) {
-    BuildType.SNAPSHOT -> "$nextVersion-SNAPSHOT"
-    else -> nextVersion
-}
+version = "0.3.0"
 
 repositories {
     mavenCentral()
