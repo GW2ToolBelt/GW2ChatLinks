@@ -20,9 +20,11 @@
  * SOFTWARE.
  */
 import com.gw2tb.build.tasks.*
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.plugin.mpp.*
+import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.targets.js.yarn.*
 import org.jetbrains.kotlin.gradle.targets.jvm.*
 
@@ -54,12 +56,11 @@ kotlin {
         }
     }
 
+    @OptIn(ExperimentalKotlinGradlePluginApi::class)
+    targetHierarchy.default()
+
     js(IR) {
-        browser {
-            testTask {
-                enabled = false
-            }
-        }
+        browser()
         nodejs()
     }
 
@@ -68,6 +69,36 @@ kotlin {
             compilerOptions.options.jvmTarget.set(JvmTarget.JVM_1_8)
         }
     }
+
+    androidNativeArm32()
+    androidNativeArm64()
+    androidNativeX64()
+    androidNativeX86()
+
+    linuxArm64()
+    linuxX64()
+
+    iosArm64()
+    iosX64()
+
+    iosSimulatorArm64()
+
+    macosArm64()
+    macosX64()
+
+    mingwX64()
+
+    tvosArm64()
+    tvosX64()
+
+    tvosSimulatorArm64()
+
+    watchosArm32()
+    watchosArm64()
+    watchosX64()
+
+    watchosDeviceArm64()
+    watchosSimulatorArm64()
 
     sourceSets {
         commonTest {
