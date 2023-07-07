@@ -36,6 +36,15 @@ jobs:
           arguments: build --info -S --show-version
           gradle-home-cache-cleanup: true
 
+      - name: Tar files
+        run: tar -cvf ${{ env.WORKSPACE_ARCHIVE }} .
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.os }}-${{ env.WORKSPACE_ARTIFACT }}
+          path: ${{ env.WORKSPACE_ARCHIVE }}
+          retention-days: 1
+
 
   check:
     name: Check
