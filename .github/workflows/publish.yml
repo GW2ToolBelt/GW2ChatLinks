@@ -54,7 +54,8 @@ jobs:
       - name: Checkout
         uses: actions/download-artifact@v3
         with:
-          name: ${{ matrix.os }}-${{ env.WORKSPACE_ARTIFACT }}
+          # https://github.com/actions/runner/issues/409#issuecomment-752775072
+          name: ${{ matrix.os == 'windows-latest' && 'ubuntu-latest' || matrix.os }}-${{ env.WORKSPACE_ARTIFACT }}
           path: .
 
       - name: Untar
