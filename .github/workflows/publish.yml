@@ -38,7 +38,7 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: ${{ env.WORKSPACE_ARTIFACT }}
+          name: ${{ matrix.os }}-${{ env.WORKSPACE_ARTIFACT }}
           path: ${{ env.WORKSPACE_ARCHIVE }}
           retention-days: 1
 
@@ -47,7 +47,6 @@ jobs:
     name: Check
     strategy:
       matrix:
-        jdk: [ 8, 11, 17, 19 ]
         os: [ macos-latest, ubuntu-latest, windows-latest ]
     needs: build
     runs-on: ${{ matrix.os }}
@@ -55,7 +54,7 @@ jobs:
       - name: Checkout
         uses: actions/download-artifact@v3
         with:
-          name: ${{ env.WORKSPACE_ARTIFACT }}
+          name: ${{ matrix.os }}-${{ env.WORKSPACE_ARTIFACT }}
           path: .
 
       - name: Untar
@@ -105,7 +104,7 @@ jobs:
       - name: Checkout
         uses: actions/download-artifact@v3
         with:
-          name: ${{ env.WORKSPACE_ARTIFACT }}
+          name: ${{ matrix.os }}-${{ env.WORKSPACE_ARTIFACT }}
           path: .
 
       - name: Untar
@@ -118,27 +117,19 @@ jobs:
           distribution: "temurin"
           java-version: ${{ env.JDK_VERSION }}
 
-      - name: Gradle Publish (Linux Host)
+      - name: Gradle Publish
         uses: gradle/gradle-build-action@v2
         env:
-          ORG_GRADLE_PROJECT_signingKey: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGKEY }}
-          ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGPASSWORD }}
+          ORG_GRADLE_PROJECT_signingKey: ${{ secrets.SIGNING_KEY }}
+          ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.SIGNING_PASSWORD }}
           ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.SONATYPE_USERNAME }}
           ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.SONATYPE_PASSWORD }}
           ORG_GRADLE_PROJECT_stagingRepositoryId: ${{ needs.create-staging-repository.outputs.staging-repository-id }}
         with:
-          arguments: publishAllPublicationsToMavenRepository --info -S --show-version
-          gradle-home-cache-cleanup: true
-
-      - name: Gradle Publish (MacOS Host)
-        uses: gradle/gradle-build-action@v2
-        env:
-          ORG_GRADLE_PROJECT_signingKey: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGKEY }}
-          ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGPASSWORD }}
-          ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.SONATYPE_USERNAME }}
-          ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.SONATYPE_PASSWORD }}
-          ORG_GRADLE_PROJECT_stagingRepositoryId: ${{ needs.create-staging-repository.outputs.staging-repository-id }}
-        with:
+          # Running this on linux and macOS means that we might overwrite some
+          # artifacts but that's not an issue since they should be identical
+          # anyway. If anything, this might actually help us to spot a Kotlin
+          # compiler bugs early.
           arguments: publishAllPublicationsToMavenRepository --info -S --show-version
           gradle-home-cache-cleanup: true
 
@@ -189,7 +180,7 @@ jobs:
   cleanup:
     name: Cleanup
     if: ${{ always() }}
-    needs: [gpp-release, nexus-release]
+    needs: nexus-release
     runs-on: ubuntu-latest
     steps:
       - name: Cleanup
