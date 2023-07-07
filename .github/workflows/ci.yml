@@ -42,7 +42,7 @@ jobs:
     strategy:
       matrix:
         os: [ macos-latest, ubuntu-latest, windows-latest ]
-    needs: [build]
+    needs: build
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
@@ -84,7 +84,7 @@ jobs:
   cleanup:
     name: Cleanup
     if: ${{ always() }}
-    needs: [check]
+    needs: check
     runs-on: ubuntu-latest
     steps:
       - name: Cleanup
