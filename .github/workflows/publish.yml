@@ -152,7 +152,7 @@ jobs:
 
   nexus-release:
     name: Release to Nexus
-    needs: [create-staging-repository, close-staging-repository, gpp-release]
+    needs: [create-staging-repository, close-staging-repository]
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
     steps:
