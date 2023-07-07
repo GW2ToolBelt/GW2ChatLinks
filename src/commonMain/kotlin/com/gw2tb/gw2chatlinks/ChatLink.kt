@@ -116,18 +116,23 @@ public fun decodeChatLink(
 
                 val allSkills = List(size = 10) { nextShort() }
 
+                val profCtxOffset = position
                 val context = Profession.valueOf(paletteID = professionID).parseContext(
                     nextByte = ::nextByte,
                     nextShort = ::nextShort,
                     nextInt = ::nextInt
                 )
 
+                position = profCtxOffset + ChatLink.BuildTemplate.ProfessionContext.BYTE_SIZE
+                val relicID = if (remaining > 0) nextShort() else 0u
+
                 ChatLink.BuildTemplate(
                     professionID = professionID,
                     specializations = specializations,
                     skills = allSkills.filterIndexed { index, _ -> index % 2 == 0 },
                     aquaticSkills = allSkills.filterIndexed { index, _ -> index % 2 != 0 },
-                    professionContext = context
+                    professionContext = context,
+                    relicID = relicID
                 )
             }
             else -> error("Unsupported chat link format: ${identifier.toString(16)}")
@@ -179,18 +184,37 @@ public sealed class ChatLink {
      * @param aquaticSkills     the IDs of the template's aquatic skills. _(Must contain five elements.)_
      * @param professionContext the profession-specific context, or `null` if no profession specific information exists
      *                          for the template's profession
+     * @param relicID           the ID of the template's relic
      *
      * @throws IllegalArgumentException if any parameter value does not match its expected shape
      *
      * @since   0.1.0
      */
-    public data class BuildTemplate(
+    public data class BuildTemplate @ExperimentalChatLinks constructor(
         val professionID: UByte,
         val specializations: List<Specialization>,
         val skills: List<UShort>,
         val aquaticSkills: List<UShort>,
-        val professionContext: ProfessionContext?
+        val professionContext: ProfessionContext?,
+        @property:ExperimentalChatLinks
+        val relicID: UShort
     ) : ChatLink() {
+
+        @OptIn(ExperimentalChatLinks::class)
+        public constructor(
+            professionID: UByte,
+            specializations: List<Specialization>,
+            skills: List<UShort>,
+            aquaticSkills: List<UShort>,
+            professionContext: ProfessionContext?,
+        ) : this(
+            professionID = professionID,
+            specializations = specializations,
+            skills = skills,
+            aquaticSkills = aquaticSkills,
+            professionContext = professionContext,
+            relicID = 0u
+        )
 
         internal companion object {
             const val IDENTIFIER = 0x0D
@@ -201,8 +225,9 @@ public sealed class ChatLink {
              * +  6 specializations (3 * 2)
              * + 20 skills (10 * 2)
              * + 16 professionContext
+             * +  2 relicID
              */
-            const val BYTE_SIZE = 44
+            const val BYTE_SIZE = 46
         }
 
         init {
@@ -235,7 +260,17 @@ public sealed class ChatLink {
                 putShort(skillID)
                 putShort(aquaticSkillID)
             }
+
+            val profCtxOffset = position
             professionContext?.apply { putContext() }
+
+            if (position > profCtxOffset + ProfessionContext.BYTE_SIZE)
+                error("Unexpected ProfessionContext size: ${position - profCtxOffset}")
+
+            position = profCtxOffset + ProfessionContext.BYTE_SIZE
+
+            @OptIn(ExperimentalChatLinks::class)
+            putShort(relicID)
         }
 
         /**
@@ -266,6 +301,10 @@ public sealed class ChatLink {
          * @since   0.1.0
          */
         public sealed class ProfessionContext {
+
+            internal companion object {
+                const val BYTE_SIZE = 16
+            }
 
             @ExperimentalUnsignedTypes
             internal abstract fun ArrayBuilder.putContext()
