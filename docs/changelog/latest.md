@@ -1,12 +1,18 @@
-### 0.2.0
+### 0.3.0
 
-_Released 2021 Nov 13_
+_Released 2023 Jul 07_
 
 #### Improvements
 
-- The JVM artifact is now a multi-release Jar with an explicit module descriptor
-  for Java 9 and later.
+- Added prebuilt artifacts for all native targets currently supported (and not
+  deprecated) by Kotlin.
+- Updated encoding and decoding of build template chat links to support the game
+  following the Guild Wars 2: Secrets of the Obscure combat beta weekend.
+  - Added a new experimental `relicID` property to build templates.
+  - The encoder was updated to output the new format.
+  - The decoder was updated to accept the old and new formats.
 
-#### Fixes
+#### Breaking Changes
 
-- Fixed an index-out-of-bounds error when calling `Profession.valueOf` with a value of 10.
+- The required version of Kotlin was bumped from `1.5` to `1.8`.
+- Dropped support for legacy Kotlin/JS targets.
