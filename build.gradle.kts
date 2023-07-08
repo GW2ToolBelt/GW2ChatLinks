@@ -148,13 +148,14 @@ tasks.withType<JavaCompile>().configureEach {
     options.release.set(8)
 }
 
-val emptyJavadocJar by tasks.registering(Jar::class) {
-    archiveClassifier.set("javadoc")
-}
-
 publishing {
     publications {
         publications.withType<MavenPublication>().configureEach {
+            val emptyJavadocJar = tasks.register<Jar>("${name}JavadocJar") {
+                archiveBaseName.set("${archiveBaseName.get()}-${name}")
+                archiveClassifier.set("javadoc")
+            }
+
             artifact(emptyJavadocJar)
         }
     }
