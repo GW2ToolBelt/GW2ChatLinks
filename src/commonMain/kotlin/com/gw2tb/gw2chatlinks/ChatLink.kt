@@ -124,7 +124,13 @@ public fun decodeChatLink(
                 )
 
                 position = profCtxOffset + ChatLink.BuildTemplate.ProfessionContext.BYTE_SIZE
-                val relicID = if (remaining > 0) nextShort() else 0u
+
+                val weapons = when {
+                    remaining > 0 -> List(nextByte().toInt()) { ChatLink.BuildTemplate.Weapon(type = nextByte(), data = nextByte()) }
+                    else -> emptyList()
+                }
+
+                val relicID = if (remaining > 0) nextByte() else 0u
 
                 ChatLink.BuildTemplate(
                     professionID = professionID,
@@ -132,6 +138,7 @@ public fun decodeChatLink(
                     skills = allSkills.filterIndexed { index, _ -> index % 2 == 0 },
                     aquaticSkills = allSkills.filterIndexed { index, _ -> index % 2 != 0 },
                     professionContext = context,
+                    weapons = weapons,
                     relicID = relicID
                 )
             }
@@ -197,7 +204,9 @@ public sealed class ChatLink {
         val aquaticSkills: List<UShort>,
         val professionContext: ProfessionContext?,
         @property:ExperimentalChatLinks
-        val relicID: UShort
+        val weapons: List<Weapon>,
+        @property:ExperimentalChatLinks
+        val relicID: UByte
     ) : ChatLink() {
 
         @OptIn(ExperimentalChatLinks::class)
@@ -213,6 +222,7 @@ public sealed class ChatLink {
             skills = skills,
             aquaticSkills = aquaticSkills,
             professionContext = professionContext,
+            weapons = emptyList(),
             relicID = 0u
         )
 
@@ -225,9 +235,10 @@ public sealed class ChatLink {
              * +  6 specializations (3 * 2)
              * + 20 skills (10 * 2)
              * + 16 professionContext
-             * +  2 relicID
+             * +  1 weaponBytePairCount
+             * +  1 relicID
              */
-            const val BYTE_SIZE = 46
+            const val BASE_BYTE_SIZE = 46
         }
 
         init {
@@ -242,8 +253,9 @@ public sealed class ChatLink {
             }
         }
 
+        @OptIn(ExperimentalChatLinks::class)
         @ExperimentalUnsignedTypes
-        override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
+        override fun asUByteArray(): UByteArray = buildArray(BASE_BYTE_SIZE + (weapons.size * 2)) {
             putByte(IDENTIFIER.toUByte())
             putByte(professionID)
             specializations.forEach { specialization ->
@@ -269,8 +281,13 @@ public sealed class ChatLink {
 
             position = profCtxOffset + ProfessionContext.BYTE_SIZE
 
-            @OptIn(ExperimentalChatLinks::class)
-            putShort(relicID)
+            putByte(weapons.size.toUByte())
+            weapons.forEach {
+                putByte(it.type)
+                putByte(it.data)
+            }
+
+            putByte(relicID)
         }
 
         /**
@@ -385,6 +402,20 @@ public sealed class ChatLink {
             }
 
         }
+
+        /**
+         * Weapon information.
+         *
+         * @param type  the type of the weapon
+         * @param data  additional weapon data
+         *
+         * @since   0.4.0
+         */
+        @ExperimentalChatLinks
+        public data class Weapon(
+            val type: UByte,
+            val data: UByte
+        )
 
     }
 
