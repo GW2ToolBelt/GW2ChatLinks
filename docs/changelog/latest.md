@@ -1,18 +1,14 @@
-### 0.3.0
+### 0.4.0
 
-_Released 2023 Jul 07_
+_Released 2023 Jul 09_
 
 #### Improvements
 
-- Added prebuilt artifacts for all native targets currently supported (and not
-  deprecated) by Kotlin.
-- Updated encoding and decoding of build template chat links to support the game
-  following the Guild Wars 2: Secrets of the Obscure combat beta weekend.
-  - Added a new experimental `relicID` property to build templates.
-  - The encoder was updated to output the new format.
-  - The decoder was updated to accept the old and new formats.
+- Added a new experimental `weapons` field for build template chat links.
+  - This is subject to change when SotO releases or additional information about
+    the semantics of weapon encodings are confirmed.
 
 #### Breaking Changes
 
-- The required version of Kotlin was bumped from `1.5` to `1.8`.
-- Dropped support for legacy Kotlin/JS targets.
+- The experimental `relicID` in build template links is now an `UByte` instead
+  of an `UShort`.
