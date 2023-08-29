@@ -126,11 +126,14 @@ public fun decodeChatLink(
                 position = profCtxOffset + ChatLink.BuildTemplate.ProfessionContext.BYTE_SIZE
 
                 val weapons = when {
-                    remaining > 0 -> List(nextByte().toInt()) { ChatLink.BuildTemplate.Weapon(type = nextByte(), data = nextByte()) }
+                    remaining > 0 -> List(nextByte().toInt()) { nextShort() }
                     else -> emptyList()
                 }
 
-                val relicID = if (remaining > 0) nextByte() else 0u
+                val weaponSkillOverrides = when {
+                    remaining > 0 -> List(nextByte().toInt()) { nextInt() }
+                    else -> emptyList()
+                }
 
                 ChatLink.BuildTemplate(
                     professionID = professionID,
@@ -139,7 +142,7 @@ public fun decodeChatLink(
                     aquaticSkills = allSkills.filterIndexed { index, _ -> index % 2 != 0 },
                     professionContext = context,
                     weapons = weapons,
-                    relicID = relicID
+                    weaponSkillOverrides = weaponSkillOverrides
                 )
             }
             else -> error("Unsupported chat link format: ${identifier.toString(16)}")
@@ -185,46 +188,27 @@ public sealed class ChatLink {
      *
      * Only the shape of the parameters (e.g. list sizes) is validated and not the actual data (e.g. ID validity).
      *
-     * @param professionID      the ID of the template's profession
-     * @param specializations   the template's specializations. _(Must contain three elements.)_
-     * @param skills            the IDs of the template's (terrestrial) skills. _(Must contain five elements.)_
-     * @param aquaticSkills     the IDs of the template's aquatic skills. _(Must contain five elements.)_
-     * @param professionContext the profession-specific context, or `null` if no profession specific information exists
-     *                          for the template's profession
-     * @param relicID           the ID of the template's relic
+     * @param professionID          the ID of the template's profession
+     * @param specializations       the template's specializations. _(Must contain three elements.)_
+     * @param skills                the IDs of the template's (terrestrial) skills. _(Must contain five elements.)_
+     * @param aquaticSkills         the IDs of the template's aquatic skills. _(Must contain five elements.)_
+     * @param professionContext     the profession-specific context, or `null` if no profession specific information
+     *                              exists for the template's profession
+     * @param weaponSkillOverrides  the skill IDs of the template's weapon skill overrides
      *
      * @throws IllegalArgumentException if any parameter value does not match its expected shape
      *
      * @since   0.1.0
      */
-    public data class BuildTemplate @ExperimentalChatLinks constructor(
+    public data class BuildTemplate(
         val professionID: UByte,
         val specializations: List<Specialization>,
         val skills: List<UShort>,
         val aquaticSkills: List<UShort>,
         val professionContext: ProfessionContext?,
-        @property:ExperimentalChatLinks
-        val weapons: List<Weapon>,
-        @property:ExperimentalChatLinks
-        val relicID: UByte
+        val weapons: List<UShort> = emptyList(),
+        val weaponSkillOverrides: List<UInt> = emptyList()
     ) : ChatLink() {
-
-        @OptIn(ExperimentalChatLinks::class)
-        public constructor(
-            professionID: UByte,
-            specializations: List<Specialization>,
-            skills: List<UShort>,
-            aquaticSkills: List<UShort>,
-            professionContext: ProfessionContext?,
-        ) : this(
-            professionID = professionID,
-            specializations = specializations,
-            skills = skills,
-            aquaticSkills = aquaticSkills,
-            professionContext = professionContext,
-            weapons = emptyList(),
-            relicID = 0u
-        )
 
         internal companion object {
             const val IDENTIFIER = 0x0D
@@ -253,9 +237,8 @@ public sealed class ChatLink {
             }
         }
 
-        @OptIn(ExperimentalChatLinks::class)
         @ExperimentalUnsignedTypes
-        override fun asUByteArray(): UByteArray = buildArray(BASE_BYTE_SIZE + (weapons.size * 2)) {
+        override fun asUByteArray(): UByteArray = buildArray(BASE_BYTE_SIZE + (weapons.size * UShort.SIZE_BYTES) + (weaponSkillOverrides.size * UInt.SIZE_BYTES)) {
             putByte(IDENTIFIER.toUByte())
             putByte(professionID)
             specializations.forEach { specialization ->
@@ -282,12 +265,10 @@ public sealed class ChatLink {
             position = profCtxOffset + ProfessionContext.BYTE_SIZE
 
             putByte(weapons.size.toUByte())
-            weapons.forEach {
-                putByte(it.type)
-                putByte(it.data)
-            }
+            weapons.forEach(this::putShort)
 
-            putByte(relicID)
+            putByte(weaponSkillOverrides.size.toUByte())
+            weaponSkillOverrides.forEach(this::putInt)
         }
 
         /**

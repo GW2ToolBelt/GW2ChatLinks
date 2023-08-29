@@ -267,8 +267,8 @@ class ChatLinkTests {
             skills = listOf(3878u, 4746u, 328u, 254u, 4789u),
             aquaticSkills = listOf(3878u, 310u, 328u, 254u, 4745u),
             professionContext = null,
-            weapons = listOf(ChatLink.BuildTemplate.Weapon(type = 0x05u, data = 0x00u), ChatLink.BuildTemplate.Weapon(type = 0x2Fu, data = 0x00u)),
-            relicID = 0u
+            weapons = listOf(0x05u, 0x2Fu),
+            weaponSkillOverrides = listOf()
         )
         val rangerBuildTemplate = ChatLink.BuildTemplate(
             professionID = Profession.RANGER.paletteID,
@@ -284,7 +284,7 @@ class ChatLinkTests {
                 aquaticPets = listOf(21u, 47u)
             ),
             weapons = listOf(),
-            relicID = 0u
+            weaponSkillOverrides = listOf(0xF767u)
         )
         val revenantBuildTemplate = ChatLink.BuildTemplate(
             professionID = Profession.REVENANT.paletteID,
@@ -301,13 +301,13 @@ class ChatLinkTests {
                 inactiveLegendUtilitySkills = listOf(4564u, 4651u, 4614u),
                 inactiveAquaticLegendUtilitySkills = listOf(4614u, 4564u, 4651u)
             ),
-            weapons = listOf(ChatLink.BuildTemplate.Weapon(type = 0x05u, data = 0x00u)),
-            relicID = 42u
+            weapons = listOf(0x05u, 0x2Fu),
+            weaponSkillOverrides = listOf()
         )
 
         assertEquals(buildTemplate, assertDoesNotThrow(decodeChatLink("[&DQEQLyo6GzkmDyYPihI2AUgBSAH+AP4AtRKJEgAAAAAAAAAAAAAAAAAAAAACBQAvAAA=]")))
-        assertEquals(rangerBuildTemplate, assertDoesNotThrow(decodeChatLink("[&DQQIGiA/Nyp5AC4XpQGlAbUAvAC8AKwBLhYuFjsuFS8AAAAAAAAAAAAAAAAAAA==]")))
-        assertEquals(revenantBuildTemplate, assertDoesNotThrow(decodeChatLink("[&DQkDJg8mPz3cEdwR1BHUESsSKxIGEgYSyhHKEQUCAgPUESsSBhIGEtQRKxIBBQAq]")))
+        assertEquals(rangerBuildTemplate, assertDoesNotThrow(decodeChatLink("[&DQQIGiA/Nyp5AC4XpQGlAbUAvAC8AKwBLhYuFjsuFS8AAAAAAAAAAAAAAAAAAWf3AAA=]")))
+        assertEquals(revenantBuildTemplate, assertDoesNotThrow(decodeChatLink("[&DQkDJg8mPz3cEdwR1BHUESsSKxIGEgYSyhHKEQUCAgPUESsSBhIGEtQRKxICBQAvAAA=]")))
     }
 
     @Test
@@ -322,8 +322,8 @@ class ChatLinkTests {
             skills = listOf(3878u, 4746u, 328u, 254u, 4789u),
             aquaticSkills = listOf(3878u, 310u, 328u, 254u, 4745u),
             professionContext = null,
-            weapons = listOf(ChatLink.BuildTemplate.Weapon(type = 0x05u, data = 0x00u), ChatLink.BuildTemplate.Weapon(type = 0x2Fu, data = 0x00u)),
-            relicID = 0u
+            weapons = listOf(0x05u, 0x2Fu),
+            weaponSkillOverrides = listOf()
         )
         val rangerBuildTemplate = ChatLink.BuildTemplate(
             professionID = Profession.RANGER.paletteID,
@@ -339,7 +339,7 @@ class ChatLinkTests {
                 aquaticPets = listOf(21u, 47u)
             ),
             weapons = listOf(),
-            relicID = 0u
+            weaponSkillOverrides = listOf(0xF767u)
         )
         val revenantBuildTemplate = ChatLink.BuildTemplate(
             professionID = Profession.REVENANT.paletteID,
@@ -356,13 +356,13 @@ class ChatLinkTests {
                 inactiveLegendUtilitySkills = listOf(4564u, 4651u, 4614u),
                 inactiveAquaticLegendUtilitySkills = listOf(4614u, 4564u, 4651u)
             ),
-            weapons = listOf(ChatLink.BuildTemplate.Weapon(type = 0x05u, data = 0x00u)),
-            relicID = 42u
+            weapons = listOf(0x05u, 0x2Fu),
+            weaponSkillOverrides = listOf()
         )
 
         assertEquals("[&DQEQLyo6GzkmDyYPihI2AUgBSAH+AP4AtRKJEgAAAAAAAAAAAAAAAAAAAAACBQAvAAA=]", assertDoesNotThrow(encodeChatLink(buildTemplate)))
-        assertEquals("[&DQQIGiA/Nyp5AC4XpQGlAbUAvAC8AKwBLhYuFjsuFS8AAAAAAAAAAAAAAAAAAA==]", assertDoesNotThrow(encodeChatLink(rangerBuildTemplate)))
-        assertEquals("[&DQkDJg8mPz3cEdwR1BHUESsSKxIGEgYSyhHKEQUCAgPUESsSBhIGEtQRKxIBBQAq]", assertDoesNotThrow(encodeChatLink(revenantBuildTemplate)))
+        assertEquals("[&DQQIGiA/Nyp5AC4XpQGlAbUAvAC8AKwBLhYuFjsuFS8AAAAAAAAAAAAAAAAAAWf3AAA=]", assertDoesNotThrow(encodeChatLink(rangerBuildTemplate)))
+        assertEquals("[&DQkDJg8mPz3cEdwR1BHUESsSKxIGEgYSyhHKEQUCAgPUESsSBhIGEtQRKxICBQAvAAA=]", assertDoesNotThrow(encodeChatLink(revenantBuildTemplate)))
     }
 
 }
