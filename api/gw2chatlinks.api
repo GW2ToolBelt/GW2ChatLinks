@@ -251,7 +251,7 @@ public final class com/gw2tb/gw2chatlinks/ChatLink$WvWObjective : com/gw2tb/gw2c
 }
 
 public final class com/gw2tb/gw2chatlinks/ChatLinkKt {
-	public static final fun decode (Ljava/lang/String;)Ljava/lang/Object;
+	public static final fun decodeChatLink (Ljava/lang/String;)Ljava/lang/Object;
 	public static final fun encodeChatLink (Lcom/gw2tb/gw2chatlinks/ChatLink;)Ljava/lang/Object;
 }
 
