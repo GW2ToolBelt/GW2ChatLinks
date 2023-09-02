@@ -280,3 +280,33 @@ public final class com/gw2tb/gw2chatlinks/Profession$Companion {
 	public final fun valueOf (Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate;)Lcom/gw2tb/gw2chatlinks/Profession;
 }
 
+public final class com/gw2tb/gw2chatlinks/Weapon : java/lang/Enum {
+	public static final field AXE Lcom/gw2tb/gw2chatlinks/Weapon;
+	public static final field Companion Lcom/gw2tb/gw2chatlinks/Weapon$Companion;
+	public static final field DAGGER Lcom/gw2tb/gw2chatlinks/Weapon;
+	public static final field FOCUS Lcom/gw2tb/gw2chatlinks/Weapon;
+	public static final field GREATSWORD Lcom/gw2tb/gw2chatlinks/Weapon;
+	public static final field HAMMER Lcom/gw2tb/gw2chatlinks/Weapon;
+	public static final field LONGBOW Lcom/gw2tb/gw2chatlinks/Weapon;
+	public static final field MACE Lcom/gw2tb/gw2chatlinks/Weapon;
+	public static final field PISTOL Lcom/gw2tb/gw2chatlinks/Weapon;
+	public static final field RIFLE Lcom/gw2tb/gw2chatlinks/Weapon;
+	public static final field SCEPTER Lcom/gw2tb/gw2chatlinks/Weapon;
+	public static final field SHIELD Lcom/gw2tb/gw2chatlinks/Weapon;
+	public static final field SHORTBOW Lcom/gw2tb/gw2chatlinks/Weapon;
+	public static final field STAFF Lcom/gw2tb/gw2chatlinks/Weapon;
+	public static final field SWORD Lcom/gw2tb/gw2chatlinks/Weapon;
+	public static final field TORCH Lcom/gw2tb/gw2chatlinks/Weapon;
+	public static final field UNKNOWN Lcom/gw2tb/gw2chatlinks/Weapon;
+	public static final field WARHORN Lcom/gw2tb/gw2chatlinks/Weapon;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getPaletteID ()S
+	public static fun valueOf (Ljava/lang/String;)Lcom/gw2tb/gw2chatlinks/Weapon;
+	public static final fun valueOf (S)Lcom/gw2tb/gw2chatlinks/Weapon;
+	public static fun values ()[Lcom/gw2tb/gw2chatlinks/Weapon;
+}
+
+public final class com/gw2tb/gw2chatlinks/Weapon$Companion {
+	public final fun valueOf (S)Lcom/gw2tb/gw2chatlinks/Weapon;
+}
+

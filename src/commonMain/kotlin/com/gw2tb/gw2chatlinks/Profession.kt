@@ -44,24 +44,28 @@ public enum class Profession(
      * @since   0.1.0
      */
     UNKNOWN("", 0x00u),
+
     /**
      * The "Guardian" profession.
      *
      * @since   0.1.0
      */
     GUARDIAN("Guardian", 0x01u),
+
     /**
      * The "Warrior" profession.
      *
      * @since   0.1.0
      */
     WARRIOR("Warrior", 0x02u),
+
     /**
      * The "Engineer" profession.
      *
      * @since   0.1.0
      */
     ENGINEER("Engineer", 0x03u),
+
     /**
      * The "Ranger" profession.
      *
@@ -84,30 +88,35 @@ public enum class Profession(
         }
 
     },
+
     /**
      * The "Thief" profession.
      *
      * @since   0.1.0
      */
     THIEF("Thief", 0x05u),
+
     /**
      * The "Elementalist" profession.
      *
      * @since   0.1.0
      */
     ELEMENTALIST("Elementalist", 0x06u),
+
     /**
      * The "Mesmer" profession.
      *
      * @since   0.1.0
      */
     MESMER("Mesmer", 0x07u),
+
     /**
      * The "Necromancer" profession.
      *
      * @since   0.1.0
      */
     NECROMANCER("Necromancer", 0x08u),
+
     /**
      * The "Revenant" profession.
      *
