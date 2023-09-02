@@ -24,6 +24,7 @@ package com.gw2tb.gw2chatlinks
 import com.gw2tb.gw2chatlinks.internal.*
 import kotlin.io.encoding.Base64
 import kotlin.io.encoding.ExperimentalEncodingApi
+import kotlin.jvm.JvmName
 
 private const val UINT_24BIT_MAX_VALUE = 0xFFFFFF16u
 
@@ -201,6 +202,7 @@ public sealed class ChatLink {
      * @since   0.1.0
      */
     public data class BuildTemplate(
+        @get:JvmName("getProfessionID")
         val professionID: UByte,
         val specializations: List<Specialization>,
         val skills: List<UShort>,
@@ -283,6 +285,7 @@ public sealed class ChatLink {
          * @since   0.1.0
          */
         public data class Specialization(
+            @get:JvmName("getSpecializationID")
             val specializationID: UByte,
             val majorTraits: List<UByte?>
         ) {
@@ -394,7 +397,9 @@ public sealed class ChatLink {
          */
         @ExperimentalChatLinks
         public data class Weapon(
+            @get:JvmName("getType")
             val type: UByte,
+            @get:JvmName("getData")
             val data: UByte
         )
 
@@ -410,7 +415,10 @@ public sealed class ChatLink {
      * @since   0.1.0
      */
     @ExperimentalChatLinks
-    public data class Coin(val amount: UInt) : ChatLink() {
+    public data class Coin(
+        @get:JvmName("getAmount")
+        val amount: UInt
+    ) : ChatLink() {
 
         internal companion object {
             const val IDENTIFIER = 0x01
@@ -446,10 +454,15 @@ public sealed class ChatLink {
      * @since   0.1.0
      */
     public data class Item(
+        @get:JvmName("getAmount")
         val amount: UByte,
+        @get:JvmName("getItemID")
         val itemID: UInt,
+        @get:JvmName("getSkinID")
         val skinID: UInt? = null,
+        @get:JvmName("getFirstUpgradeSlot")
         val firstUpgradeSlot: UInt? = null,
+        @get:JvmName("getSecondUpgradeSlot")
         val secondUpgradeSlot: UInt? = null
     ) : ChatLink() {
 
@@ -525,6 +538,7 @@ public sealed class ChatLink {
      */
     @ExperimentalChatLinks
     public data class NPCText(
+        @get:JvmName("getTextID")
         val textID: UInt
     ) : ChatLink() {
 
@@ -563,7 +577,10 @@ public sealed class ChatLink {
      *
      * @since   0.1.0
      */
-    public data class Outfit(val outfitID: UInt) : ChatLink() {
+    public data class Outfit(
+        @get:JvmName("getOutfitID")
+        val outfitID: UInt
+    ) : ChatLink() {
 
         internal companion object {
             const val IDENTIFIER = 0x0B
@@ -601,6 +618,7 @@ public sealed class ChatLink {
      * @since   0.1.0
      */
     public data class PoI(
+        @get:JvmName("getPoIID")
         val poiID: UInt
     ) : ChatLink() {
 
@@ -656,7 +674,10 @@ public sealed class ChatLink {
      *
      * @since   0.1.0
      */
-    public data class Recipe(val recipeID: UInt) : ChatLink() {
+    public data class Recipe(
+        @get:JvmName("getRecipeID")
+        val recipeID: UInt
+    ) : ChatLink() {
 
         internal companion object {
             const val IDENTIFIER = 0x09
@@ -693,7 +714,10 @@ public sealed class ChatLink {
      *
      * @since   0.1.0
      */
-    public data class Skill(val skillID: UInt) : ChatLink() {
+    public data class Skill(
+        @get:JvmName("getSkillID")
+        val skillID: UInt
+    ) : ChatLink() {
 
         internal companion object {
             const val IDENTIFIER = 0x06
@@ -730,7 +754,10 @@ public sealed class ChatLink {
      *
      * @since   0.1.0
      */
-    public data class Skin(val skinID: UInt) : ChatLink() {
+    public data class Skin(
+        @get:JvmName("getSkinID")
+        val skinID: UInt
+    ) : ChatLink() {
 
         internal companion object {
             const val IDENTIFIER = 0x0A
@@ -767,7 +794,10 @@ public sealed class ChatLink {
      *
      * @since   0.1.0
      */
-    public data class Trait(val traitID: UInt) : ChatLink() {
+    public data class Trait(
+        @get:JvmName("getTraitID")
+        val traitID: UInt
+    ) : ChatLink() {
 
         internal companion object {
             const val IDENTIFIER = 0x07
@@ -810,7 +840,9 @@ public sealed class ChatLink {
     @ExperimentalUnsignedTypes
     @ExperimentalChatLinks
     public data class User(
+        @get:JvmName("getAccountGUID")
         val accountGUID: UByteArray,
+        @get:JvmName("getCharacterName")
         val characterName: UByteArray
     ) : ChatLink() {
 
@@ -860,7 +892,9 @@ public sealed class ChatLink {
      * @since   0.1.0
      */
     public data class WvWObjective(
+        @get:JvmName("getObjectiveID")
         val objectiveID: UInt,
+        @get:JvmName("getMapID")
         val mapID: UInt
     ) : ChatLink() {
 
