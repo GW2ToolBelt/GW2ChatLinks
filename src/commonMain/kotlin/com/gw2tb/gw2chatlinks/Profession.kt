@@ -169,6 +169,7 @@ public enum class Profession(
          *
          * @since   0.1.0
          */
+        @JvmName("valueOf")
         @JvmStatic
         public fun valueOf(paletteID: UByte): Profession = entries.let { values ->
             if (paletteID.toUInt() == 0u || paletteID >= values.size.toUByte())

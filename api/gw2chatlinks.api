@@ -280,14 +280,14 @@ public class com/gw2tb/gw2chatlinks/Profession : java/lang/Enum {
 	public static fun getEntries ()Lkotlin/enums/EnumEntries;
 	public final fun getPaletteID ()B
 	public final fun getProfessionID ()Ljava/lang/String;
+	public static final fun valueOf (B)Lcom/gw2tb/gw2chatlinks/Profession;
 	public static final fun valueOf (Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate;)Lcom/gw2tb/gw2chatlinks/Profession;
 	public static fun valueOf (Ljava/lang/String;)Lcom/gw2tb/gw2chatlinks/Profession;
-	public static final fun valueOf-7apg3OU (B)Lcom/gw2tb/gw2chatlinks/Profession;
 	public static fun values ()[Lcom/gw2tb/gw2chatlinks/Profession;
 }
 
 public final class com/gw2tb/gw2chatlinks/Profession$Companion {
+	public final fun valueOf (B)Lcom/gw2tb/gw2chatlinks/Profession;
 	public final fun valueOf (Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate;)Lcom/gw2tb/gw2chatlinks/Profession;
-	public final fun valueOf-7apg3OU (B)Lcom/gw2tb/gw2chatlinks/Profession;
 }
 
