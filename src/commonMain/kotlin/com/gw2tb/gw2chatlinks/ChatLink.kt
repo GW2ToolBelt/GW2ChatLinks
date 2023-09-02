@@ -654,7 +654,7 @@ public sealed class ChatLink {
      * @since   0.1.0
      */
     @ExperimentalChatLinks
-    public object PvPGame : ChatLink() {
+    public data object PvPGame : ChatLink() {
 
         internal const val IDENTIFIER = 0x05
 

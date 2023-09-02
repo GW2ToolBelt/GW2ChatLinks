@@ -166,6 +166,9 @@ public final class com/gw2tb/gw2chatlinks/ChatLink$PoI : com/gw2tb/gw2chatlinks/
 
 public final class com/gw2tb/gw2chatlinks/ChatLink$PvPGame : com/gw2tb/gw2chatlinks/ChatLink {
 	public static final field INSTANCE Lcom/gw2tb/gw2chatlinks/ChatLink$PvPGame;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class com/gw2tb/gw2chatlinks/ChatLink$Recipe : com/gw2tb/gw2chatlinks/ChatLink {
