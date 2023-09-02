@@ -68,7 +68,7 @@ kotlin {
 
     jvm {
         compilations.configureEach {
-            compilerOptions.options.jvmTarget.set(JvmTarget.JVM_1_8)
+            compilerOptions.options.jvmTarget.set(JvmTarget.JVM_11)
         }
     }
 
@@ -147,7 +147,7 @@ kotlin {
 }
 
 tasks.withType<JavaCompile>().configureEach {
-    options.release.set(8)
+    options.release.set(11)
 }
 
 publishing {
