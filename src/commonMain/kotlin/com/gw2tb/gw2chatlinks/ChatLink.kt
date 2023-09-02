@@ -210,6 +210,29 @@ public sealed class ChatLink {
         val weaponSkillOverrides: List<UInt> = emptyList()
     ) : ChatLink() {
 
+        /**
+         * @param profession            the template's profession
+         * @param specializations       the template's specializations. _(Must contain three elements.)_
+         * @param skills                the IDs of the template's (terrestrial) skills. _(Must contain five elements.)_
+         * @param aquaticSkills         the IDs of the template's aquatic skills. _(Must contain five elements.)_
+         * @param professionContext     the profession-specific context, or `null` if no profession specific information
+         *                              exists for the template's profession
+         * @param weaponSkillOverrides  the skill IDs of the template's weapon skill overrides
+         *
+         * @throws IllegalArgumentException if any parameter value does not match its expected shape
+         *
+         * @since   0.5.0
+         */
+        public constructor(
+            profession: Profession,
+            specializations: List<Specialization>,
+            skills: List<UShort>,
+            aquaticSkills: List<UShort>,
+            professionContext: ProfessionContext?,
+            weapons: List<UShort> = emptyList(),
+            weaponSkillOverrides: List<UInt> = emptyList()
+        ): this(profession.paletteID, specializations, skills, aquaticSkills, professionContext, weapons, weaponSkillOverrides)
+
         internal companion object {
             const val IDENTIFIER = 0x0D
 

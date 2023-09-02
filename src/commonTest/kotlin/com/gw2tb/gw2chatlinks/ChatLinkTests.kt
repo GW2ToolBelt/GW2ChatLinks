@@ -258,7 +258,7 @@ class ChatLinkTests {
     @Test
     fun testDecodeBuildTemplate_2023_07() {
         val buildTemplate = ChatLink.BuildTemplate(
-            professionID = Profession.GUARDIAN.paletteID,
+            profession = Profession.GUARDIAN,
             specializations = listOf(
                 ChatLink.BuildTemplate.Specialization(specializationID = 16u, majorTraits = listOf(2u, 2u, 1u)),
                 ChatLink.BuildTemplate.Specialization(specializationID = 42u, majorTraits = listOf(1u, 1u, 2u)),
@@ -271,7 +271,7 @@ class ChatLinkTests {
             weaponSkillOverrides = listOf()
         )
         val rangerBuildTemplate = ChatLink.BuildTemplate(
-            professionID = Profession.RANGER.paletteID,
+            profession = Profession.RANGER,
             specializations = listOf(
                 ChatLink.BuildTemplate.Specialization(specializationID = 8u, majorTraits = listOf(1u, 1u, 0u)),
                 ChatLink.BuildTemplate.Specialization(specializationID = 32u, majorTraits = listOf(2u, 2u, 2u)),
@@ -287,7 +287,7 @@ class ChatLinkTests {
             weaponSkillOverrides = listOf(0xF767u)
         )
         val revenantBuildTemplate = ChatLink.BuildTemplate(
-            professionID = Profession.REVENANT.paletteID,
+            profession = Profession.REVENANT,
             specializations = listOf(
                 ChatLink.BuildTemplate.Specialization(specializationID = 3u, majorTraits = listOf(1u, 0u, 1u)),
                 ChatLink.BuildTemplate.Specialization(specializationID = 15u, majorTraits = listOf(1u, 0u, 1u)),
