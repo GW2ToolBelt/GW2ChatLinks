@@ -21,6 +21,10 @@
  */
 package com.gw2tb.gw2chatlinks
 
+import kotlin.jvm.JvmName
+import kotlin.jvm.JvmStatic
+import kotlin.jvm.JvmSynthetic
+
 /**
  * A utility class for mapping from profession IDs to palette IDs.
  *
@@ -31,6 +35,7 @@ package com.gw2tb.gw2chatlinks
  */
 public enum class Profession(
     public val professionID: String,
+    @get:JvmName("getPaletteID")
     public val paletteID: UByte
 ) {
     /**
@@ -131,6 +136,7 @@ public enum class Profession(
 
     };
 
+    @JvmSynthetic
     internal open fun parseContext(
         nextByte: () -> UByte,
         nextShort: () -> UShort,
@@ -151,6 +157,7 @@ public enum class Profession(
          * @since   0.1.0
          */
         @Suppress("NOTHING_TO_INLINE")
+        @JvmStatic
         public inline fun valueOf(template: ChatLink.BuildTemplate): Profession = valueOf(template.professionID)
 
         /**
@@ -162,7 +169,8 @@ public enum class Profession(
          *
          * @since   0.1.0
          */
-        public fun valueOf(paletteID: UByte): Profession = values().let { values ->
+        @JvmStatic
+        public fun valueOf(paletteID: UByte): Profession = entries.let { values ->
             if (paletteID.toUInt() == 0u || paletteID >= values.size.toUByte())
                 UNKNOWN
             else

@@ -274,9 +274,12 @@ public class com/gw2tb/gw2chatlinks/Profession : java/lang/Enum {
 	public static final field UNKNOWN Lcom/gw2tb/gw2chatlinks/Profession;
 	public static final field WARRIOR Lcom/gw2tb/gw2chatlinks/Profession;
 	public synthetic fun <init> (Ljava/lang/String;ILjava/lang/String;BLkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun getPaletteID-w2LRezQ ()B
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getPaletteID ()B
 	public final fun getProfessionID ()Ljava/lang/String;
+	public static final fun valueOf (Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate;)Lcom/gw2tb/gw2chatlinks/Profession;
 	public static fun valueOf (Ljava/lang/String;)Lcom/gw2tb/gw2chatlinks/Profession;
+	public static final fun valueOf-7apg3OU (B)Lcom/gw2tb/gw2chatlinks/Profession;
 	public static fun values ()[Lcom/gw2tb/gw2chatlinks/Profession;
 }
 
