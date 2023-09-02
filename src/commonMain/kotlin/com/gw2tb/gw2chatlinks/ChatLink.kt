@@ -385,22 +385,6 @@ public sealed class ChatLink {
 
         }
 
-        /**
-         * Weapon information.
-         *
-         * @param type  the type of the weapon
-         * @param data  additional weapon data
-         *
-         * @since   0.4.0
-         */
-        @ExperimentalChatLinks
-        public data class Weapon(
-            @get:JvmName("getType")
-            val type: UByte,
-            @get:JvmName("getData")
-            val data: UByte
-        )
-
     }
 
     /**

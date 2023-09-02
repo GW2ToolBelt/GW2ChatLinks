@@ -74,19 +74,6 @@ public final class com/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$Specialization 
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class com/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$Weapon {
-	public synthetic fun <init> (BBLkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-w2LRezQ ()B
-	public final fun component2-w2LRezQ ()B
-	public final fun copy-YVftJsw (BB)Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$Weapon;
-	public static synthetic fun copy-YVftJsw$default (Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$Weapon;BBILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$Weapon;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getData ()B
-	public final fun getType ()B
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
 public final class com/gw2tb/gw2chatlinks/ChatLink$Coin : com/gw2tb/gw2chatlinks/ChatLink {
 	public static final field BYTE_SIZE I
 	public static final field IDENTIFIER I
