@@ -52,6 +52,8 @@ kotlin {
             compilerOptions.configure {
                 apiVersion.set(KotlinVersion.KOTLIN_1_8)
                 languageVersion.set(KotlinVersion.KOTLIN_1_8)
+                apiVersion.set(KotlinVersion.KOTLIN_1_9)
+                languageVersion.set(KotlinVersion.KOTLIN_1_9)
             }
         }
     }
