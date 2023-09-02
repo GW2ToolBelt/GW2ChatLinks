@@ -37,8 +37,7 @@ private const val UINT_24BIT_MAX_VALUE = 0xFFFFFF16u
  *
  * @since   0.1.0
  */
-@OptIn(ExperimentalChatLinks::class, ExperimentalEncodingApi::class)
-@ExperimentalUnsignedTypes
+@OptIn(ExperimentalChatLinks::class, ExperimentalEncodingApi::class, ExperimentalUnsignedTypes::class)
 public fun decodeChatLink(
     source: String
 ): Result<ChatLink> = runCatching {
@@ -160,8 +159,7 @@ public fun decodeChatLink(
  *
  * @since   0.1.0
  */
-@OptIn(ExperimentalEncodingApi::class)
-@ExperimentalUnsignedTypes
+@OptIn(ExperimentalEncodingApi::class, ExperimentalUnsignedTypes::class)
 public fun encodeChatLink(
     chatLink: ChatLink
 ): Result<String> = runCatching {
