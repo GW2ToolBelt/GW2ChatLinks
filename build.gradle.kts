@@ -19,14 +19,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-import com.gw2tb.build.tasks.*
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.plugin.mpp.*
-import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.targets.js.yarn.*
 import org.jetbrains.kotlin.gradle.targets.jvm.*
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -50,8 +49,6 @@ kotlin {
     targets.configureEach {
         compilations.configureEach {
             compilerOptions.configure {
-                apiVersion.set(KotlinVersion.KOTLIN_1_8)
-                languageVersion.set(KotlinVersion.KOTLIN_1_8)
                 apiVersion.set(KotlinVersion.KOTLIN_1_9)
                 languageVersion.set(KotlinVersion.KOTLIN_1_9)
             }
@@ -67,6 +64,8 @@ kotlin {
     }
 
     jvm {
+        withJava()
+
         compilations.configureEach {
             compilerOptions.options.jvmTarget.set(JvmTarget.JVM_11)
         }
@@ -111,36 +110,15 @@ kotlin {
     }
 
     targets.filter { it is KotlinJvmTarget || it is KotlinWithJavaTarget<*, *> }.forEach { target ->
-        val artifactTask = tasks.getByName<Jar>(target.artifactsTaskName) {
+        tasks.named<Jar>(target.artifactsTaskName) {
             manifest {
                 attributes(mapOf(
                     "Name" to project.name,
                     "Specification-Version" to project.version,
                     "Specification-Vendor" to "Leon Linhart <themrmilchmann@gmail.com>",
                     "Implementation-Version" to project.version,
-                    "Implementation-Vendor" to "Leon Linhart <themrmilchmann@gmail.com>",
-                    "Multi-Release" to "true"
+                    "Implementation-Vendor" to "Leon Linhart <themrmilchmann@gmail.com>"
                 ))
-            }
-        }
-
-        target.compilations.forEach compilation@{ compilation ->
-            val defaultSourceSet = compilation.defaultSourceSet
-
-            val inputFile = file("src/${defaultSourceSet.name}/java-jdk9/module-info.java")
-            if (!inputFile.isFile) return@compilation
-
-            val compileModuleInfo = tasks.register<CompileModuleInfo>("compile${defaultSourceSet.name}ModuleInfo") {
-                source.set(inputFile)
-                output.set(File(buildDir, "classes/java-jdk9/${compilation.name}/module-info.class"))
-                version.set(project.version.toString())
-            }
-
-            artifactTask.dependsOn(compileModuleInfo)
-            artifactTask.into("META-INF/versions/9") {
-                from(compileModuleInfo.get().output) {
-                    includeEmptyDirs = false
-                }
             }
         }
     }
@@ -148,6 +126,14 @@ kotlin {
 
 tasks.withType<JavaCompile>().configureEach {
     options.release.set(11)
+}
+
+tasks {
+    named<JavaCompile>("compileJava") {
+        options.compilerArgumentProviders += CommandLineArgumentProvider {
+            listOf("--patch-module", "com.gw2tb.gw2chatlinks=${named<KotlinCompile>("compileKotlinJvm").get().outputs.files.asPath}")
+        }
+    }
 }
 
 publishing {
