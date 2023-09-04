@@ -28,9 +28,9 @@ import org.jetbrains.kotlin.gradle.targets.jvm.*
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.dokka)
     alias(libs.plugins.binary.compatibility.validator)
+    alias(libs.plugins.dokka)
+    alias(libs.plugins.kotlin.multiplatform)
     id("com.gw2tb.maven-publish-conventions")
 }
 
