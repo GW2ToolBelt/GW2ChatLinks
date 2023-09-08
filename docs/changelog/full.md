@@ -5,7 +5,7 @@ _Released 2023 Sep 04_
 #### Improvements
 
 - Implemented proper support for SotO build template changes. [[GH-3](https://github.com/GW2ToolBelt/GW2ChatLinks/issues/3)]
-  - The experimental functionality added in `0.4.0` and `0.5.0` has been fully
+  - The experimental functionality added in `0.3.0` and `0.4.0` has been fully
     overhauled to support stored weapon types and skill overrides.
   - The `Weapon` enum can be used to interpret the weapon type ids.
 - Improved usability of the library from Java code. [[GH-2](https://github.com/GW2ToolBelt/GW2ChatLinks/issues/2)]
