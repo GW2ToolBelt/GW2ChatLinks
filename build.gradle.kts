@@ -39,7 +39,7 @@ yarn.lockFileDirectory = rootDir
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(20)
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
