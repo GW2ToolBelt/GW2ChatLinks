@@ -137,6 +137,11 @@ tasks {
 
     withType<Jar>().configureEach {
         archiveBaseName = "gw2chatlinks"
+
+        isPreserveFileTimestamps = false
+        isReproducibleFileOrder = true
+
+        includeEmptyDirs = false
     }
 }
 
