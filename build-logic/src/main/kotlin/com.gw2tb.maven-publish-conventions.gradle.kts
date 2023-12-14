@@ -45,31 +45,31 @@ publishing {
     }
     publications.withType<MavenPublication>().configureEach {
         pom {
-            name.set("GW2ChatLinks")
-            description.set("A Kotlin Multiplatform library for parsing and generating GW2 chat links.")
-            url.set("https://github.com/GW2ToolBelt/GW2ChatLinks")
+            name = "GW2ChatLinks"
+            description = "A Kotlin Multiplatform library for parsing and generating GW2 chat links."
+            url = "https://github.com/GW2ToolBelt/GW2ChatLinks"
 
             licenses {
                 license {
-                    name.set("MIT")
-                    url.set("https://github.com/GW2ToolBelt/GW2ChatLinks/blob/master/LICENSE")
-                    distribution.set("repo")
+                    name = "MIT"
+                    url = "https://github.com/GW2ToolBelt/GW2ChatLinks/blob/master/LICENSE"
+                    distribution = "repo"
                 }
             }
 
             developers {
                 developer {
-                    id.set("TheMrMilchmann")
-                    name.set("Leon Linhart")
-                    email.set("themrmilchmann@gmail.com")
-                    url.set("https://github.com/TheMrMilchmann")
+                    id = "TheMrMilchmann"
+                    name = "Leon Linhart"
+                    email = "themrmilchmann@gmail.com"
+                    url = "https://github.com/TheMrMilchmann"
                 }
             }
 
             scm {
-                connection.set("scm:git:git://github.com/GW2ToolBelt/GW2ChatLinks.git")
-                developerConnection.set("scm:git:git://github.com/GW2ToolBelt/GW2ChatLinks.git")
-                url.set("https://github.com/GW2ToolBelt/GW2ChatLinks.git")
+                connection = "scm:git:git://github.com/GW2ToolBelt/GW2ChatLinks.git"
+                developerConnection = "scm:git:git://github.com/GW2ToolBelt/GW2ChatLinks.git"
+                url = "https://github.com/GW2ToolBelt/GW2ChatLinks.git"
             }
         }
     }

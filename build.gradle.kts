@@ -39,7 +39,7 @@ yarn.lockFileDirectory = rootDir
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(20))
+        languageVersion = JavaLanguageVersion.of(20)
     }
 }
 
@@ -49,8 +49,8 @@ kotlin {
     targets.configureEach {
         compilations.configureEach {
             compilerOptions.configure {
-                apiVersion.set(KotlinVersion.KOTLIN_1_9)
-                languageVersion.set(KotlinVersion.KOTLIN_1_9)
+                apiVersion = KotlinVersion.KOTLIN_1_9
+                languageVersion = KotlinVersion.KOTLIN_1_9
             }
         }
     }
@@ -67,7 +67,7 @@ kotlin {
         withJava()
 
         compilations.configureEach {
-            compilerOptions.options.jvmTarget.set(JvmTarget.JVM_11)
+            compilerOptions.options.jvmTarget = JvmTarget.JVM_11
         }
     }
 
@@ -125,7 +125,7 @@ kotlin {
 }
 
 tasks.withType<JavaCompile>().configureEach {
-    options.release.set(11)
+    options.release = 11
 }
 
 tasks {
@@ -140,8 +140,8 @@ publishing {
     publications {
         publications.withType<MavenPublication>().configureEach {
             val emptyJavadocJar = tasks.register<Jar>("${name}JavadocJar") {
-                archiveBaseName.set("${archiveBaseName.get()}-${name}")
-                archiveClassifier.set("javadoc")
+                archiveBaseName = "${archiveBaseName.get()}-${name}"
+                archiveClassifier = "javadoc"
             }
 
             artifact(emptyJavadocJar)
