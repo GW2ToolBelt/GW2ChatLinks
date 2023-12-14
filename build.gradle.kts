@@ -124,15 +124,19 @@ kotlin {
     }
 }
 
-tasks.withType<JavaCompile>().configureEach {
-    options.release = 11
-}
-
 tasks {
+    withType<JavaCompile>().configureEach {
+        options.release = 11
+    }
+
     named<JavaCompile>("compileJava") {
         options.compilerArgumentProviders += CommandLineArgumentProvider {
             listOf("--patch-module", "com.gw2tb.gw2chatlinks=${named<KotlinCompile>("compileKotlinJvm").get().outputs.files.asPath}")
         }
+    }
+
+    withType<Jar>().configureEach {
+        archiveBaseName = "gw2chatlinks"
     }
 }
 
