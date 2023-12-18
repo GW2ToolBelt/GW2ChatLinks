@@ -33,7 +33,7 @@ jobs:
       - name: Gradle Assemble
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: build --info -S --show-version
+          arguments: assemble --info -S --show-version
           gradle-home-cache-cleanup: true
 
       - name: Tar files
