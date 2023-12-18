@@ -19,7 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.plugin.mpp.*
@@ -45,6 +44,7 @@ java {
 
 kotlin {
     explicitApi()
+    applyDefaultHierarchyTemplate()
 
     targets.configureEach {
         compilations.configureEach {
@@ -54,9 +54,6 @@ kotlin {
             }
         }
     }
-
-    @OptIn(ExperimentalKotlinGradlePluginApi::class)
-    targetHierarchy.default()
 
     js(IR) {
         browser()
