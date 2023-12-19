@@ -55,12 +55,12 @@ class ChatLinkTests {
         val sigil1ID = 24575u
         val sigil2ID = 24615u
 
-        assertEquals(ChatLink.Item(amount = 1u, itemID = itemID), assertDoesNotThrow(decodeChatLink("[&AgGqtgAA]")))
-        assertEquals(ChatLink.Item(amount = 1u, itemID = itemID, firstUpgradeSlot = sigil1ID), assertDoesNotThrow(decodeChatLink("[&AgGqtgBA/18AAA==]")))
-        assertEquals(ChatLink.Item(amount = 1u, itemID = itemID, firstUpgradeSlot = sigil1ID, secondUpgradeSlot = sigil2ID), assertDoesNotThrow(decodeChatLink("[&AgGqtgBg/18AACdgAAA=]")))
-        assertEquals(ChatLink.Item(amount = 1u, itemID = itemID, skinID = skinID), assertDoesNotThrow(decodeChatLink("[&AgGqtgCAfQ4AAA==]")))
-        assertEquals(ChatLink.Item(amount = 1u, itemID = itemID, skinID = skinID, firstUpgradeSlot = sigil1ID), assertDoesNotThrow(decodeChatLink("[&AgGqtgDAfQ4AAP9fAAA=]")))
-        assertEquals(ChatLink.Item(amount = 1u, itemID = itemID, skinID = skinID, firstUpgradeSlot = sigil1ID, secondUpgradeSlot = sigil2ID), assertDoesNotThrow(decodeChatLink("[&AgGqtgDgfQ4AAP9fAAAnYAAA]")))
+        assertEquals(ChatLink.Item(amount = 1u, itemId = itemID), assertDoesNotThrow(decodeChatLink("[&AgGqtgAA]")))
+        assertEquals(ChatLink.Item(amount = 1u, itemId = itemID, firstUpgradeSlot = sigil1ID), assertDoesNotThrow(decodeChatLink("[&AgGqtgBA/18AAA==]")))
+        assertEquals(ChatLink.Item(amount = 1u, itemId = itemID, firstUpgradeSlot = sigil1ID, secondUpgradeSlot = sigil2ID), assertDoesNotThrow(decodeChatLink("[&AgGqtgBg/18AACdgAAA=]")))
+        assertEquals(ChatLink.Item(amount = 1u, itemId = itemID, skinId = skinID), assertDoesNotThrow(decodeChatLink("[&AgGqtgCAfQ4AAA==]")))
+        assertEquals(ChatLink.Item(amount = 1u, itemId = itemID, skinId = skinID, firstUpgradeSlot = sigil1ID), assertDoesNotThrow(decodeChatLink("[&AgGqtgDAfQ4AAP9fAAA=]")))
+        assertEquals(ChatLink.Item(amount = 1u, itemId = itemID, skinId = skinID, firstUpgradeSlot = sigil1ID, secondUpgradeSlot = sigil2ID), assertDoesNotThrow(decodeChatLink("[&AgGqtgDgfQ4AAP9fAAAnYAAA]")))
     }
 
     @Test
@@ -70,42 +70,42 @@ class ChatLinkTests {
         val sigil1ID = 24575u
         val sigil2ID = 24615u
 
-        assertEquals("[&AgGqtgAA]", assertDoesNotThrow(encodeChatLink(ChatLink.Item(amount = 1u, itemID = itemID))))
-        assertEquals("[&AgGqtgBA/18AAA==]", assertDoesNotThrow(encodeChatLink(ChatLink.Item(amount = 1u, itemID = itemID, firstUpgradeSlot = sigil1ID))))
-        assertEquals("[&AgGqtgBg/18AACdgAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Item(amount = 1u, itemID = itemID, firstUpgradeSlot = sigil1ID, secondUpgradeSlot = sigil2ID))))
-        assertEquals("[&AgGqtgCAfQ4AAA==]", assertDoesNotThrow(encodeChatLink(ChatLink.Item(amount = 1u, itemID = itemID, skinID = skinID))))
-        assertEquals("[&AgGqtgDAfQ4AAP9fAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Item(amount = 1u, itemID = itemID, skinID = skinID, firstUpgradeSlot = sigil1ID))))
-        assertEquals("[&AgGqtgDgfQ4AAP9fAAAnYAAA]", assertDoesNotThrow(encodeChatLink(ChatLink.Item(amount = 1u, itemID = itemID, skinID = skinID, firstUpgradeSlot = sigil1ID, secondUpgradeSlot = sigil2ID))))
+        assertEquals("[&AgGqtgAA]", assertDoesNotThrow(encodeChatLink(ChatLink.Item(amount = 1u, itemId = itemID))))
+        assertEquals("[&AgGqtgBA/18AAA==]", assertDoesNotThrow(encodeChatLink(ChatLink.Item(amount = 1u, itemId = itemID, firstUpgradeSlot = sigil1ID))))
+        assertEquals("[&AgGqtgBg/18AACdgAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Item(amount = 1u, itemId = itemID, firstUpgradeSlot = sigil1ID, secondUpgradeSlot = sigil2ID))))
+        assertEquals("[&AgGqtgCAfQ4AAA==]", assertDoesNotThrow(encodeChatLink(ChatLink.Item(amount = 1u, itemId = itemID, skinId = skinID))))
+        assertEquals("[&AgGqtgDAfQ4AAP9fAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Item(amount = 1u, itemId = itemID, skinId = skinID, firstUpgradeSlot = sigil1ID))))
+        assertEquals("[&AgGqtgDgfQ4AAP9fAAAnYAAA]", assertDoesNotThrow(encodeChatLink(ChatLink.Item(amount = 1u, itemId = itemID, skinId = skinID, firstUpgradeSlot = sigil1ID, secondUpgradeSlot = sigil2ID))))
     }
 
     @Test
     fun testDecodeNPCTextLink() {
-        assertEquals(ChatLink.NPCText(textID = 10007u), assertDoesNotThrow(decodeChatLink("[&AxcnAAA=]")))
-        assertEquals(ChatLink.NPCText(textID = 10008u), assertDoesNotThrow(decodeChatLink("[&AxgnAAA=]")))
-        assertEquals(ChatLink.NPCText(textID = 10009u), assertDoesNotThrow(decodeChatLink("[&AxknAAA=]")))
-        assertEquals(ChatLink.NPCText(textID = 10016u), assertDoesNotThrow(decodeChatLink("[&AyAnAAA=]")))
+        assertEquals(ChatLink.NPCText(textId = 10007u), assertDoesNotThrow(decodeChatLink("[&AxcnAAA=]")))
+        assertEquals(ChatLink.NPCText(textId = 10008u), assertDoesNotThrow(decodeChatLink("[&AxgnAAA=]")))
+        assertEquals(ChatLink.NPCText(textId = 10009u), assertDoesNotThrow(decodeChatLink("[&AxknAAA=]")))
+        assertEquals(ChatLink.NPCText(textId = 10016u), assertDoesNotThrow(decodeChatLink("[&AyAnAAA=]")))
     }
 
     @Test
     fun testEncodeNPCTextLink() {
-        assertEquals("[&AxcnAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.NPCText(textID = 10007u))))
-        assertEquals("[&AxgnAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.NPCText(textID = 10008u))))
-        assertEquals("[&AxknAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.NPCText(textID = 10009u))))
-        assertEquals("[&AyAnAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.NPCText(textID = 10016u))))
+        assertEquals("[&AxcnAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.NPCText(textId = 10007u))))
+        assertEquals("[&AxgnAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.NPCText(textId = 10008u))))
+        assertEquals("[&AxknAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.NPCText(textId = 10009u))))
+        assertEquals("[&AyAnAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.NPCText(textId = 10016u))))
     }
 
     @Test
     fun testDecodePoILink() {
-        assertEquals(ChatLink.PoI(poiID = 56u), assertDoesNotThrow(decodeChatLink("[&BDgAAAA=]")))
-        assertEquals(ChatLink.PoI(poiID = 72u), assertDoesNotThrow(decodeChatLink("[&BEgAAAA=]")))
-        assertEquals(ChatLink.PoI(poiID = 825u), assertDoesNotThrow(decodeChatLink("[&BDkDAAA=]")))
+        assertEquals(ChatLink.PoI(poiId = 56u), assertDoesNotThrow(decodeChatLink("[&BDgAAAA=]")))
+        assertEquals(ChatLink.PoI(poiId = 72u), assertDoesNotThrow(decodeChatLink("[&BEgAAAA=]")))
+        assertEquals(ChatLink.PoI(poiId = 825u), assertDoesNotThrow(decodeChatLink("[&BDkDAAA=]")))
     }
 
     @Test
     fun testEncodePoILink() {
-        assertEquals("[&BDgAAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.PoI(poiID = 56u))))
-        assertEquals("[&BEgAAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.PoI(poiID = 72u))))
-        assertEquals("[&BDkDAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.PoI(poiID = 825u))))
+        assertEquals("[&BDgAAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.PoI(poiId = 56u))))
+        assertEquals("[&BEgAAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.PoI(poiId = 72u))))
+        assertEquals("[&BDkDAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.PoI(poiId = 825u))))
     }
 
     @Test
@@ -115,26 +115,26 @@ class ChatLinkTests {
 
     @Test
     fun testDecodeSkillLink() {
-        assertEquals(ChatLink.Skill(skillID = 743u), assertDoesNotThrow(decodeChatLink("[&BucCAAA=]")))
-        assertEquals(ChatLink.Skill(skillID = 5491u), assertDoesNotThrow(decodeChatLink("[&BnMVAAA=]")))
-        assertEquals(ChatLink.Skill(skillID = 5501u), assertDoesNotThrow(decodeChatLink("[&Bn0VAAA=]")))
+        assertEquals(ChatLink.Skill(skillId = 743u), assertDoesNotThrow(decodeChatLink("[&BucCAAA=]")))
+        assertEquals(ChatLink.Skill(skillId = 5491u), assertDoesNotThrow(decodeChatLink("[&BnMVAAA=]")))
+        assertEquals(ChatLink.Skill(skillId = 5501u), assertDoesNotThrow(decodeChatLink("[&Bn0VAAA=]")))
     }
 
     @Test
     fun testEncodeSkillLink() {
-        assertEquals("[&BucCAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Skill(skillID = 743u))))
-        assertEquals("[&BnMVAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Skill(skillID = 5491u))))
-        assertEquals("[&Bn0VAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Skill(skillID = 5501u))))
+        assertEquals("[&BucCAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Skill(skillId = 743u))))
+        assertEquals("[&BnMVAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Skill(skillId = 5491u))))
+        assertEquals("[&Bn0VAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Skill(skillId = 5501u))))
     }
 
     @Test
     fun testDecodeTraitLink() {
-        assertEquals(ChatLink.Trait(traitID = 646u), assertDoesNotThrow(decodeChatLink("[&B4YCAAA=]")))
+        assertEquals(ChatLink.Trait(traitId = 646u), assertDoesNotThrow(decodeChatLink("[&B4YCAAA=]")))
     }
 
     @Test
     fun testEncodeTraitLink() {
-        assertEquals("[&B4YCAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Trait(traitID = 646u))))
+        assertEquals("[&B4YCAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Trait(traitId = 646u))))
     }
 
     @Test
@@ -142,7 +142,7 @@ class ChatLinkTests {
         val accountGUID = ubyteArrayOf(0x1u, 0x02u, 0x03u, 0x04u, 0x05u, 0x06u, 0x07u, 0x08u, 0x09u, 0x0Au, 0x0Bu, 0x0Cu, 0x0Du, 0x0Eu, 0x0Fu, 0x10u)
         val characterName = ubyteArrayOf(0x45u, 0x0u, 0x61u, 0x0u, 0x73u, 0x0u, 0x74u, 0x0u, 0x65u, 0x0u, 0x72u, 0x0u)
 
-        assertEquals(ChatLink.User(accountGUID = accountGUID, characterName = characterName), assertDoesNotThrow(decodeChatLink("[&CAECAwQFBgcICQoLDA0ODxBFAGEAcwB0AGUAcgAAAA==]")))
+        assertEquals(ChatLink.User(accountGuid = accountGUID, characterName = characterName), assertDoesNotThrow(decodeChatLink("[&CAECAwQFBgcICQoLDA0ODxBFAGEAcwB0AGUAcgAAAA==]")))
     }
 
     @Test
@@ -150,77 +150,77 @@ class ChatLinkTests {
         val accountGUID = ubyteArrayOf(0x1u, 0x02u, 0x03u, 0x04u, 0x05u, 0x06u, 0x07u, 0x08u, 0x09u, 0x0Au, 0x0Bu, 0x0Cu, 0x0Du, 0x0Eu, 0x0Fu, 0x10u)
         val characterName = ubyteArrayOf(0x45u, 0x0u, 0x61u, 0x0u, 0x73u, 0x0u, 0x74u, 0x0u, 0x65u, 0x0u, 0x72u, 0x0u)
 
-        assertEquals("[&CAECAwQFBgcICQoLDA0ODxBFAGEAcwB0AGUAcgAAAA==]", assertDoesNotThrow(encodeChatLink(ChatLink.User(accountGUID = accountGUID, characterName = characterName))))
+        assertEquals("[&CAECAwQFBgcICQoLDA0ODxBFAGEAcwB0AGUAcgAAAA==]", assertDoesNotThrow(encodeChatLink(ChatLink.User(accountGuid = accountGUID, characterName = characterName))))
     }
 
     @Test
     fun testDecodeRecipeLink() {
-        assertEquals(ChatLink.Recipe(recipeID = 1u), assertDoesNotThrow(decodeChatLink("[&CQEAAAA=]")))
-        assertEquals(ChatLink.Recipe(recipeID = 2u), assertDoesNotThrow(decodeChatLink("[&CQIAAAA=]")))
-        assertEquals(ChatLink.Recipe(recipeID = 7u), assertDoesNotThrow(decodeChatLink("[&CQcAAAA=]")))
+        assertEquals(ChatLink.Recipe(recipeId = 1u), assertDoesNotThrow(decodeChatLink("[&CQEAAAA=]")))
+        assertEquals(ChatLink.Recipe(recipeId = 2u), assertDoesNotThrow(decodeChatLink("[&CQIAAAA=]")))
+        assertEquals(ChatLink.Recipe(recipeId = 7u), assertDoesNotThrow(decodeChatLink("[&CQcAAAA=]")))
     }
 
     @Test
     fun testEncodeRecipeLink() {
-        assertEquals("[&CQEAAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Recipe(recipeID = 1u))))
-        assertEquals("[&CQIAAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Recipe(recipeID = 2u))))
-        assertEquals("[&CQcAAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Recipe(recipeID = 7u))))
+        assertEquals("[&CQEAAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Recipe(recipeId = 1u))))
+        assertEquals("[&CQIAAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Recipe(recipeId = 2u))))
+        assertEquals("[&CQcAAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Recipe(recipeId = 7u))))
     }
 
     @Test
     fun testDecodeSkinLink() {
-        assertEquals(ChatLink.Skin(skinID = 4u), assertDoesNotThrow(decodeChatLink("[&CgQAAAA=]")))
+        assertEquals(ChatLink.Skin(skinId = 4u), assertDoesNotThrow(decodeChatLink("[&CgQAAAA=]")))
     }
 
     @Test
     fun testEncodeSkinLink() {
-        assertEquals("[&CgQAAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Skin(skinID = 4u))))
+        assertEquals("[&CgQAAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Skin(skinId = 4u))))
     }
 
     @Test
     fun testDecodeOutfitLink() {
-        assertEquals(ChatLink.Outfit(outfitID = 4u), assertDoesNotThrow(decodeChatLink("[&CwQAAAA=]")))
+        assertEquals(ChatLink.Outfit(outfitId = 4u), assertDoesNotThrow(decodeChatLink("[&CwQAAAA=]")))
     }
 
     @Test
     fun testEncodeOutfitLink() {
-        assertEquals("[&CwQAAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Outfit(outfitID = 4u))))
+        assertEquals("[&CwQAAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Outfit(outfitId = 4u))))
     }
 
     @Test
     fun testDecodeWvWObjectiveLink() {
-        assertEquals(ChatLink.WvWObjective(objectiveID = 6u, mapID = 38u), assertDoesNotThrow(decodeChatLink("[&DAYAAAAmAAAA]")))
+        assertEquals(ChatLink.WvWObjective(objectiveId = 6u, mapId = 38u), assertDoesNotThrow(decodeChatLink("[&DAYAAAAmAAAA]")))
     }
 
     @Test
     fun testEncodeWvWObjectiveLink() {
-        assertEquals("[&DAYAAAAmAAAA]", assertDoesNotThrow(encodeChatLink(ChatLink.WvWObjective(objectiveID = 6u, mapID = 38u))))
+        assertEquals("[&DAYAAAAmAAAA]", assertDoesNotThrow(encodeChatLink(ChatLink.WvWObjective(objectiveId = 6u, mapId = 38u))))
     }
 
     @Test
     fun testWvWObjectiveLinkApiID() {
-        assertEquals("38-6", ChatLink.WvWObjective(objectiveID = 6u, mapID = 38u).apiID)
+        assertEquals("38-6", ChatLink.WvWObjective(objectiveId = 6u, mapId = 38u).apiId)
     }
 
     @Test
     fun testDecodeBuildTemplate() {
         val buildTemplate = ChatLink.BuildTemplate(
-            professionID = Profession.GUARDIAN.paletteID,
+            professionId = Profession.GUARDIAN.paletteId,
             specializations = listOf(
-                ChatLink.BuildTemplate.Specialization(specializationID = 16u, majorTraits = listOf(2u, 2u, 1u)),
-                ChatLink.BuildTemplate.Specialization(specializationID = 42u, majorTraits = listOf(1u, 1u, 2u)),
-                ChatLink.BuildTemplate.Specialization(specializationID = 27u, majorTraits = listOf(0u, 1u, 2u))
+                ChatLink.BuildTemplate.Specialization(specializationId = 16u, majorTraits = listOf(2u, 2u, 1u)),
+                ChatLink.BuildTemplate.Specialization(specializationId = 42u, majorTraits = listOf(1u, 1u, 2u)),
+                ChatLink.BuildTemplate.Specialization(specializationId = 27u, majorTraits = listOf(0u, 1u, 2u))
             ),
             skills = listOf(3878u, 4746u, 328u, 254u, 4789u),
             aquaticSkills = listOf(3878u, 310u, 328u, 254u, 4745u),
             professionContext = null
         )
         val rangerBuildTemplate = ChatLink.BuildTemplate(
-            professionID = Profession.RANGER.paletteID,
+            professionId = Profession.RANGER.paletteId,
             specializations = listOf(
-                ChatLink.BuildTemplate.Specialization(specializationID = 8u, majorTraits = listOf(1u, 1u, 0u)),
-                ChatLink.BuildTemplate.Specialization(specializationID = 32u, majorTraits = listOf(2u, 2u, 2u)),
-                ChatLink.BuildTemplate.Specialization(specializationID = 55u, majorTraits = listOf(1u, 1u, 1u))
+                ChatLink.BuildTemplate.Specialization(specializationId = 8u, majorTraits = listOf(1u, 1u, 0u)),
+                ChatLink.BuildTemplate.Specialization(specializationId = 32u, majorTraits = listOf(2u, 2u, 2u)),
+                ChatLink.BuildTemplate.Specialization(specializationId = 55u, majorTraits = listOf(1u, 1u, 1u))
             ),
             skills = listOf(121u, 421u, 181u, 188u, 5678u),
             aquaticSkills = listOf(5934u, 421u, 188u, 428u, 5678u),
@@ -230,11 +230,11 @@ class ChatLinkTests {
             )
         )
         val revenantBuildTemplate = ChatLink.BuildTemplate(
-            professionID = Profession.REVENANT.paletteID,
+            professionId = Profession.REVENANT.paletteId,
             specializations = listOf(
-                ChatLink.BuildTemplate.Specialization(specializationID = 3u, majorTraits = listOf(1u, 0u, 1u)),
-                ChatLink.BuildTemplate.Specialization(specializationID = 15u, majorTraits = listOf(1u, 0u, 1u)),
-                ChatLink.BuildTemplate.Specialization(specializationID = 63u, majorTraits = listOf(0u, 2u, 2u))
+                ChatLink.BuildTemplate.Specialization(specializationId = 3u, majorTraits = listOf(1u, 0u, 1u)),
+                ChatLink.BuildTemplate.Specialization(specializationId = 15u, majorTraits = listOf(1u, 0u, 1u)),
+                ChatLink.BuildTemplate.Specialization(specializationId = 63u, majorTraits = listOf(0u, 2u, 2u))
             ),
             skills = listOf(4572u, 4564u, 4651u, 4614u, 4554u),
             aquaticSkills = listOf(4572u, 4564u, 4651u, 4614u, 4554u),
@@ -260,9 +260,9 @@ class ChatLinkTests {
         val buildTemplate = ChatLink.BuildTemplate(
             profession = Profession.GUARDIAN,
             specializations = listOf(
-                ChatLink.BuildTemplate.Specialization(specializationID = 16u, majorTraits = listOf(2u, 2u, 1u)),
-                ChatLink.BuildTemplate.Specialization(specializationID = 42u, majorTraits = listOf(1u, 1u, 2u)),
-                ChatLink.BuildTemplate.Specialization(specializationID = 27u, majorTraits = listOf(0u, 1u, 2u))
+                ChatLink.BuildTemplate.Specialization(specializationId = 16u, majorTraits = listOf(2u, 2u, 1u)),
+                ChatLink.BuildTemplate.Specialization(specializationId = 42u, majorTraits = listOf(1u, 1u, 2u)),
+                ChatLink.BuildTemplate.Specialization(specializationId = 27u, majorTraits = listOf(0u, 1u, 2u))
             ),
             skills = listOf(3878u, 4746u, 328u, 254u, 4789u),
             aquaticSkills = listOf(3878u, 310u, 328u, 254u, 4745u),
@@ -273,9 +273,9 @@ class ChatLinkTests {
         val rangerBuildTemplate = ChatLink.BuildTemplate(
             profession = Profession.RANGER,
             specializations = listOf(
-                ChatLink.BuildTemplate.Specialization(specializationID = 8u, majorTraits = listOf(1u, 1u, 0u)),
-                ChatLink.BuildTemplate.Specialization(specializationID = 32u, majorTraits = listOf(2u, 2u, 2u)),
-                ChatLink.BuildTemplate.Specialization(specializationID = 55u, majorTraits = listOf(1u, 1u, 1u))
+                ChatLink.BuildTemplate.Specialization(specializationId = 8u, majorTraits = listOf(1u, 1u, 0u)),
+                ChatLink.BuildTemplate.Specialization(specializationId = 32u, majorTraits = listOf(2u, 2u, 2u)),
+                ChatLink.BuildTemplate.Specialization(specializationId = 55u, majorTraits = listOf(1u, 1u, 1u))
             ),
             skills = listOf(121u, 421u, 181u, 188u, 5678u),
             aquaticSkills = listOf(5934u, 421u, 188u, 428u, 5678u),
@@ -289,9 +289,9 @@ class ChatLinkTests {
         val revenantBuildTemplate = ChatLink.BuildTemplate(
             profession = Profession.REVENANT,
             specializations = listOf(
-                ChatLink.BuildTemplate.Specialization(specializationID = 3u, majorTraits = listOf(1u, 0u, 1u)),
-                ChatLink.BuildTemplate.Specialization(specializationID = 15u, majorTraits = listOf(1u, 0u, 1u)),
-                ChatLink.BuildTemplate.Specialization(specializationID = 63u, majorTraits = listOf(0u, 2u, 2u))
+                ChatLink.BuildTemplate.Specialization(specializationId = 3u, majorTraits = listOf(1u, 0u, 1u)),
+                ChatLink.BuildTemplate.Specialization(specializationId = 15u, majorTraits = listOf(1u, 0u, 1u)),
+                ChatLink.BuildTemplate.Specialization(specializationId = 63u, majorTraits = listOf(0u, 2u, 2u))
             ),
             skills = listOf(4572u, 4564u, 4651u, 4614u, 4554u),
             aquaticSkills = listOf(4572u, 4564u, 4651u, 4614u, 4554u),
@@ -313,11 +313,11 @@ class ChatLinkTests {
     @Test
     fun testEncodeBuildTemplate() {
         val buildTemplate = ChatLink.BuildTemplate(
-            professionID = Profession.GUARDIAN.paletteID,
+            professionId = Profession.GUARDIAN.paletteId,
             specializations = listOf(
-                ChatLink.BuildTemplate.Specialization(specializationID = 16u, majorTraits = listOf(2u, 2u, 1u)),
-                ChatLink.BuildTemplate.Specialization(specializationID = 42u, majorTraits = listOf(1u, 1u, 2u)),
-                ChatLink.BuildTemplate.Specialization(specializationID = 27u, majorTraits = listOf(0u, 1u, 2u))
+                ChatLink.BuildTemplate.Specialization(specializationId = 16u, majorTraits = listOf(2u, 2u, 1u)),
+                ChatLink.BuildTemplate.Specialization(specializationId = 42u, majorTraits = listOf(1u, 1u, 2u)),
+                ChatLink.BuildTemplate.Specialization(specializationId = 27u, majorTraits = listOf(0u, 1u, 2u))
             ),
             skills = listOf(3878u, 4746u, 328u, 254u, 4789u),
             aquaticSkills = listOf(3878u, 310u, 328u, 254u, 4745u),
@@ -326,11 +326,11 @@ class ChatLinkTests {
             weaponSkillOverrides = listOf()
         )
         val rangerBuildTemplate = ChatLink.BuildTemplate(
-            professionID = Profession.RANGER.paletteID,
+            professionId = Profession.RANGER.paletteId,
             specializations = listOf(
-                ChatLink.BuildTemplate.Specialization(specializationID = 8u, majorTraits = listOf(1u, 1u, 0u)),
-                ChatLink.BuildTemplate.Specialization(specializationID = 32u, majorTraits = listOf(2u, 2u, 2u)),
-                ChatLink.BuildTemplate.Specialization(specializationID = 55u, majorTraits = listOf(1u, 1u, 1u))
+                ChatLink.BuildTemplate.Specialization(specializationId = 8u, majorTraits = listOf(1u, 1u, 0u)),
+                ChatLink.BuildTemplate.Specialization(specializationId = 32u, majorTraits = listOf(2u, 2u, 2u)),
+                ChatLink.BuildTemplate.Specialization(specializationId = 55u, majorTraits = listOf(1u, 1u, 1u))
             ),
             skills = listOf(121u, 421u, 181u, 188u, 5678u),
             aquaticSkills = listOf(5934u, 421u, 188u, 428u, 5678u),
@@ -342,11 +342,11 @@ class ChatLinkTests {
             weaponSkillOverrides = listOf(0xF767u)
         )
         val revenantBuildTemplate = ChatLink.BuildTemplate(
-            professionID = Profession.REVENANT.paletteID,
+            professionId = Profession.REVENANT.paletteId,
             specializations = listOf(
-                ChatLink.BuildTemplate.Specialization(specializationID = 3u, majorTraits = listOf(1u, 0u, 1u)),
-                ChatLink.BuildTemplate.Specialization(specializationID = 15u, majorTraits = listOf(1u, 0u, 1u)),
-                ChatLink.BuildTemplate.Specialization(specializationID = 63u, majorTraits = listOf(0u, 2u, 2u))
+                ChatLink.BuildTemplate.Specialization(specializationId = 3u, majorTraits = listOf(1u, 0u, 1u)),
+                ChatLink.BuildTemplate.Specialization(specializationId = 15u, majorTraits = listOf(1u, 0u, 1u)),
+                ChatLink.BuildTemplate.Specialization(specializationId = 63u, majorTraits = listOf(0u, 2u, 2u))
             ),
             skills = listOf(4572u, 4564u, 4651u, 4614u, 4554u),
             aquaticSkills = listOf(4572u, 4564u, 4651u, 4614u, 4554u),

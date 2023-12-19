@@ -20,7 +20,7 @@ public final class com/gw2tb/gw2chatlinks/ChatLink$BuildTemplate : com/gw2tb/gw2
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getAquaticSkills ()Ljava/util/List;
 	public final fun getProfessionContext ()Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$ProfessionContext;
-	public final fun getProfessionID ()B
+	public final fun getProfessionId ()B
 	public final fun getSkills ()Ljava/util/List;
 	public final fun getSpecializations ()Ljava/util/List;
 	public final fun getWeaponSkillOverrides ()Ljava/util/List;
@@ -71,7 +71,7 @@ public final class com/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$Specialization 
 	public static synthetic fun copy-0ky7B_Q$default (Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$Specialization;BLjava/util/List;ILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate$Specialization;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getMajorTraits ()Ljava/util/List;
-	public final fun getSpecializationID ()B
+	public final fun getSpecializationId ()B
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -107,9 +107,9 @@ public final class com/gw2tb/gw2chatlinks/ChatLink$Item : com/gw2tb/gw2chatlinks
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getAmount ()B
 	public final fun getFirstUpgradeSlot ()Lkotlin/UInt;
-	public final fun getItemID ()I
+	public final fun getItemId ()I
 	public final fun getSecondUpgradeSlot ()Lkotlin/UInt;
-	public final fun getSkinID ()Lkotlin/UInt;
+	public final fun getSkinId ()Lkotlin/UInt;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -122,7 +122,7 @@ public final class com/gw2tb/gw2chatlinks/ChatLink$NPCText : com/gw2tb/gw2chatli
 	public final fun copy-WZ4Q5Ns (I)Lcom/gw2tb/gw2chatlinks/ChatLink$NPCText;
 	public static synthetic fun copy-WZ4Q5Ns$default (Lcom/gw2tb/gw2chatlinks/ChatLink$NPCText;IILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$NPCText;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getTextID ()I
+	public final fun getTextId ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -135,7 +135,7 @@ public final class com/gw2tb/gw2chatlinks/ChatLink$Outfit : com/gw2tb/gw2chatlin
 	public final fun copy-WZ4Q5Ns (I)Lcom/gw2tb/gw2chatlinks/ChatLink$Outfit;
 	public static synthetic fun copy-WZ4Q5Ns$default (Lcom/gw2tb/gw2chatlinks/ChatLink$Outfit;IILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$Outfit;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getOutfitID ()I
+	public final fun getOutfitId ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -148,7 +148,7 @@ public final class com/gw2tb/gw2chatlinks/ChatLink$PoI : com/gw2tb/gw2chatlinks/
 	public final fun copy-WZ4Q5Ns (I)Lcom/gw2tb/gw2chatlinks/ChatLink$PoI;
 	public static synthetic fun copy-WZ4Q5Ns$default (Lcom/gw2tb/gw2chatlinks/ChatLink$PoI;IILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$PoI;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getPoIID ()I
+	public final fun getPoiId ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -168,7 +168,7 @@ public final class com/gw2tb/gw2chatlinks/ChatLink$Recipe : com/gw2tb/gw2chatlin
 	public final fun copy-WZ4Q5Ns (I)Lcom/gw2tb/gw2chatlinks/ChatLink$Recipe;
 	public static synthetic fun copy-WZ4Q5Ns$default (Lcom/gw2tb/gw2chatlinks/ChatLink$Recipe;IILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$Recipe;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getRecipeID ()I
+	public final fun getRecipeId ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -181,7 +181,7 @@ public final class com/gw2tb/gw2chatlinks/ChatLink$Skill : com/gw2tb/gw2chatlink
 	public final fun copy-WZ4Q5Ns (I)Lcom/gw2tb/gw2chatlinks/ChatLink$Skill;
 	public static synthetic fun copy-WZ4Q5Ns$default (Lcom/gw2tb/gw2chatlinks/ChatLink$Skill;IILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$Skill;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getSkillID ()I
+	public final fun getSkillId ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -194,7 +194,7 @@ public final class com/gw2tb/gw2chatlinks/ChatLink$Skin : com/gw2tb/gw2chatlinks
 	public final fun copy-WZ4Q5Ns (I)Lcom/gw2tb/gw2chatlinks/ChatLink$Skin;
 	public static synthetic fun copy-WZ4Q5Ns$default (Lcom/gw2tb/gw2chatlinks/ChatLink$Skin;IILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$Skin;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getSkinID ()I
+	public final fun getSkinId ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -207,7 +207,7 @@ public final class com/gw2tb/gw2chatlinks/ChatLink$Trait : com/gw2tb/gw2chatlink
 	public final fun copy-WZ4Q5Ns (I)Lcom/gw2tb/gw2chatlinks/ChatLink$Trait;
 	public static synthetic fun copy-WZ4Q5Ns$default (Lcom/gw2tb/gw2chatlinks/ChatLink$Trait;IILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$Trait;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getTraitID ()I
+	public final fun getTraitId ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -220,7 +220,7 @@ public final class com/gw2tb/gw2chatlinks/ChatLink$User : com/gw2tb/gw2chatlinks
 	public final fun copy-uo5YlkA ([B[B)Lcom/gw2tb/gw2chatlinks/ChatLink$User;
 	public static synthetic fun copy-uo5YlkA$default (Lcom/gw2tb/gw2chatlinks/ChatLink$User;[B[BILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$User;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getAccountGUID ()[B
+	public final fun getAccountGuid ()[B
 	public final fun getCharacterName ()[B
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -235,9 +235,9 @@ public final class com/gw2tb/gw2chatlinks/ChatLink$WvWObjective : com/gw2tb/gw2c
 	public final fun copy-feOb9K0 (II)Lcom/gw2tb/gw2chatlinks/ChatLink$WvWObjective;
 	public static synthetic fun copy-feOb9K0$default (Lcom/gw2tb/gw2chatlinks/ChatLink$WvWObjective;IIILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$WvWObjective;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getApiID ()Ljava/lang/String;
-	public final fun getMapID ()I
-	public final fun getObjectiveID ()I
+	public final fun getApiId ()Ljava/lang/String;
+	public final fun getMapId ()I
+	public final fun getObjectiveId ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -267,8 +267,8 @@ public class com/gw2tb/gw2chatlinks/Profession : java/lang/Enum {
 	public static final field WARRIOR Lcom/gw2tb/gw2chatlinks/Profession;
 	public synthetic fun <init> (Ljava/lang/String;ILjava/lang/String;BLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public static fun getEntries ()Lkotlin/enums/EnumEntries;
-	public final fun getPaletteID ()B
-	public final fun getProfessionID ()Ljava/lang/String;
+	public final fun getPaletteId ()B
+	public final fun getProfessionId ()Ljava/lang/String;
 	public static final fun valueOf (B)Lcom/gw2tb/gw2chatlinks/Profession;
 	public static final fun valueOf (Lcom/gw2tb/gw2chatlinks/ChatLink$BuildTemplate;)Lcom/gw2tb/gw2chatlinks/Profession;
 	public static fun valueOf (Ljava/lang/String;)Lcom/gw2tb/gw2chatlinks/Profession;
@@ -300,7 +300,7 @@ public final class com/gw2tb/gw2chatlinks/Weapon : java/lang/Enum {
 	public static final field UNKNOWN Lcom/gw2tb/gw2chatlinks/Weapon;
 	public static final field WARHORN Lcom/gw2tb/gw2chatlinks/Weapon;
 	public static fun getEntries ()Lkotlin/enums/EnumEntries;
-	public final fun getPaletteID ()S
+	public final fun getPaletteId ()S
 	public static fun valueOf (Ljava/lang/String;)Lcom/gw2tb/gw2chatlinks/Weapon;
 	public static final fun valueOf (S)Lcom/gw2tb/gw2chatlinks/Weapon;
 	public static fun values ()[Lcom/gw2tb/gw2chatlinks/Weapon;

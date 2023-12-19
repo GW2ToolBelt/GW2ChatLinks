@@ -27,13 +27,13 @@ import kotlin.jvm.JvmStatic
 /**
  * A utility class mapping from weapon types to palette IDs.
  *
- * @param paletteID the weapon's palette ID
+ * @param paletteId the weapon's palette ID
  *
  * @since   0.5.0
  */
 public enum class Weapon(
-    @get:JvmName("getPaletteID")
-    public val paletteID: UShort
+    @get:JvmName("getPaletteId")
+    public val paletteId: UShort
 ) {
     /**
      * Represents any unknown or unexpected value.
@@ -167,7 +167,7 @@ public enum class Weapon(
          */
         @JvmName("valueOf")
         @JvmStatic
-        public fun valueOf(paletteID: UShort): Weapon = entries.find { paletteID == it.paletteID } ?: UNKNOWN
+        public fun valueOf(paletteID: UShort): Weapon = entries.find { paletteID == it.paletteId } ?: UNKNOWN
 
     }
 

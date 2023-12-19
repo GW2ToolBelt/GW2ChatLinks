@@ -49,11 +49,11 @@ public fun decodeChatLink(
             ChatLink.Coin.IDENTIFIER -> ChatLink.Coin(amount = nextInt())
             ChatLink.Item.IDENTIFIER -> {
                 val amount = nextByte()
-                val itemID = next3Bytes()
+                val itemId = next3Bytes()
 
                 val flags = nextByte().toUInt()
 
-                val skinID = if ((flags and ChatLink.Item.SKINNED) != 0u) {
+                val skinId = if ((flags and ChatLink.Item.SKINNED) != 0u) {
                     nextPaddedIdentifier()
                 } else {
                     null
@@ -73,41 +73,41 @@ public fun decodeChatLink(
 
                 ChatLink.Item(
                     amount = amount,
-                    itemID = itemID,
-                    skinID = skinID,
+                    itemId = itemId,
+                    skinId = skinId,
                     firstUpgradeSlot = firstUpgradeSlot,
                     secondUpgradeSlot = secondUpgradeSlot
                 )
             }
-            ChatLink.NPCText.IDENTIFIER -> ChatLink.NPCText(textID = nextPaddedIdentifier())
-            ChatLink.PoI.IDENTIFIER -> ChatLink.PoI(poiID = nextPaddedIdentifier())
+            ChatLink.NPCText.IDENTIFIER -> ChatLink.NPCText(textId = nextPaddedIdentifier())
+            ChatLink.PoI.IDENTIFIER -> ChatLink.PoI(poiId = nextPaddedIdentifier())
             ChatLink.PvPGame.IDENTIFIER -> ChatLink.PvPGame
-            ChatLink.Skill.IDENTIFIER -> ChatLink.Skill(skillID = nextPaddedIdentifier())
-            ChatLink.Trait.IDENTIFIER -> ChatLink.Trait(traitID = nextPaddedIdentifier())
+            ChatLink.Skill.IDENTIFIER -> ChatLink.Skill(skillId = nextPaddedIdentifier())
+            ChatLink.Trait.IDENTIFIER -> ChatLink.Trait(traitId = nextPaddedIdentifier())
             ChatLink.User.IDENTIFIER -> {
-                val accountGUID = UByteArray(16) { nextByte() }
+                val accountGuid = UByteArray(16) { nextByte() }
                 val characterName = UByteArray(remaining - 2) { nextByte() }
 
                 nextShort().let { check(it == 0u.toUShort()) { "Expected two zero bytes but found: $it" } }
 
                 ChatLink.User(
-                    accountGUID = accountGUID,
+                    accountGuid = accountGuid,
                     characterName = characterName
                 )
             }
-            ChatLink.Recipe.IDENTIFIER -> ChatLink.Recipe(recipeID = nextPaddedIdentifier())
-            ChatLink.Skin.IDENTIFIER -> ChatLink.Skin(skinID = nextPaddedIdentifier())
-            ChatLink.Outfit.IDENTIFIER -> ChatLink.Outfit(outfitID = nextPaddedIdentifier())
+            ChatLink.Recipe.IDENTIFIER -> ChatLink.Recipe(recipeId = nextPaddedIdentifier())
+            ChatLink.Skin.IDENTIFIER -> ChatLink.Skin(skinId = nextPaddedIdentifier())
+            ChatLink.Outfit.IDENTIFIER -> ChatLink.Outfit(outfitId = nextPaddedIdentifier())
             ChatLink.WvWObjective.IDENTIFIER -> ChatLink.WvWObjective(
-                objectiveID = nextPaddedIdentifier(),
-                mapID = nextPaddedIdentifier()
+                objectiveId = nextPaddedIdentifier(),
+                mapId = nextPaddedIdentifier()
             )
             ChatLink.BuildTemplate.IDENTIFIER -> {
-                val professionID = nextByte()
+                val professionId = nextByte()
 
                 val specializations = List(size = 3) {
                     ChatLink.BuildTemplate.Specialization(
-                        specializationID = nextByte(),
+                        specializationId = nextByte(),
                         majorTraits = nextByte().let { majorTraits ->
                             List(size = 3) { index -> ((majorTraits shr (index * 2)) and 0x3u).let { if (it == 0u.toUByte()) null else (it - 1u).toUByte() } }
                         }
@@ -117,7 +117,7 @@ public fun decodeChatLink(
                 val allSkills = List(size = 10) { nextShort() }
 
                 val profCtxOffset = position
-                val context = Profession.valueOf(paletteID = professionID).parseContext(
+                val context = Profession.valueOf(paletteId = professionId).parseContext(
                     nextByte = ::nextByte,
                     nextShort = ::nextShort,
                     nextInt = ::nextInt
@@ -136,7 +136,7 @@ public fun decodeChatLink(
                 }
 
                 ChatLink.BuildTemplate(
-                    professionID = professionID,
+                    professionId = professionId,
                     specializations = specializations,
                     skills = allSkills.filterIndexed { index, _ -> index % 2 == 0 },
                     aquaticSkills = allSkills.filterIndexed { index, _ -> index % 2 != 0 },
@@ -187,7 +187,7 @@ public sealed class ChatLink {
      *
      * Only the shape of the parameters (e.g. list sizes) is validated and not the actual data (e.g. ID validity).
      *
-     * @param professionID          the ID of the template's profession
+     * @param professionId          the ID of the template's profession
      * @param specializations       the template's specializations. _(Must contain three elements.)_
      * @param skills                the IDs of the template's (terrestrial) skills. _(Must contain five elements.)_
      * @param aquaticSkills         the IDs of the template's aquatic skills. _(Must contain five elements.)_
@@ -200,8 +200,8 @@ public sealed class ChatLink {
      * @since   0.1.0
      */
     public data class BuildTemplate(
-        @get:JvmName("getProfessionID")
-        val professionID: UByte,
+        @get:JvmName("getProfessionId")
+        val professionId: UByte,
         val specializations: List<Specialization>,
         val skills: List<UShort>,
         val aquaticSkills: List<UShort>,
@@ -231,7 +231,7 @@ public sealed class ChatLink {
             professionContext: ProfessionContext?,
             weapons: List<UShort> = emptyList(),
             weaponSkillOverrides: List<UInt> = emptyList()
-        ): this(profession.paletteID, specializations, skills, aquaticSkills, professionContext, weapons, weaponSkillOverrides)
+        ): this(profession.paletteId, specializations, skills, aquaticSkills, professionContext, weapons, weaponSkillOverrides)
 
         internal companion object {
             const val IDENTIFIER = 0x0D
@@ -253,7 +253,7 @@ public sealed class ChatLink {
             require(skills.size == 5) { "BuildTemplate `skills` must contain exactly five skill IDs" }
             require(aquaticSkills.size == 5) { "BuildTemplate `aquaticSkills` must contain exactly five skill IDs" }
 
-            when (Profession.valueOf(professionID)) {
+            when (Profession.valueOf(professionId)) {
                 Profession.RANGER -> require(professionContext != null && professionContext is RangerContext) { "Ranger profession requires non-null RangerContext" }
                 Profession.REVENANT -> require(professionContext != null && professionContext is RevenantContext) { "Revenant profession requires non-null RevenantContext" }
                 else -> require(professionContext == null) { "BuildTemplate `professionContext` should be `null` for any professions other than Ranger and Revenant" }
@@ -263,9 +263,9 @@ public sealed class ChatLink {
         @ExperimentalUnsignedTypes
         override fun asUByteArray(): UByteArray = buildArray(BASE_BYTE_SIZE + (weapons.size * UShort.SIZE_BYTES) + (weaponSkillOverrides.size * UInt.SIZE_BYTES)) {
             putByte(IDENTIFIER.toUByte())
-            putByte(professionID)
+            putByte(professionId)
             specializations.forEach { specialization ->
-                putByte(specialization.specializationID)
+                putByte(specialization.specializationId)
 
                 var majorTraits: UByte = 0u
                 specialization.majorTraits.forEachIndexed { index, majorTrait ->
@@ -274,9 +274,9 @@ public sealed class ChatLink {
 
                 putByte(majorTraits)
             }
-            skills.zip(aquaticSkills).forEach { (skillID, aquaticSkillID) ->
-                putShort(skillID)
-                putShort(aquaticSkillID)
+            skills.zip(aquaticSkills).forEach { (skillId, aquaticSkillId) ->
+                putShort(skillId)
+                putShort(aquaticSkillId)
             }
 
             val profCtxOffset = position
@@ -297,7 +297,7 @@ public sealed class ChatLink {
         /**
          * A build template's specialization.
          *
-         * @param specializationID  the ID of the specialization
+         * @param specializationId  the ID of the specialization
          * @param majorTraits       the indices of the selected major traits, or `null` if no trait is selected for a
          *                          slot
          *
@@ -306,8 +306,8 @@ public sealed class ChatLink {
          * @since   0.1.0
          */
         public data class Specialization(
-            @get:JvmName("getSpecializationID")
-            val specializationID: UByte,
+            @get:JvmName("getSpecializationId")
+            val specializationId: UByte,
             val majorTraits: List<UByte?>
         ) {
 
@@ -357,8 +357,8 @@ public sealed class ChatLink {
 
             @ExperimentalUnsignedTypes
             override fun ArrayBuilder.putContext() {
-                pets.forEach { petID -> putByte(petID) }
-                aquaticPets.forEach { petID -> putByte(petID) }
+                pets.forEach { petId -> putByte(petId) }
+                aquaticPets.forEach { petId -> putByte(petId) }
             }
 
         }
@@ -400,10 +400,10 @@ public sealed class ChatLink {
 
             @ExperimentalUnsignedTypes
             override fun ArrayBuilder.putContext() {
-                legends.forEach { legendID -> putByte(legendID) }
-                aquaticLegends.forEach { legendID -> putByte(legendID) }
-                inactiveLegendUtilitySkills.forEach { skillID -> putShort(skillID) }
-                inactiveAquaticLegendUtilitySkills.forEach { skillID -> putShort(skillID) }
+                legends.forEach { legendId -> putByte(legendId) }
+                aquaticLegends.forEach { legendId -> putByte(legendId) }
+                inactiveLegendUtilitySkills.forEach { skillId -> putShort(skillId) }
+                inactiveAquaticLegendUtilitySkills.forEach { skillId -> putShort(skillId) }
             }
 
         }
@@ -449,8 +449,8 @@ public sealed class ChatLink {
      * Only the shape of the parameters (e.g. list sizes) is validated and not the actual data (e.g. ID validity).
      *
      * @param amount            the amount of items
-     * @param itemID            the ID of the item. _(Must be in unsigned 24bit range.)_
-     * @param skinID            the ID of the item's skin. _(Must be in unsigned 24bit range.)_
+     * @param itemId            the ID of the item. _(Must be in unsigned 24bit range.)_
+     * @param skinId            the ID of the item's skin. _(Must be in unsigned 24bit range.)_
      * @param firstUpgradeSlot  the ID of the item's first upgrade slot's content. _(Must be in unsigned 24bit range.)_
      * @param secondUpgradeSlot the ID of the item's second upgrade slot's content. _(Must be in unsigned 24bit range.)_
      *
@@ -461,10 +461,10 @@ public sealed class ChatLink {
     public data class Item(
         @get:JvmName("getAmount")
         val amount: UByte,
-        @get:JvmName("getItemID")
-        val itemID: UInt,
-        @get:JvmName("getSkinID")
-        val skinID: UInt? = null,
+        @get:JvmName("getItemId")
+        val itemId: UInt,
+        @get:JvmName("getSkinId")
+        val skinId: UInt? = null,
         @get:JvmName("getFirstUpgradeSlot")
         val firstUpgradeSlot: UInt? = null,
         @get:JvmName("getSecondUpgradeSlot")
@@ -477,7 +477,7 @@ public sealed class ChatLink {
             /*
              *    1 identifier
              * +  1 amount
-             * +  3 itemID
+             * +  3 itemId
              * +  1 flags
              */
             const val BASE_SIZE = 6
@@ -488,8 +488,8 @@ public sealed class ChatLink {
         }
 
         init {
-            require(itemID < UINT_24BIT_MAX_VALUE) { "Item `itemID` must be in unsigned 24bit range (0..167771215)" }
-            require(skinID == null || skinID < UINT_24BIT_MAX_VALUE) { "Item `skinID` must be in unsigned 24bit range (0..167771215)" }
+            require(itemId < UINT_24BIT_MAX_VALUE) { "Item `itemId` must be in unsigned 24bit range (0..167771215)" }
+            require(skinId == null || skinId < UINT_24BIT_MAX_VALUE) { "Item `skinId` must be in unsigned 24bit range (0..167771215)" }
             require(firstUpgradeSlot == null || firstUpgradeSlot < UINT_24BIT_MAX_VALUE) { "Item `firstUpgradeSlot` must be in unsigned 24bit range (0..167771215)" }
             require(secondUpgradeSlot == null || secondUpgradeSlot < UINT_24BIT_MAX_VALUE) { "Item `secondUpgradeSlot` must be in unsigned 24bit range (0..167771215)" }
         }
@@ -497,22 +497,22 @@ public sealed class ChatLink {
         @ExperimentalUnsignedTypes
         override fun asUByteArray(): UByteArray = buildArray(
             size = BASE_SIZE
-                + (if (skinID != null) 4 else 0)
+                + (if (skinId != null) 4 else 0)
                 + (if (firstUpgradeSlot != null) 4 else 0)
                 + (if (secondUpgradeSlot != null) 4 else 0)
         ) {
             putByte(IDENTIFIER.toUByte())
             putByte(amount)
-            put3Bytes(itemID)
+            put3Bytes(itemId)
 
             var flags = 0u
-            if (skinID != null) flags = flags or SKINNED
+            if (skinId != null) flags = flags or SKINNED
             if (firstUpgradeSlot != null) flags = flags or FIRST_UPGRADE_SLOT_IN_USE
             if (secondUpgradeSlot != null) flags = flags or SECOND_UPGRADE_SLOT_IN_USE
 
             putByte(flags.toUByte())
 
-            skinID?.let {
+            skinId?.let {
                 put3Bytes(it)
                 putByte(0u)
             }
@@ -535,7 +535,7 @@ public sealed class ChatLink {
      *
      * Only the shape of the parameters (e.g. list sizes) is validated and not the actual data (e.g. ID validity).
      *
-     * @param textID    the ID of the text. _(Must be in unsigned 24bit range.)_
+     * @param textId    the ID of the text. _(Must be in unsigned 24bit range.)_
      *
      * @throws IllegalArgumentException if any parameter value does not match its expected shape
      *
@@ -543,8 +543,8 @@ public sealed class ChatLink {
      */
     @ExperimentalChatLinks
     public data class NPCText(
-        @get:JvmName("getTextID")
-        val textID: UInt
+        @get:JvmName("getTextId")
+        val textId: UInt
     ) : ChatLink() {
 
         internal companion object {
@@ -552,20 +552,20 @@ public sealed class ChatLink {
 
             /*
              *    1 identifier
-             * +  3 textID
+             * +  3 textId
              * +  1 reserved byte
              */
             const val BYTE_SIZE = 5
         }
 
         init {
-            require(textID < UINT_24BIT_MAX_VALUE) { "NPCText `textID` must be in unsigned 24bit range (0..167771215)" }
+            require(textId < UINT_24BIT_MAX_VALUE) { "NPCText `textId` must be in unsigned 24bit range (0..167771215)" }
         }
 
         @ExperimentalUnsignedTypes
         override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
             putByte(IDENTIFIER.toUByte())
-            put3Bytes(textID)
+            put3Bytes(textId)
             putByte(0u)
         }
 
@@ -576,15 +576,15 @@ public sealed class ChatLink {
      *
      * Only the shape of the parameters (e.g. list sizes) is validated and not the actual data (e.g. ID validity).
      *
-     * @param outfitID  the ID of the outfit. _(Must be in unsigned 24bit range.)_
+     * @param outfitId  the ID of the outfit. _(Must be in unsigned 24bit range.)_
      *
      * @throws IllegalArgumentException if any parameter value does not match its expected shape
      *
      * @since   0.1.0
      */
     public data class Outfit(
-        @get:JvmName("getOutfitID")
-        val outfitID: UInt
+        @get:JvmName("getOutfitId")
+        val outfitId: UInt
     ) : ChatLink() {
 
         internal companion object {
@@ -592,20 +592,20 @@ public sealed class ChatLink {
 
             /*
              *    1 identifier
-             * +  3 outfitID
+             * +  3 outfitId
              * +  1 reserved byte
              */
             const val BYTE_SIZE = 5
         }
 
         init {
-            require(outfitID < UINT_24BIT_MAX_VALUE) { "Outfit `outfitID` must be in unsigned 24bit range (0..167771215)" }
+            require(outfitId < UINT_24BIT_MAX_VALUE) { "Outfit `outfitId` must be in unsigned 24bit range (0..167771215)" }
         }
 
         @ExperimentalUnsignedTypes
         override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
             putByte(IDENTIFIER.toUByte())
-            put3Bytes(outfitID)
+            put3Bytes(outfitId)
             putByte(0u)
         }
 
@@ -616,15 +616,15 @@ public sealed class ChatLink {
      *
      * Only the shape of the parameters (e.g. list sizes) is validated and not the actual data (e.g. ID validity).
      *
-     * @param poiID the ID of the PoI. _(Must be in unsigned 24bit range.)_
+     * @param poiId the ID of the PoI. _(Must be in unsigned 24bit range.)_
      *
      * @throws IllegalArgumentException if any parameter value does not match its expected shape
      *
      * @since   0.1.0
      */
     public data class PoI(
-        @get:JvmName("getPoIID")
-        val poiID: UInt
+        @get:JvmName("getPoiId")
+        val poiId: UInt
     ) : ChatLink() {
 
         internal companion object {
@@ -632,20 +632,20 @@ public sealed class ChatLink {
 
             /*
              *    1 identifier
-             * +  3 poiID
+             * +  3 poiId
              * +  1 reserved byte
              */
             const val BYTE_SIZE = 5
         }
 
         init {
-            require(poiID < UINT_24BIT_MAX_VALUE) { "PoI `poiID` must be in unsigned 24bit range (0..167771215)" }
+            require(poiId < UINT_24BIT_MAX_VALUE) { "PoI `poiId` must be in unsigned 24bit range (0..167771215)" }
         }
 
         @ExperimentalUnsignedTypes
         override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
             putByte(IDENTIFIER.toUByte())
-            put3Bytes(poiID)
+            put3Bytes(poiId)
             putByte(0u)
         }
 
@@ -673,15 +673,15 @@ public sealed class ChatLink {
      *
      * Only the shape of the parameters (e.g. list sizes) is validated and not the actual data (e.g. ID validity).
      *
-     * @param recipeID  the ID of the recipe. _(Must be in unsigned 24bit range.)_
+     * @param recipeId  the ID of the recipe. _(Must be in unsigned 24bit range.)_
      *
      * @throws IllegalArgumentException if any parameter value does not match its expected shape
      *
      * @since   0.1.0
      */
     public data class Recipe(
-        @get:JvmName("getRecipeID")
-        val recipeID: UInt
+        @get:JvmName("getRecipeId")
+        val recipeId: UInt
     ) : ChatLink() {
 
         internal companion object {
@@ -689,20 +689,20 @@ public sealed class ChatLink {
 
             /*
              *    1 identifier
-             * +  3 recipeID
+             * +  3 recipeId
              * +  1 reserved byte
              */
             const val BYTE_SIZE = 5
         }
 
         init {
-            require(recipeID < UINT_24BIT_MAX_VALUE) { "Recipe `recipeID` must be in unsigned 24bit range (0..167771215)" }
+            require(recipeId < UINT_24BIT_MAX_VALUE) { "Recipe `recipeId` must be in unsigned 24bit range (0..167771215)" }
         }
 
         @ExperimentalUnsignedTypes
         override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
             putByte(IDENTIFIER.toUByte())
-            put3Bytes(recipeID)
+            put3Bytes(recipeId)
             putByte(0u)
         }
 
@@ -713,15 +713,15 @@ public sealed class ChatLink {
      *
      * Only the shape of the parameters (e.g. list sizes) is validated and not the actual data (e.g. ID validity).
      *
-     * @param skillID   the ID of the skill. _(Must be in unsigned 24bit range.)_
+     * @param skillId   the ID of the skill. _(Must be in unsigned 24bit range.)_
      *
      * @throws IllegalArgumentException if any parameter value does not match its expected shape
      *
      * @since   0.1.0
      */
     public data class Skill(
-        @get:JvmName("getSkillID")
-        val skillID: UInt
+        @get:JvmName("getSkillId")
+        val skillId: UInt
     ) : ChatLink() {
 
         internal companion object {
@@ -729,20 +729,20 @@ public sealed class ChatLink {
 
             /*
              *    1 identifier
-             * +  3 skillID
+             * +  3 skillId
              * +  1 reserved byte
              */
             const val BYTE_SIZE = 5
         }
 
         init {
-            require(skillID < UINT_24BIT_MAX_VALUE) { "Skill `skillID` must be in unsigned 24bit range (0..167771215)" }
+            require(skillId < UINT_24BIT_MAX_VALUE) { "Skill `skillId` must be in unsigned 24bit range (0..167771215)" }
         }
 
         @ExperimentalUnsignedTypes
         override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
             putByte(IDENTIFIER.toUByte())
-            put3Bytes(skillID)
+            put3Bytes(skillId)
             putByte(0u)
         }
 
@@ -753,15 +753,15 @@ public sealed class ChatLink {
      *
      * Only the shape of the parameters (e.g. list sizes) is validated and not the actual data (e.g. ID validity).
      *
-     * @param skinID    the ID of the skin. _(Must be in unsigned 24bit range.)_
+     * @param skinId    the ID of the skin. _(Must be in unsigned 24bit range.)_
      *
      * @throws IllegalArgumentException if any parameter value does not match its expected shape
      *
      * @since   0.1.0
      */
     public data class Skin(
-        @get:JvmName("getSkinID")
-        val skinID: UInt
+        @get:JvmName("getSkinId")
+        val skinId: UInt
     ) : ChatLink() {
 
         internal companion object {
@@ -769,20 +769,20 @@ public sealed class ChatLink {
 
             /*
              *    1 identifier
-             * +  3 skinID
+             * +  3 skinId
              * +  1 reserved byte
              */
             const val BYTE_SIZE = 5
         }
 
         init {
-            require(skinID < UINT_24BIT_MAX_VALUE) { "Skin `skinID` must be in unsigned 24bit range (0..167771215)" }
+            require(skinId < UINT_24BIT_MAX_VALUE) { "Skin `skinId` must be in unsigned 24bit range (0..167771215)" }
         }
 
         @ExperimentalUnsignedTypes
         override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
             putByte(IDENTIFIER.toUByte())
-            put3Bytes(skinID)
+            put3Bytes(skinId)
             putByte(0u)
         }
 
@@ -793,15 +793,15 @@ public sealed class ChatLink {
      *
      * Only the shape of the parameters (e.g. list sizes) is validated and not the actual data (e.g. ID validity).
      *
-     * @param traitID   the ID of the trait. _(Must be in unsigned 24bit range.)_
+     * @param traitId   the ID of the trait. _(Must be in unsigned 24bit range.)_
      *
      * @throws IllegalArgumentException if any parameter value does not match its expected shape
      *
      * @since   0.1.0
      */
     public data class Trait(
-        @get:JvmName("getTraitID")
-        val traitID: UInt
+        @get:JvmName("getTraitId")
+        val traitId: UInt
     ) : ChatLink() {
 
         internal companion object {
@@ -809,20 +809,20 @@ public sealed class ChatLink {
 
             /*
              *    1 identifier
-             * +  3 traitID
+             * +  3 traitId
              * +  1 reserved byte
              */
             const val BYTE_SIZE = 5
         }
 
         init {
-            require(traitID < UINT_24BIT_MAX_VALUE) { "Trait `traitID` must be in unsigned 24bit range (0..167771215)" }
+            require(traitId < UINT_24BIT_MAX_VALUE) { "Trait `traitId` must be in unsigned 24bit range (0..167771215)" }
         }
 
         @ExperimentalUnsignedTypes
         override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
             putByte(IDENTIFIER.toUByte())
-            put3Bytes(traitID)
+            put3Bytes(traitId)
             putByte(0u)
         }
 
@@ -835,7 +835,7 @@ public sealed class ChatLink {
      *
      * Only the shape of the parameters (e.g. list sizes) is validated and not the actual data (e.g. ID validity).
      *
-     * @param accountGUID   the account GUID
+     * @param accountGuid   the account GUID
      * @param characterName the character name (UTF-16LE encoded)
      *
      * @throws IllegalArgumentException if any parameter value does not match its expected shape
@@ -845,8 +845,8 @@ public sealed class ChatLink {
     @ExperimentalUnsignedTypes
     @ExperimentalChatLinks
     public data class User(
-        @get:JvmName("getAccountGUID")
-        val accountGUID: UByteArray,
+        @get:JvmName("getAccountGuid")
+        val accountGuid: UByteArray,
         @get:JvmName("getCharacterName")
         val characterName: UByteArray
     ) : ChatLink() {
@@ -856,12 +856,12 @@ public sealed class ChatLink {
         }
 
         init {
-            require(accountGUID.size == 16) { "User `accountGUID` is not a valid GUID" }
+            require(accountGuid.size == 16) { "User `accountGuid` is not a valid GUID" }
         }
 
-        override fun asUByteArray(): UByteArray = buildArray(accountGUID.size + characterName.size + 3) {
+        override fun asUByteArray(): UByteArray = buildArray(accountGuid.size + characterName.size + 3) {
             putByte(IDENTIFIER.toUByte())
-            accountGUID.forEach { putByte(it) }
+            accountGuid.forEach { putByte(it) }
             characterName.forEach { putByte(it) }
             putShort(0u)
         }
@@ -870,14 +870,14 @@ public sealed class ChatLink {
             if (this === other) return true
 
             return other is User
-                && accountGUID.contentEquals(other.accountGUID)
+                && accountGuid.contentEquals(other.accountGuid)
                 && characterName.contentEquals(other.characterName)
         }
 
         override fun hashCode(): Int {
             val prime = 31
             var result = 1
-            result = prime * result + accountGUID.contentHashCode()
+            result = prime * result + accountGuid.contentHashCode()
             result = prime * result + characterName.contentHashCode()
             return result
         }
@@ -889,18 +889,18 @@ public sealed class ChatLink {
      *
      * Only the shape of the parameters (e.g. list sizes) is validated and not the actual data (e.g. ID validity).
      *
-     * @param objectiveID   the map-specific ID of the objective _(Must be in unsigned 24bit range.)_
-     * @param mapID         the ID of the map of the objective. _(Must be in unsigned 24bit range.)_
+     * @param objectiveId   the map-specific ID of the objective _(Must be in unsigned 24bit range.)_
+     * @param mapId         the ID of the map of the objective. _(Must be in unsigned 24bit range.)_
      *
      * @throws IllegalArgumentException if any parameter value does not match its expected shape
      *
      * @since   0.1.0
      */
     public data class WvWObjective(
-        @get:JvmName("getObjectiveID")
-        val objectiveID: UInt,
-        @get:JvmName("getMapID")
-        val mapID: UInt
+        @get:JvmName("getObjectiveId")
+        val objectiveId: UInt,
+        @get:JvmName("getMapId")
+        val mapId: UInt
     ) : ChatLink() {
 
         internal companion object {
@@ -908,36 +908,36 @@ public sealed class ChatLink {
 
             /*
              *    1 identifier
-             * +  3 objectiveID
+             * +  3 objectiveId
              * +  1 reserved byte
-             * +  3 mapID
+             * +  3 mapId
              * +  1 reserved byte
              */
             const val BYTE_SIZE = 9
         }
 
         init {
-            require(objectiveID < UINT_24BIT_MAX_VALUE) { "WvWObjective `objectiveID` must be in unsigned 24bit range (0..167771215)" }
-            require(mapID < UINT_24BIT_MAX_VALUE) { "WvWObjective `mapID` must be in unsigned 24bit range (0..167771215)" }
+            require(objectiveId < UINT_24BIT_MAX_VALUE) { "WvWObjective `objectiveId` must be in unsigned 24bit range (0..167771215)" }
+            require(mapId < UINT_24BIT_MAX_VALUE) { "WvWObjective `mapId` must be in unsigned 24bit range (0..167771215)" }
         }
 
         @ExperimentalUnsignedTypes
         override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
             putByte(IDENTIFIER.toUByte())
-            put3Bytes(objectiveID)
+            put3Bytes(objectiveId)
             putByte(0u)
-            put3Bytes(mapID)
+            put3Bytes(mapId)
             putByte(0u)
         }
 
         /**
          * Returns the ID for this objective as used in the official Guild Wars 2 API.
          *
-         * The ID has the format: `"$mapID-$objectiveID"`
+         * The ID has the format: `"$mapId-$objectiveId"`
          *
          * @since   0.1.0
          */
-        public val apiID: String get() = "$mapID-$objectiveID"
+        public val apiId: String get() = "$mapId-$objectiveId"
 
     }
 

@@ -28,15 +28,15 @@ import kotlin.jvm.JvmSynthetic
 /**
  * A utility class for mapping from profession IDs to palette IDs.
  *
- * @param professionID  the profession's ID
- * @param paletteID     the profession's palette ID
+ * @param professionId  the profession's ID
+ * @param paletteId     the profession's palette ID
  *
  * @since   0.1.0
  */
 public enum class Profession(
-    public val professionID: String,
-    @get:JvmName("getPaletteID")
-    public val paletteID: UByte
+    public val professionId: String,
+    @get:JvmName("getPaletteId")
+    public val paletteId: UByte
 ) {
     /**
      * Represents any unknown or unexpected value.
@@ -167,12 +167,12 @@ public enum class Profession(
          */
         @Suppress("NOTHING_TO_INLINE")
         @JvmStatic
-        public inline fun valueOf(template: ChatLink.BuildTemplate): Profession = valueOf(template.professionID)
+        public inline fun valueOf(template: ChatLink.BuildTemplate): Profession = valueOf(template.professionId)
 
         /**
          * Returns a [Profession] for a given `paletteID`.
          *
-         * @param paletteID the palette ID to return the profession for
+         * @param paletteId the palette ID to return the profession for
          *
          * @return  the profession for the palette ID, or [Profession.UNKNOWN]
          *
@@ -180,11 +180,11 @@ public enum class Profession(
          */
         @JvmName("valueOf")
         @JvmStatic
-        public fun valueOf(paletteID: UByte): Profession = entries.let { values ->
-            if (paletteID.toUInt() == 0u || paletteID >= values.size.toUByte())
+        public fun valueOf(paletteId: UByte): Profession = entries.let { values ->
+            if (paletteId.toUInt() == 0u || paletteId >= values.size.toUByte())
                 UNKNOWN
             else
-                values[paletteID.toInt()]
+                values[paletteId.toInt()]
         }
 
     }
