@@ -48,7 +48,6 @@ publishing {
             name = "GW2ChatLinks"
             description = "A Kotlin Multiplatform library for parsing and generating GW2 chat links."
             url = "https://github.com/GW2ToolBelt/GW2ChatLinks"
-            packaging = "jar"
 
             licenses {
                 license {
