@@ -24,6 +24,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.plugin.mpp.*
 import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
+import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension
 import org.jetbrains.kotlin.gradle.targets.js.yarn.*
 import org.jetbrains.kotlin.gradle.targets.jvm.*
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
@@ -100,6 +101,21 @@ kotlin {
                 enabled = !Os.isFamily(Os.FAMILY_MAC)
             }
         }
+
+        nodejs {
+            testTask {
+                enabled = !Os.isFamily(Os.FAMILY_WINDOWS)
+            }
+        }
+    }
+
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmWasi {
+        nodejs {
+            testTask {
+                enabled = !Os.isFamily(Os.FAMILY_WINDOWS)
+            }
+        }
     }
 
     watchosArm32()
@@ -129,6 +145,14 @@ kotlin {
                 ))
             }
         }
+    }
+}
+
+configure<NodeJsRootExtension> {
+    // We need canary builds of Node + V8 but there are none for Windows.
+    if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+        nodeVersion = "21.0.0-v8-canary202309143a48826a08"
+        nodeDownloadBaseUrl = "https://nodejs.org/download/v8-canary"
     }
 }
 
