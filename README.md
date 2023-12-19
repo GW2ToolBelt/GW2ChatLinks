@@ -66,8 +66,6 @@ or the following command on Windows:
 Important Gradle tasks to remember are:
 - `clean`                   - clean build results
 - `build`                   - assemble and test the project
-- `buildNative<Platform>`   - assemble and test the platform-specific native
-                              code
 - `publishToMavenLocal`     - build and install all public artifacts to the
                               local maven repository
 
