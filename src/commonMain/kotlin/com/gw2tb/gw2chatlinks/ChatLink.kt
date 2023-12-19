@@ -238,12 +238,12 @@ public sealed class ChatLink {
 
             /*
              *    1 identifier
-             * +  1 professionID
+             * +  1 professionId
              * +  6 specializations (3 * 2)
              * + 20 skills (10 * 2)
              * + 16 professionContext
              * +  1 weaponBytePairCount
-             * +  1 relicID
+             * +  1 relicId
              */
             const val BASE_BYTE_SIZE = 46
         }
