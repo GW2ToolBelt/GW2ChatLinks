@@ -79,9 +79,9 @@ public fun decodeChatLink(
                     secondUpgradeSlot = secondUpgradeSlot
                 )
             }
-            ChatLink.NPCText.IDENTIFIER -> ChatLink.NPCText(textId = nextPaddedIdentifier())
-            ChatLink.PoI.IDENTIFIER -> ChatLink.PoI(poiId = nextPaddedIdentifier())
-            ChatLink.PvPGame.IDENTIFIER -> ChatLink.PvPGame
+            ChatLink.NpcText.IDENTIFIER -> ChatLink.NpcText(textId = nextPaddedIdentifier())
+            ChatLink.Poi.IDENTIFIER -> ChatLink.Poi(poiId = nextPaddedIdentifier())
+            ChatLink.PvpGame.IDENTIFIER -> ChatLink.PvpGame
             ChatLink.Skill.IDENTIFIER -> ChatLink.Skill(skillId = nextPaddedIdentifier())
             ChatLink.Trait.IDENTIFIER -> ChatLink.Trait(traitId = nextPaddedIdentifier())
             ChatLink.User.IDENTIFIER -> {
@@ -98,7 +98,7 @@ public fun decodeChatLink(
             ChatLink.Recipe.IDENTIFIER -> ChatLink.Recipe(recipeId = nextPaddedIdentifier())
             ChatLink.Skin.IDENTIFIER -> ChatLink.Skin(skinId = nextPaddedIdentifier())
             ChatLink.Outfit.IDENTIFIER -> ChatLink.Outfit(outfitId = nextPaddedIdentifier())
-            ChatLink.WvWObjective.IDENTIFIER -> ChatLink.WvWObjective(
+            ChatLink.WvwObjective.IDENTIFIER -> ChatLink.WvwObjective(
                 objectiveId = nextPaddedIdentifier(),
                 mapId = nextPaddedIdentifier()
             )
@@ -542,7 +542,7 @@ public sealed class ChatLink {
      * @since   0.1.0
      */
     @ExperimentalChatLinks
-    public data class NPCText(
+    public data class NpcText(
         @get:JvmName("getTextId")
         val textId: UInt
     ) : ChatLink() {
@@ -622,7 +622,7 @@ public sealed class ChatLink {
      *
      * @since   0.1.0
      */
-    public data class PoI(
+    public data class Poi(
         @get:JvmName("getPoiId")
         val poiId: UInt
     ) : ChatLink() {
@@ -659,7 +659,7 @@ public sealed class ChatLink {
      * @since   0.1.0
      */
     @ExperimentalChatLinks
-    public data object PvPGame : ChatLink() {
+    public data object PvpGame : ChatLink() {
 
         internal const val IDENTIFIER = 0x05
 
@@ -896,7 +896,7 @@ public sealed class ChatLink {
      *
      * @since   0.1.0
      */
-    public data class WvWObjective(
+    public data class WvwObjective(
         @get:JvmName("getObjectiveId")
         val objectiveId: UInt,
         @get:JvmName("getMapId")

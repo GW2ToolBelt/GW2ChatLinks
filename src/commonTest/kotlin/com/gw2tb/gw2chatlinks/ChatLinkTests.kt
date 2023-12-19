@@ -80,37 +80,37 @@ class ChatLinkTests {
 
     @Test
     fun testDecodeNPCTextLink() {
-        assertEquals(ChatLink.NPCText(textId = 10007u), assertDoesNotThrow(decodeChatLink("[&AxcnAAA=]")))
-        assertEquals(ChatLink.NPCText(textId = 10008u), assertDoesNotThrow(decodeChatLink("[&AxgnAAA=]")))
-        assertEquals(ChatLink.NPCText(textId = 10009u), assertDoesNotThrow(decodeChatLink("[&AxknAAA=]")))
-        assertEquals(ChatLink.NPCText(textId = 10016u), assertDoesNotThrow(decodeChatLink("[&AyAnAAA=]")))
+        assertEquals(ChatLink.NpcText(textId = 10007u), assertDoesNotThrow(decodeChatLink("[&AxcnAAA=]")))
+        assertEquals(ChatLink.NpcText(textId = 10008u), assertDoesNotThrow(decodeChatLink("[&AxgnAAA=]")))
+        assertEquals(ChatLink.NpcText(textId = 10009u), assertDoesNotThrow(decodeChatLink("[&AxknAAA=]")))
+        assertEquals(ChatLink.NpcText(textId = 10016u), assertDoesNotThrow(decodeChatLink("[&AyAnAAA=]")))
     }
 
     @Test
     fun testEncodeNPCTextLink() {
-        assertEquals("[&AxcnAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.NPCText(textId = 10007u))))
-        assertEquals("[&AxgnAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.NPCText(textId = 10008u))))
-        assertEquals("[&AxknAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.NPCText(textId = 10009u))))
-        assertEquals("[&AyAnAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.NPCText(textId = 10016u))))
+        assertEquals("[&AxcnAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.NpcText(textId = 10007u))))
+        assertEquals("[&AxgnAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.NpcText(textId = 10008u))))
+        assertEquals("[&AxknAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.NpcText(textId = 10009u))))
+        assertEquals("[&AyAnAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.NpcText(textId = 10016u))))
     }
 
     @Test
     fun testDecodePoILink() {
-        assertEquals(ChatLink.PoI(poiId = 56u), assertDoesNotThrow(decodeChatLink("[&BDgAAAA=]")))
-        assertEquals(ChatLink.PoI(poiId = 72u), assertDoesNotThrow(decodeChatLink("[&BEgAAAA=]")))
-        assertEquals(ChatLink.PoI(poiId = 825u), assertDoesNotThrow(decodeChatLink("[&BDkDAAA=]")))
+        assertEquals(ChatLink.Poi(poiId = 56u), assertDoesNotThrow(decodeChatLink("[&BDgAAAA=]")))
+        assertEquals(ChatLink.Poi(poiId = 72u), assertDoesNotThrow(decodeChatLink("[&BEgAAAA=]")))
+        assertEquals(ChatLink.Poi(poiId = 825u), assertDoesNotThrow(decodeChatLink("[&BDkDAAA=]")))
     }
 
     @Test
     fun testEncodePoILink() {
-        assertEquals("[&BDgAAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.PoI(poiId = 56u))))
-        assertEquals("[&BEgAAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.PoI(poiId = 72u))))
-        assertEquals("[&BDkDAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.PoI(poiId = 825u))))
+        assertEquals("[&BDgAAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Poi(poiId = 56u))))
+        assertEquals("[&BEgAAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Poi(poiId = 72u))))
+        assertEquals("[&BDkDAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Poi(poiId = 825u))))
     }
 
     @Test
     fun testEncodePvPGameLink() {
-        assertFailsWith(EncodingUnsupportedException::class) { encodeChatLink(ChatLink.PvPGame).getOrThrow() }
+        assertFailsWith(EncodingUnsupportedException::class) { encodeChatLink(ChatLink.PvpGame).getOrThrow() }
     }
 
     @Test
@@ -189,17 +189,17 @@ class ChatLinkTests {
 
     @Test
     fun testDecodeWvWObjectiveLink() {
-        assertEquals(ChatLink.WvWObjective(objectiveId = 6u, mapId = 38u), assertDoesNotThrow(decodeChatLink("[&DAYAAAAmAAAA]")))
+        assertEquals(ChatLink.WvwObjective(objectiveId = 6u, mapId = 38u), assertDoesNotThrow(decodeChatLink("[&DAYAAAAmAAAA]")))
     }
 
     @Test
     fun testEncodeWvWObjectiveLink() {
-        assertEquals("[&DAYAAAAmAAAA]", assertDoesNotThrow(encodeChatLink(ChatLink.WvWObjective(objectiveId = 6u, mapId = 38u))))
+        assertEquals("[&DAYAAAAmAAAA]", assertDoesNotThrow(encodeChatLink(ChatLink.WvwObjective(objectiveId = 6u, mapId = 38u))))
     }
 
     @Test
     fun testWvWObjectiveLinkApiID() {
-        assertEquals("38-6", ChatLink.WvWObjective(objectiveId = 6u, mapId = 38u).apiId)
+        assertEquals("38-6", ChatLink.WvwObjective(objectiveId = 6u, mapId = 38u).apiId)
     }
 
     @Test

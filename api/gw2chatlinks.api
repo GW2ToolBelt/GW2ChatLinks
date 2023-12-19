@@ -114,13 +114,13 @@ public final class com/gw2tb/gw2chatlinks/ChatLink$Item : com/gw2tb/gw2chatlinks
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class com/gw2tb/gw2chatlinks/ChatLink$NPCText : com/gw2tb/gw2chatlinks/ChatLink {
+public final class com/gw2tb/gw2chatlinks/ChatLink$NpcText : com/gw2tb/gw2chatlinks/ChatLink {
 	public static final field BYTE_SIZE I
 	public static final field IDENTIFIER I
 	public synthetic fun <init> (ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-pVg5ArA ()I
-	public final fun copy-WZ4Q5Ns (I)Lcom/gw2tb/gw2chatlinks/ChatLink$NPCText;
-	public static synthetic fun copy-WZ4Q5Ns$default (Lcom/gw2tb/gw2chatlinks/ChatLink$NPCText;IILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$NPCText;
+	public final fun copy-WZ4Q5Ns (I)Lcom/gw2tb/gw2chatlinks/ChatLink$NpcText;
+	public static synthetic fun copy-WZ4Q5Ns$default (Lcom/gw2tb/gw2chatlinks/ChatLink$NpcText;IILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$NpcText;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getTextId ()I
 	public fun hashCode ()I
@@ -140,21 +140,21 @@ public final class com/gw2tb/gw2chatlinks/ChatLink$Outfit : com/gw2tb/gw2chatlin
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class com/gw2tb/gw2chatlinks/ChatLink$PoI : com/gw2tb/gw2chatlinks/ChatLink {
+public final class com/gw2tb/gw2chatlinks/ChatLink$Poi : com/gw2tb/gw2chatlinks/ChatLink {
 	public static final field BYTE_SIZE I
 	public static final field IDENTIFIER I
 	public synthetic fun <init> (ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-pVg5ArA ()I
-	public final fun copy-WZ4Q5Ns (I)Lcom/gw2tb/gw2chatlinks/ChatLink$PoI;
-	public static synthetic fun copy-WZ4Q5Ns$default (Lcom/gw2tb/gw2chatlinks/ChatLink$PoI;IILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$PoI;
+	public final fun copy-WZ4Q5Ns (I)Lcom/gw2tb/gw2chatlinks/ChatLink$Poi;
+	public static synthetic fun copy-WZ4Q5Ns$default (Lcom/gw2tb/gw2chatlinks/ChatLink$Poi;IILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$Poi;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getPoiId ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class com/gw2tb/gw2chatlinks/ChatLink$PvPGame : com/gw2tb/gw2chatlinks/ChatLink {
-	public static final field INSTANCE Lcom/gw2tb/gw2chatlinks/ChatLink$PvPGame;
+public final class com/gw2tb/gw2chatlinks/ChatLink$PvpGame : com/gw2tb/gw2chatlinks/ChatLink {
+	public static final field INSTANCE Lcom/gw2tb/gw2chatlinks/ChatLink$PvpGame;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -226,14 +226,14 @@ public final class com/gw2tb/gw2chatlinks/ChatLink$User : com/gw2tb/gw2chatlinks
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class com/gw2tb/gw2chatlinks/ChatLink$WvWObjective : com/gw2tb/gw2chatlinks/ChatLink {
+public final class com/gw2tb/gw2chatlinks/ChatLink$WvwObjective : com/gw2tb/gw2chatlinks/ChatLink {
 	public static final field BYTE_SIZE I
 	public static final field IDENTIFIER I
 	public synthetic fun <init> (IILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-pVg5ArA ()I
 	public final fun component2-pVg5ArA ()I
-	public final fun copy-feOb9K0 (II)Lcom/gw2tb/gw2chatlinks/ChatLink$WvWObjective;
-	public static synthetic fun copy-feOb9K0$default (Lcom/gw2tb/gw2chatlinks/ChatLink$WvWObjective;IIILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$WvWObjective;
+	public final fun copy-feOb9K0 (II)Lcom/gw2tb/gw2chatlinks/ChatLink$WvwObjective;
+	public static synthetic fun copy-feOb9K0$default (Lcom/gw2tb/gw2chatlinks/ChatLink$WvwObjective;IIILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$WvwObjective;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getApiId ()Ljava/lang/String;
 	public final fun getMapId ()I
