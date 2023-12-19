@@ -36,4 +36,4 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention")
 }
 
-rootProject.name = "GW2ChatLinks"
+rootProject.name = "gw2chatlinks"
