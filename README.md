@@ -9,7 +9,7 @@ GW2ChatLinks is a Kotlin multiplatform library for de- and encoding Guild Wars 2
 [chat links](https://wiki.guildwars2.com/wiki/Chat_link_format).
 
 The library is fully written in common Kotlin code. Prebuilt binaries are
-available for JVM (Java 11 or later), JS and all native targets.[^1]
+available for JVM (Java 11 or later), JS, Wasm, and all native targets.[^1]
 
 [^1]: Since this library does not rely on any platform-specific APIs, we aim to
       provide prebuilt libraries for all native targets supported by Kotlin.
