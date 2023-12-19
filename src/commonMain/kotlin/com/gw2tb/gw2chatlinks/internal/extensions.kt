@@ -24,5 +24,5 @@ package com.gw2tb.gw2chatlinks.internal
 internal infix fun UByte.shl(bitCount: Int): UByte = (toUInt() shl bitCount).toUByte()
 internal infix fun UByte.shr(bitCount: Int): UByte = (toUInt() shr bitCount).toUByte()
 
-internal infix fun UShort.shl(bitCount: Int): UShort = (toUInt() shl bitCount).toUShort()
+//internal infix fun UShort.shl(bitCount: Int): UShort = (toUInt() shl bitCount).toUShort()
 internal infix fun UShort.shr(bitCount: Int): UShort = (toUInt() shr bitCount).toUShort()
