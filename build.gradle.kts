@@ -159,6 +159,7 @@ configure<NodeJsRootExtension> {
 
 tasks {
     withType<JavaCompile>().configureEach {
+        options.javaModuleVersion = "$version"
         options.release = 11
     }
 
