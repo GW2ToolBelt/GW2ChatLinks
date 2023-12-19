@@ -25,6 +25,7 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.plugin.mpp.*
 import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension
+import org.jetbrains.kotlin.gradle.targets.js.npm.tasks.KotlinNpmInstallTask
 import org.jetbrains.kotlin.gradle.targets.js.yarn.*
 import org.jetbrains.kotlin.gradle.targets.jvm.*
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
@@ -174,6 +175,10 @@ tasks {
         isReproducibleFileOrder = true
 
         includeEmptyDirs = false
+    }
+
+    withType<KotlinNpmInstallTask>().all {
+        args += "--ignore-engines"
     }
 }
 
