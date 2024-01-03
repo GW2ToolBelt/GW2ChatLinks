@@ -164,8 +164,17 @@ tasks {
     }
 
     named<JavaCompile>("compileJava") {
-        options.compilerArgumentProviders += CommandLineArgumentProvider {
-            listOf("--patch-module", "com.gw2tb.gw2chatlinks=${named<KotlinCompile>("compileKotlinJvm").get().outputs.files.asPath}")
+        options.compilerArgumentProviders += object : CommandLineArgumentProvider {
+
+            @InputFiles
+            @PathSensitive(PathSensitivity.RELATIVE)
+            val kotlinClasses = this@tasks.named<KotlinCompile>("compileKotlinJvm").flatMap(KotlinCompile::destinationDirectory)
+
+            override fun asArguments() = listOf(
+                "--patch-module",
+                "com.gw2tb.gw2chatlinks=${kotlinClasses.get().asFile.absolutePath}"
+            )
+
         }
     }
 
