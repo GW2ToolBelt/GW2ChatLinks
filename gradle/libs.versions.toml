@@ -6,9 +6,11 @@ kotlin = "1.9.22"
 
 [plugins]
 # org.jetbrains.kotlinx.binary-compatibility-validator - binary-compatibility-validator
+# https://github.com/Kotlin/binary-compatibility-validator
 binary-compatibility-validator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "binary-compatibility-validator" }
 
 # org.jetbrains.dokka - dokka
+# https://github.com/Kotlin/dokka
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 
 # org.jetbrains.kotlin - Kotlin Gradle plugin
