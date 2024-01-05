@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 import org.apache.tools.ant.taskdefs.condition.Os
+import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.plugin.mpp.*
@@ -189,6 +190,10 @@ tasks {
 
     withType<KotlinNpmInstallTask>().all {
         args += "--ignore-engines"
+    }
+
+    withType<DokkaTask>().configureEach {
+        moduleName = "GW2ChatLinks"
     }
 }
 
