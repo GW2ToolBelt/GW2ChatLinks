@@ -199,7 +199,7 @@ tasks {
 
 publishing {
     publications {
-        publications.withType<MavenPublication>().configureEach {
+        withType<MavenPublication>().configureEach {
             val emptyJavadocJar = tasks.register<Jar>("${name}JavadocJar") {
                 archiveBaseName = "${archiveBaseName.get()}-${name}"
                 archiveClassifier = "javadoc"
