@@ -37,3 +37,5 @@ plugins {
 }
 
 rootProject.name = "gw2chatlinks"
+
+enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
