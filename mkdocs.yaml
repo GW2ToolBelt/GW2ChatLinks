@@ -8,6 +8,7 @@ repo_name: "GW2ChatLinks"
 repo_url: "https://github.com/GW2ToolBelt/GW2ChatLinks"
 remote_branch: "gh-pages"
 docs_dir: "docs/site"
+site_dir: "build/site"
 
 theme:
   name: "material"
@@ -51,9 +52,10 @@ markdown_extensions:
   - toc:
       permalink: true
   - pymdownx.betterem
-  - pymdownx.superfences
-  - pymdownx.tabbed
   - pymdownx.details
+  - pymdownx.tabbed
+  - pymdownx.snippets
+  - pymdownx.superfences
 
 nav:
   - 'Overview': index.md
