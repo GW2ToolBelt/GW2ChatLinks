@@ -193,6 +193,7 @@ public sealed class ChatLink {
      * @param aquaticSkills         the IDs of the template's aquatic skills. _(Must contain five elements.)_
      * @param professionContext     the profession-specific context, or `null` if no profession specific information
      *                              exists for the template's profession
+     * @param weapons               the [weapons][Weapon] of the template.
      * @param weaponSkillOverrides  the skill IDs of the template's weapon skill overrides
      *
      * @throws IllegalArgumentException if any parameter value does not match its expected shape
