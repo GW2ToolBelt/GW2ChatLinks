@@ -19,6 +19,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+import dev.adamko.dokkatoo.tasks.DokkatooGenerateTask
+import dev.adamko.dokkatoo.tasks.DokkatooTask
 import org.apache.tools.ant.taskdefs.condition.Os
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
@@ -219,6 +221,10 @@ tasks {
 
     withType<KotlinNpmInstallTask>().configureEach {
         args += "--ignore-engines"
+    }
+
+    withType<DokkatooGenerateTask>().configureEach {
+        workerMaxHeapSize = "4G"
     }
 
     dokkatooGeneratePublicationHtml {

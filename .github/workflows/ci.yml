@@ -6,7 +6,7 @@ on:
 
 
 env:
-  GRADLE_OPTS: -Dorg.gradle.jvmargs=-Xmx4g
+  GRADLE_OPTS: -Dorg.gradle.jvmargs=-Xmx2g
   JDK_VERSION: "21"
   WORKSPACE_ARCHIVE: workspace.tar
   WORKSPACE_ARTIFACT: build-results
