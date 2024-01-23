@@ -20,7 +20,6 @@
  * SOFTWARE.
  */
 import org.apache.tools.ant.taskdefs.condition.Os
-import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.plugin.mpp.*
@@ -33,7 +32,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     alias(libs.plugins.binary.compatibility.validator)
-    alias(libs.plugins.dokka)
+    alias(libs.plugins.dokkatoo.html)
+//    alias(libs.plugins.dokkatoo.javadoc)
     alias(libs.plugins.kotlin.multiplatform)
     id("com.gw2tb.maven-publish-conventions")
 }
@@ -150,6 +150,35 @@ kotlin {
     }
 }
 
+dokkatoo {
+    dokkatooSourceSets.configureEach {
+        reportUndocumented = true
+        skipEmptyPackages = true
+        jdkVersion = 11
+
+        val localKotlinSourceDir = layout.projectDirectory.dir("src/$name/kotlin")
+        val version = project.version
+
+        sourceLink {
+            localDirectory = localKotlinSourceDir
+
+            remoteUrl("https://github.com/GW2ToolBelt/GW2ChatLinks/tree/v${version}/src/main/kotlin")
+            remoteLineSuffix = "#L"
+        }
+    }
+
+    dokkatooPublications.configureEach {
+        moduleName = "GW2ChatLinks"
+
+        // TODO Remaining warnings are silly atm. Reevaluate this flag in the future.
+//        failOnWarning = true
+    }
+
+    versions {
+        jetbrainsDokka = libs.versions.dokka
+    }
+}
+
 configure<NodeJsRootExtension> {
     // We need canary builds of Node + V8 but there are none for Windows.
     if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
@@ -192,8 +221,8 @@ tasks {
         args += "--ignore-engines"
     }
 
-    withType<DokkaTask>().configureEach {
-        moduleName = "GW2ChatLinks"
+    dokkatooGenerateModuleHtml {
+        outputDirectory = layout.buildDirectory.dir("docs/site/api")
     }
 }
 
