@@ -217,7 +217,7 @@ tasks {
         includeEmptyDirs = false
     }
 
-    withType<KotlinNpmInstallTask>().all {
+    withType<KotlinNpmInstallTask>().configureEach {
         args += "--ignore-engines"
     }
 
