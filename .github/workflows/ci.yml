@@ -6,7 +6,6 @@ on:
 
 
 env:
-  GRADLE_OPTS: -Dorg.gradle.jvmargs=-Xmx2g
   JDK_VERSION: "21"
   WORKSPACE_ARCHIVE: workspace.tar
   WORKSPACE_ARTIFACT: build-results
@@ -35,7 +34,7 @@ jobs:
       - name: Gradle Assemble
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: assemble --info -S --show-version ${{ env.GRADLE_OPTS }}
+          arguments: assemble --info -S --show-version
           gradle-home-cache-cleanup: true
 
       - name: Tar files
@@ -108,7 +107,7 @@ jobs:
       - name: Gradle Check
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: check --info -S --show-version ${{ env.GRADLE_OPTS }}
+          arguments: check --info -S --show-version
           gradle-home-cache-cleanup: true
 
 
