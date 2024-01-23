@@ -6,6 +6,7 @@ on:
 
 
 env:
+  GRADLE_OPTS: -Porg.gradle.jvmargs=-Xmx4g
   JDK_VERSION: "21"
   WORKSPACE_ARCHIVE: workspace.tar
   WORKSPACE_ARTIFACT: build-results
@@ -34,7 +35,7 @@ jobs:
       - name: Gradle Assemble
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: assemble --info -S --show-version
+          arguments: assemble --info -S --show-version ${{ env.GRADLE_OPTS }}
           gradle-home-cache-cleanup: true
 
       - name: Tar files
@@ -62,18 +63,6 @@ jobs:
         run: |
           tar -xvf ${{ env.WORKSPACE_ARCHIVE }}
           rm ${{ env.WORKSPACE_ARCHIVE }}
-
-      - name: Setup Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: "temurin"
-          java-version: ${{ env.JDK_VERSION }}
-
-      - name: Gradle Dokka
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: dokkatooGenerate --info -S --show-version
-          gradle-home-cache-cleanup: true
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -119,7 +108,7 @@ jobs:
       - name: Gradle Check
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: check --info -S --show-version
+          arguments: check --info -S --show-version ${{ env.GRADLE_OPTS }}
           gradle-home-cache-cleanup: true
 
 
