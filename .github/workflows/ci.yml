@@ -25,7 +25,8 @@ jobs:
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@v1
 
-      - uses: actions/setup-java@v4
+      - name: Setup Java
+        uses: actions/setup-java@v4
         with:
           distribution: "temurin"
           java-version: ${{ env.JDK_VERSION }}
@@ -61,6 +62,18 @@ jobs:
         run: |
           tar -xvf ${{ env.WORKSPACE_ARCHIVE }}
           rm ${{ env.WORKSPACE_ARCHIVE }}
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: ${{ env.JDK_VERSION }}
+
+      - name: Gradle Dokka
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: dokkatooGenerate --info -S --show-version
+          gradle-home-cache-cleanup: true
 
       - name: Setup Python
         uses: actions/setup-python@v5
