@@ -59,6 +59,7 @@ markdown_extensions:
 
 nav:
   - 'Overview': index.md
+  - 'License': license.md
   - 'API Reference': api/index.html
 
 plugins:
