@@ -221,8 +221,8 @@ tasks {
         args += "--ignore-engines"
     }
 
-    dokkatooGenerateModuleHtml {
-        outputDirectory = layout.buildDirectory.dir("docs/site/api")
+    dokkatooGeneratePublicationHtml {
+        outputDirectory = layout.projectDirectory.dir("docs/site/api")
     }
 }
 
