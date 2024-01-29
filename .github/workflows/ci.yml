@@ -32,7 +32,7 @@ jobs:
           java-version: ${{ env.JDK_VERSION }}
 
       - name: Gradle Assemble
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
         with:
           arguments: assemble --info -S --show-version
           gradle-home-cache-cleanup: true
@@ -105,7 +105,7 @@ jobs:
           java-version: ${{ env.JDK_VERSION }}
 
       - name: Gradle Check
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
         with:
           arguments: check --info -S --show-version
           gradle-home-cache-cleanup: true
