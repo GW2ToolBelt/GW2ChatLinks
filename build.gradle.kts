@@ -241,6 +241,9 @@ publishing {
             }
 
             artifact(emptyJavadocJar)
+
+            // GW2ChatLinks -> gw2chatlinks
+            artifactId = artifactId.lowercase()
         }
     }
 }

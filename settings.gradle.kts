@@ -36,6 +36,6 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention")
 }
 
-rootProject.name = "gw2chatlinks"
+rootProject.name = "GW2ChatLinks"
 
 enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
