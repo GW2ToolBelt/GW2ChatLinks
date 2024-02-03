@@ -20,7 +20,6 @@
  * SOFTWARE.
  */
 import dev.adamko.dokkatoo.tasks.DokkatooGenerateTask
-import dev.adamko.dokkatoo.tasks.DokkatooTask
 import org.apache.tools.ant.taskdefs.condition.Os
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
@@ -71,7 +70,9 @@ kotlin {
         withJava()
 
         compilations.configureEach {
-            compilerOptions.options.jvmTarget = JvmTarget.JVM_11
+            compilerOptions.configure {
+                jvmTarget = JvmTarget.JVM_11
+            }
         }
     }
 
