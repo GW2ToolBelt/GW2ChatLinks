@@ -843,9 +843,9 @@ public sealed class ChatLink {
      *
      * @since   0.1.0
      */
-    @ExperimentalUnsignedTypes
     @ExperimentalChatLinks
-    public data class User(
+    public data class User @ExperimentalUnsignedTypes constructor(
+        // https://youtrack.jetbrains.com/issue/KT-31880
         @get:JvmName("getAccountGuid")
         val accountGuid: UByteArray,
         @get:JvmName("getCharacterName")
@@ -857,16 +857,20 @@ public sealed class ChatLink {
         }
 
         init {
+            @OptIn(ExperimentalUnsignedTypes::class)
             require(accountGuid.size == 16) { "User `accountGuid` is not a valid GUID" }
         }
 
+        @ExperimentalUnsignedTypes
         override fun asUByteArray(): UByteArray = buildArray(accountGuid.size + characterName.size + 3) {
             putByte(IDENTIFIER.toUByte())
             accountGuid.forEach { putByte(it) }
             characterName.forEach { putByte(it) }
+
             putShort(0u)
         }
 
+        @OptIn(ExperimentalUnsignedTypes::class)
         override fun equals(other: Any?): Boolean {
             if (this === other) return true
 
@@ -875,6 +879,7 @@ public sealed class ChatLink {
                 && characterName.contentEquals(other.characterName)
         }
 
+        @OptIn(ExperimentalUnsignedTypes::class)
         override fun hashCode(): Int {
             val prime = 31
             var result = 1
