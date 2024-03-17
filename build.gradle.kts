@@ -21,6 +21,8 @@
  */
 import dev.adamko.dokkatoo.tasks.DokkatooGenerateTask
 import dev.adamko.dokkatoo.workers.WorkerIsolation
+import groovy.util.Node
+import groovy.util.NodeList
 import org.apache.tools.ant.taskdefs.condition.Os
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
@@ -233,6 +235,11 @@ tasks {
     dokkatooGeneratePublicationHtml {
         outputDirectory = layout.projectDirectory.dir("docs/site/api")
     }
+
+    // See https://github.com/GW2ToolBelt/GW2ChatLinks/issues/18
+    generatePomFileForKotlinMultiplatformPublication {
+        dependsOn(project.tasks.named("generatePomFileForJvmPublication"))
+    }
 }
 
 publishing {
@@ -247,6 +254,38 @@ publishing {
 
             // GW2ChatLinks -> gw2chatlinks
             artifactId = artifactId.lowercase()
+        }
+
+        // See https://github.com/GW2ToolBelt/GW2ChatLinks/issues/18
+        named<MavenPublication>("kotlinMultiplatform") {
+            val jvmPublication = publications.getByName<MavenPublication>("jvm")
+
+            lateinit var jvmXml: XmlProvider
+            jvmPublication.pom?.withXml { jvmXml = this }
+
+            pom.withXml {
+                val xmlProvider = this
+                val root = xmlProvider.asNode()
+                // Remove the original content and add the content from the platform POM:
+                root.children().toList().forEach { root.remove(it as Node) }
+                jvmXml.asNode().children().forEach { root.append(it as Node) }
+
+                // Adjust the self artifact ID, as it should match the root module's coordinates:
+                ((root.get("artifactId") as NodeList).first() as Node).setValue(artifactId)
+
+                // Set packaging to POM to indicate that there's no artifact:
+                root.appendNode("packaging", "pom")
+
+                // Remove the original platform dependencies and add a single dependency on the platform
+                // module:
+                val dependencies = (root.get("dependencies") as NodeList).first() as Node
+                dependencies.children().toList().forEach { dependencies.remove(it as Node) }
+                val singleDependency = dependencies.appendNode("dependency")
+                singleDependency.appendNode("groupId", jvmPublication.groupId)
+                singleDependency.appendNode("artifactId", jvmPublication.artifactId)
+                singleDependency.appendNode("version", jvmPublication.version)
+                singleDependency.appendNode("scope", "compile")
+            }
         }
     }
 }
