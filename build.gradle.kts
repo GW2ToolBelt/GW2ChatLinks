@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-import dev.adamko.dokkatoo.tasks.DokkatooGenerateTask
-import dev.adamko.dokkatoo.workers.WorkerIsolation
 import groovy.util.Node
 import groovy.util.NodeList
 import org.apache.tools.ant.taskdefs.condition.Os
