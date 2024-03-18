@@ -6,8 +6,16 @@ on:
         description: The environment to publish to
         type: environment
 
+
+concurrency:
+  group: "publish"
+  cancel-in-progress: false
+
+
 env:
   JDK_VERSION: "21"
+  DOCS_WORKSPACE_ARCHIVE: docs-workspace.tar
+  DOCS_WORKSPACE_ARTIFACT: docs-build-results
   WORKSPACE_ARCHIVE: workspace.tar
   WORKSPACE_ARTIFACT: build-results
 
@@ -83,6 +91,79 @@ jobs:
 
       - name: Gradle Check
         run: ./gradlew check --info -S --show-version
+
+
+  build-docs:
+    name: Build Documentation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Untar
+        run: |
+          tar -xvf ${{ env.WORKSPACE_ARCHIVE }}
+          rm ${{ env.WORKSPACE_ARCHIVE }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+
+      - name: Install dependencies
+        run: pip3 install --no-deps -r .github/workflows/mkdocs-requirements.txt
+
+      - name: Configure git for mike
+        shell: bash
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git fetch origin gh-pages --depth=1
+
+      - name: Get Version
+        id: version
+        run: grep '^version=' gradle.properties >> $GITHUB_OUTPUT
+
+      - name: Mike Deploy
+        env:
+          VERSION_NAME: ${{ steps.version.outputs.version }}
+        run: mike deploy -u $VERSION_NAME latest
+
+      - name: Tar files
+        run: tar -cvf ${{ env.DOCS_WORKSPACE_ARCHIVE }} .
+
+      - name: Upload workspace artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.DOCS_WORKSPACE_ARTIFACT }}
+          path: ${{ env.DOCS_WORKSPACE_ARCHIVE }}
+          retention-days: 1
+
+
+  ghp-release:
+    name: Release Documentation to GitHub Pages
+    needs: [build-docs, close-staging-repository]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ env.DOCS_WORKSPACE_ARTIFACT }}
+          path: .
+
+      - name: Untar
+        run: |
+          tar -xvf ${{ env.DOCS_WORKSPACE_ARCHIVE }}
+          rm ${{ env.DOCS_WORKSPACE_ARCHIVE }}
+
+      - name: Configure git
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+
+      - name: Push to GH Pages
+        run: git push origin gh-pages
 
 
   create-staging-repository:
