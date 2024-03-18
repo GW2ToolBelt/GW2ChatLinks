@@ -14,8 +14,8 @@ concurrency:
 
 env:
   JDK_VERSION: "21"
-  DOCS_WORKSPACE_ARCHIVE: docs-workspace.tar
-  DOCS_WORKSPACE_ARTIFACT: docs-build-results
+  DOCS_BUNDLE: docs.bundle
+  DOCS_BUNDLE_ARTIFACT: docs-bundle
   WORKSPACE_ARCHIVE: workspace.tar
   WORKSPACE_ARTIFACT: build-results
 
@@ -49,7 +49,7 @@ jobs:
         run: ./gradlew assemble --info -S --show-version
 
       - name: Tar files
-        run: tar -cvf ${{ env.WORKSPACE_ARCHIVE }} .
+        run: tar --exclude='.git' -cvf ${{ env.WORKSPACE_ARCHIVE }} .
 
       - uses: actions/upload-artifact@v4
         with:
@@ -99,6 +99,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Checkout
         uses: actions/download-artifact@v4
         with:
           name: ubuntu-latest-${{ env.WORKSPACE_ARTIFACT }}
@@ -120,7 +123,7 @@ jobs:
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git fetch https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} gh-pages --depth=1
+          git fetch origin gh-pages --depth=1
 
       - name: Get Version
         id: version
@@ -131,14 +134,14 @@ jobs:
           VERSION_NAME: ${{ steps.version.outputs.version }}
         run: mike deploy -u $VERSION_NAME latest
 
-      - name: Tar files
-        run: tar -cvf ${{ env.DOCS_WORKSPACE_ARCHIVE }} .
+      - name: Create Bundle
+        run: git bundle create ${{ env.DOCS_BUNDLE }} gh-pages
 
       - name: Upload workspace artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.DOCS_WORKSPACE_ARTIFACT }}
-          path: ${{ env.DOCS_WORKSPACE_ARCHIVE }}
+          name: ${{ env.DOCS_BUNDLE_ARTIFACT }}
+          path: ${{ env.DOCS_BUNDLE }}
           retention-days: 1
 
 
@@ -150,15 +153,18 @@ jobs:
       contents: write
     steps:
       - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Checkout
         uses: actions/download-artifact@v4
         with:
-          name: ${{ env.DOCS_WORKSPACE_ARTIFACT }}
+          name: ${{ env.DOCS_BUNDLE_ARTIFACT }}
           path: .
 
-      - name: Untar
+      - name: Unpack git bundle
         run: |
-          tar -xvf ${{ env.DOCS_WORKSPACE_ARCHIVE }}
-          rm ${{ env.DOCS_WORKSPACE_ARCHIVE }}
+          git fetch ${{ env.DOCS_BUNDLE }} gh-pages:gh-pages
+          git switch --force gh-pages
 
       - name: Configure git
         run: |
