@@ -120,7 +120,7 @@ jobs:
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git fetch origin gh-pages --depth=1
+          git fetch https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} gh-pages --depth=1
 
       - name: Get Version
         id: version
@@ -164,10 +164,9 @@ jobs:
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
 
       - name: Push to GH Pages
-        run: git push origin gh-pages
+        run: git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} gh-pages
 
 
   create-staging-repository:
@@ -249,7 +248,7 @@ jobs:
 
   nexus-release:
     name: Release to Nexus
-    needs: [create-staging-repository, close-staging-repository]
+    needs: [create-staging-repository, close-staging-repository, ghp-release]
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
     steps:
