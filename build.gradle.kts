@@ -185,14 +185,6 @@ dokkatoo {
     }
 }
 
-configure<NodeJsRootExtension> {
-    // We need canary builds of Node + V8 but there are none for Windows.
-    if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
-        nodeVersion = "21.0.0-v8-canary202309143a48826a08"
-        nodeDownloadBaseUrl = "https://nodejs.org/download/v8-canary"
-    }
-}
-
 tasks {
     withType<JavaCompile>().configureEach {
         options.javaModuleVersion = "$version"
