@@ -33,10 +33,10 @@ import org.jetbrains.kotlin.gradle.targets.jvm.*
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    alias(libs.plugins.binary.compatibility.validator)
-    alias(libs.plugins.dokkatoo.html)
-//    alias(libs.plugins.dokkatoo.javadoc)
-    alias(libs.plugins.kotlin.multiplatform)
+    alias(buildDeps.plugins.binary.compatibility.validator)
+    alias(buildDeps.plugins.dokkatoo.html)
+//    alias(buildDeps.plugins.dokkatoo.javadoc)
+    alias(buildDeps.plugins.kotlin.multiplatform)
     id("com.gw2tb.maven-publish-conventions")
 }
 
@@ -184,7 +184,7 @@ dokkatoo {
     }
 
     versions {
-        jetbrainsDokka = libs.versions.dokka
+        jetbrainsDokka = buildDeps.versions.dokka
     }
 }
 
