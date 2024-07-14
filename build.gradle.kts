@@ -22,6 +22,7 @@
 import groovy.util.Node
 import groovy.util.NodeList
 import org.apache.tools.ant.taskdefs.condition.Os
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.plugin.mpp.*
@@ -53,13 +54,10 @@ kotlin {
     explicitApi()
     applyDefaultHierarchyTemplate()
 
-    targets.configureEach {
-        compilations.configureEach {
-            compilerOptions.configure {
-                apiVersion = KotlinVersion.KOTLIN_1_9
-                languageVersion = KotlinVersion.KOTLIN_1_9
-            }
-        }
+    @OptIn(ExperimentalKotlinGradlePluginApi::class)
+    compilerOptions {
+        apiVersion = KotlinVersion.KOTLIN_1_9
+        languageVersion = KotlinVersion.KOTLIN_1_9
     }
 
     js {
@@ -70,11 +68,10 @@ kotlin {
     jvm {
         withJava()
 
-        compilations.configureEach {
-            compilerOptions.configure {
-                jvmTarget = JvmTarget.JVM_11
-                freeCompilerArgs.add("-Xjdk-release=11")
-            }
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+        compilerOptions {
+            jvmTarget = JvmTarget.JVM_11
+            freeCompilerArgs.add("-Xjdk-release=11")
         }
     }
 
