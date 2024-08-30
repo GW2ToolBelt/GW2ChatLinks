@@ -214,10 +214,6 @@ tasks {
         includeEmptyDirs = false
     }
 
-    withType<KotlinNpmInstallTask>().configureEach {
-        args += "--ignore-engines"
-    }
-
     dokkatooGeneratePublicationHtml {
         outputDirectory = layout.projectDirectory.dir("docs/site/api")
     }
