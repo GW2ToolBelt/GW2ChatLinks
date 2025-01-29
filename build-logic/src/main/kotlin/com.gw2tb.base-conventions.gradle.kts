@@ -19,26 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-pluginManagement {
-    plugins {
-        id("org.gradle.toolchains.foojay-resolver-convention") version "0.9.0"
-    }
-
-    includeBuild("build-logic")
+repositories {
+    mavenCentral()
 }
-
-plugins {
-    id("org.gradle.toolchains.foojay-resolver-convention")
-}
-
-rootProject.name = "GW2ChatLinks"
-
-dependencyResolutionManagement {
-    versionCatalogs {
-        register("buildDeps") {
-            from(files("./gradle/build.versions.toml"))
-        }
-    }
-}
-
-enableFeaturePreview("STABLE_CONFIGURATION_CACHE")

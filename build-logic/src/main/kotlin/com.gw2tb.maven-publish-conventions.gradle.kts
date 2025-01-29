@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 plugins {
+    id("com.gw2tb.base-conventions")
     `maven-publish`
     signing
 }
