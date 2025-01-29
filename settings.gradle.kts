@@ -34,6 +34,12 @@ plugins {
 rootProject.name = "GW2ChatLinks"
 
 dependencyResolutionManagement {
+    repositoriesMode = RepositoriesMode.FAIL_ON_PROJECT_REPOS
+
+    repositories {
+        mavenCentral()
+    }
+
     versionCatalogs {
         create("buildDeps") {
             from(files("./gradle/build.versions.toml"))
