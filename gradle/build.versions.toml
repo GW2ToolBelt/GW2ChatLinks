@@ -1,16 +1,10 @@
 [versions]
 binary-compatibility-validator = "0.17.0"
 dokka = "2.0.0"
-dokkatoo = "2.4.0"
 kotlin = "2.1.10"
 
 
 [plugins]
-# dev.adamko.dokkatoo - Dokkatoo
-# https://github.com/adamko-dev/dokkatoo
-dokkatoo-html = { id = "dev.adamko.dokkatoo-html", version.ref = "dokkatoo" }
-dokkatoo-javadoc = { id = "dev.adamko.dokkatoo-javadoc", version.ref = "dokkatoo" }
-
 # org.jetbrains.kotlinx.binary-compatibility-validator - binary-compatibility-validator
 # https://github.com/Kotlin/binary-compatibility-validator
 binary-compatibility-validator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "binary-compatibility-validator" }
