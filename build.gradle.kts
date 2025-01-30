@@ -138,7 +138,7 @@ dokka {
         maxHeapSize = "4G"
     }
 
-    dokkaSourceSets.configureEach {
+    dokkaSourceSets.configureEach sourceSet@{
         reportUndocumented = true
         skipEmptyPackages = true
         jdkVersion = 11
@@ -149,7 +149,7 @@ dokka {
         sourceLink {
             localDirectory = localKotlinSourceDir
 
-            remoteUrl("https://github.com/GW2ToolBelt/GW2ChatLinks/tree/v${version}/src/main/kotlin")
+            remoteUrl("https://github.com/GW2ToolBelt/GW2ChatLinks/tree/v${version}/src/${this@sourceSet.name}/kotlin")
             remoteLineSuffix = "#L"
         }
     }
