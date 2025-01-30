@@ -31,8 +31,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     alias(buildDeps.plugins.binary.compatibility.validator)
-    alias(buildDeps.plugins.dokkatoo.html)
-//    alias(buildDeps.plugins.dokkatoo.javadoc)
+    alias(buildDeps.plugins.dokka)
+//    alias(buildDeps.plugins.dokka.javadoc)
     alias(buildDeps.plugins.kotlin.multiplatform)
     id("com.gw2tb.maven-publish-conventions")
 }
@@ -133,12 +133,12 @@ kotlin {
     }
 }
 
-dokkatoo {
+dokka {
     dokkaGeneratorIsolation = ProcessIsolation {
         maxHeapSize = "4G"
     }
 
-    dokkatooSourceSets.configureEach {
+    dokkaSourceSets.configureEach {
         reportUndocumented = true
         skipEmptyPackages = true
         jdkVersion = 11
@@ -154,15 +154,11 @@ dokkatoo {
         }
     }
 
-    dokkatooPublications.configureEach {
+    dokkaPublications.configureEach {
         moduleName = "GW2ChatLinks"
 
         // TODO Remaining warnings are silly atm. Reevaluate this flag in the future.
 //        failOnWarning = true
-    }
-
-    versions {
-        jetbrainsDokka = buildDeps.versions.dokka
     }
 }
 
@@ -196,7 +192,7 @@ tasks {
         includeEmptyDirs = false
     }
 
-    dokkatooGeneratePublicationHtml {
+    dokkaGeneratePublicationHtml {
         outputDirectory = layout.projectDirectory.dir("docs/site/api")
     }
 
