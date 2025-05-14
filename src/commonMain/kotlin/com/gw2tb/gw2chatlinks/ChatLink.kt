@@ -145,6 +145,7 @@ public fun decodeChatLink(
                     weaponSkillOverrides = weaponSkillOverrides
                 )
             }
+            ChatLink.Achievement.IDENTIFIER -> ChatLink.Achievement(achievementId = nextPaddedIdentifier())
             else -> error("Unsupported chat link format: ${identifier.toString(16)}")
         }
     }
@@ -179,6 +180,46 @@ public sealed class ChatLink {
 
     @ExperimentalUnsignedTypes
     internal abstract fun asUByteArray(): UByteArray
+
+    /**
+     * A link to an achievement.
+     *
+     * Only the shape of the parameters (e.g. list sizes) is validated and not the actual data (e.g. ID validity).
+     *
+     * @param achievementId the ID of the achievement. _(Must be in unsigned 24bit range.)_
+     *
+     * @throws IllegalArgumentException if any parameter value does not match its expected shape
+     *
+     * @since   1.1.0
+     */
+    public data class Achievement(
+        @get:JvmName("getAchievementId")
+        val achievementId: UInt
+    ) : ChatLink() {
+
+        internal companion object {
+            const val IDENTIFIER = 0x0E
+
+            /*
+             *    1 identifier
+             * +  3 achievementId
+             * +  1 reserved byte
+             */
+            const val BYTE_SIZE = 5
+        }
+
+        init {
+            require(achievementId < UINT_24BIT_MAX_VALUE) { "Achievement `achievementId` must be in unsigned 24bit range (0..167771215)" }
+        }
+
+        @ExperimentalUnsignedTypes
+        override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
+            putByte(IDENTIFIER.toUByte())
+            put3Bytes(achievementId)
+            putByte(0u)
+        }
+
+    }
 
     /**
      * A build template.

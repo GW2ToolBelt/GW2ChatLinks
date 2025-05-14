@@ -40,6 +40,7 @@ class ChatLinkTests {
 
     @Test
     fun testDecodeCoinLink() {
+        decodeChatLink("[&DrYAAAA=]")
         assertEquals(ChatLink.Coin(amount = 10203u), assertDoesNotThrow(decodeChatLink("[&AdsnAAA=]")))
     }
 
@@ -363,6 +364,22 @@ class ChatLinkTests {
         assertEquals("[&DQEQLyo6GzkmDyYPihI2AUgBSAH+AP4AtRKJEgAAAAAAAAAAAAAAAAAAAAACBQAvAAA=]", assertDoesNotThrow(encodeChatLink(buildTemplate)))
         assertEquals("[&DQQIGiA/Nyp5AC4XpQGlAbUAvAC8AKwBLhYuFjsuFS8AAAAAAAAAAAAAAAAAAWf3AAA=]", assertDoesNotThrow(encodeChatLink(rangerBuildTemplate)))
         assertEquals("[&DQkDJg8mPz3cEdwR1BHUESsSKxIGEgYSyhHKEQUCAgPUESsSBhIGEtQRKxICBQAvAAA=]", assertDoesNotThrow(encodeChatLink(revenantBuildTemplate)))
+    }
+
+    @Test
+    fun testDecodeAchievementLink() {
+        assertEquals(ChatLink.Achievement(achievementId = 182u), assertDoesNotThrow(decodeChatLink("[&DrYAAAA=]")))
+        assertEquals(ChatLink.Achievement(achievementId = 1681u), assertDoesNotThrow(decodeChatLink("[&DpEGAAA=]")))
+        assertEquals(ChatLink.Achievement(achievementId = 6532u), assertDoesNotThrow(decodeChatLink("[&DoQZAAA=]")))
+        assertEquals(ChatLink.Achievement(achievementId = 7139u), assertDoesNotThrow(decodeChatLink("[&DuMbAAA=]")))
+    }
+
+    @Test
+    fun testEncodeAchievementLink() {
+        assertEquals("[&DrYAAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Achievement(achievementId = 182u))))
+        assertEquals("[&DpEGAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Achievement(achievementId = 1681u))))
+        assertEquals("[&DoQZAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Achievement(achievementId = 6532u))))
+        assertEquals("[&DuMbAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Achievement(achievementId = 7139u))))
     }
 
 }
