@@ -25,6 +25,8 @@ import com.gw2tb.gw2chatlinks.internal.*
 import kotlin.io.encoding.Base64
 import kotlin.io.encoding.ExperimentalEncodingApi
 import kotlin.jvm.JvmName
+import kotlin.uuid.ExperimentalUuidApi
+import kotlin.uuid.Uuid
 
 private const val UINT_24BIT_MAX_VALUE = 0xFFFFFF16u
 
@@ -37,7 +39,12 @@ private const val UINT_24BIT_MAX_VALUE = 0xFFFFFF16u
  *
  * @since   0.1.0
  */
-@OptIn(ExperimentalChatLinks::class, ExperimentalEncodingApi::class, ExperimentalUnsignedTypes::class)
+@OptIn(
+    ExperimentalChatLinks::class,
+    ExperimentalEncodingApi::class,
+    ExperimentalUnsignedTypes::class,
+    ExperimentalUuidApi::class
+)
 public fun decodeChatLink(
     source: String
 ): Result<ChatLink> = runCatching {
@@ -85,7 +92,7 @@ public fun decodeChatLink(
             ChatLink.Skill.IDENTIFIER -> ChatLink.Skill(skillId = nextPaddedIdentifier())
             ChatLink.Trait.IDENTIFIER -> ChatLink.Trait(traitId = nextPaddedIdentifier())
             ChatLink.User.IDENTIFIER -> {
-                val accountGuid = UByteArray(16) { nextByte() }
+                val accountGuid = nextUuid()
                 val characterName = UByteArray(remaining - 2) { nextByte() }
 
                 nextShort().let { check(it == 0u.toUShort()) { "Expected two zero bytes but found: $it" } }
@@ -213,6 +220,7 @@ public sealed class ChatLink {
         }
 
         @ExperimentalUnsignedTypes
+        @ExperimentalUuidApi
         override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
             putByte(IDENTIFIER.toUByte())
             put3Bytes(achievementId)
@@ -303,6 +311,7 @@ public sealed class ChatLink {
         }
 
         @ExperimentalUnsignedTypes
+        @ExperimentalUuidApi
         override fun asUByteArray(): UByteArray = buildArray(BASE_BYTE_SIZE + (weapons.size * UShort.SIZE_BYTES) + (weaponSkillOverrides.size * UInt.SIZE_BYTES)) {
             putByte(IDENTIFIER.toUByte())
             putByte(professionId)
@@ -371,6 +380,7 @@ public sealed class ChatLink {
             }
 
             @ExperimentalUnsignedTypes
+            @ExperimentalUuidApi
             internal abstract fun ArrayBuilder.putContext()
 
         }
@@ -398,6 +408,7 @@ public sealed class ChatLink {
             }
 
             @ExperimentalUnsignedTypes
+            @ExperimentalUuidApi
             override fun ArrayBuilder.putContext() {
                 pets.forEach { petId -> putByte(petId) }
                 aquaticPets.forEach { petId -> putByte(petId) }
@@ -441,6 +452,7 @@ public sealed class ChatLink {
             }
 
             @ExperimentalUnsignedTypes
+            @ExperimentalUuidApi
             override fun ArrayBuilder.putContext() {
                 legends.forEach { legendId -> putByte(legendId) }
                 aquaticLegends.forEach { legendId -> putByte(legendId) }
@@ -478,6 +490,7 @@ public sealed class ChatLink {
         }
 
         @ExperimentalUnsignedTypes
+        @ExperimentalUuidApi
         override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
             putByte(IDENTIFIER.toUByte())
             putInt(amount)
@@ -537,6 +550,7 @@ public sealed class ChatLink {
         }
 
         @ExperimentalUnsignedTypes
+        @ExperimentalUuidApi
         override fun asUByteArray(): UByteArray = buildArray(
             size = BASE_SIZE
                 + (if (skinId != null) 4 else 0)
@@ -605,6 +619,7 @@ public sealed class ChatLink {
         }
 
         @ExperimentalUnsignedTypes
+        @ExperimentalUuidApi
         override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
             putByte(IDENTIFIER.toUByte())
             put3Bytes(textId)
@@ -645,6 +660,7 @@ public sealed class ChatLink {
         }
 
         @ExperimentalUnsignedTypes
+        @ExperimentalUuidApi
         override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
             putByte(IDENTIFIER.toUByte())
             put3Bytes(outfitId)
@@ -685,6 +701,7 @@ public sealed class ChatLink {
         }
 
         @ExperimentalUnsignedTypes
+        @ExperimentalUuidApi
         override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
             putByte(IDENTIFIER.toUByte())
             put3Bytes(poiId)
@@ -742,6 +759,7 @@ public sealed class ChatLink {
         }
 
         @ExperimentalUnsignedTypes
+        @ExperimentalUuidApi
         override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
             putByte(IDENTIFIER.toUByte())
             put3Bytes(recipeId)
@@ -782,6 +800,7 @@ public sealed class ChatLink {
         }
 
         @ExperimentalUnsignedTypes
+        @ExperimentalUuidApi
         override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
             putByte(IDENTIFIER.toUByte())
             put3Bytes(skillId)
@@ -822,6 +841,7 @@ public sealed class ChatLink {
         }
 
         @ExperimentalUnsignedTypes
+        @ExperimentalUuidApi
         override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
             putByte(IDENTIFIER.toUByte())
             put3Bytes(skinId)
@@ -862,6 +882,7 @@ public sealed class ChatLink {
         }
 
         @ExperimentalUnsignedTypes
+        @ExperimentalUuidApi
         override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
             putByte(IDENTIFIER.toUByte())
             put3Bytes(traitId)
@@ -885,10 +906,10 @@ public sealed class ChatLink {
      * @since   0.1.0
      */
     @ExperimentalChatLinks
-    public data class User @ExperimentalUnsignedTypes constructor(
+    public data class User @ExperimentalUnsignedTypes @ExperimentalUuidApi constructor(
         // https://youtrack.jetbrains.com/issue/KT-31880
         @get:JvmName("getAccountGuid")
-        val accountGuid: UByteArray,
+        val accountGuid: Uuid,
         @get:JvmName("getCharacterName")
         val characterName: UByteArray
     ) : ChatLink() {
@@ -897,34 +918,30 @@ public sealed class ChatLink {
             const val IDENTIFIER = 0x08
         }
 
-        init {
-            @OptIn(ExperimentalUnsignedTypes::class)
-            require(accountGuid.size == 16) { "User `accountGuid` is not a valid GUID" }
-        }
-
         @ExperimentalUnsignedTypes
-        override fun asUByteArray(): UByteArray = buildArray(accountGuid.size + characterName.size + 3) {
+        @ExperimentalUuidApi
+        override fun asUByteArray(): UByteArray = buildArray(Uuid.SIZE_BYTES + characterName.size + 3) {
             putByte(IDENTIFIER.toUByte())
-            accountGuid.forEach { putByte(it) }
+            putUuid(accountGuid)
             characterName.forEach { putByte(it) }
 
             putShort(0u)
         }
 
-        @OptIn(ExperimentalUnsignedTypes::class)
+        @OptIn(ExperimentalUnsignedTypes::class, ExperimentalUuidApi::class)
         override fun equals(other: Any?): Boolean {
             if (this === other) return true
 
             return other is User
-                && accountGuid.contentEquals(other.accountGuid)
+                && accountGuid == other.accountGuid
                 && characterName.contentEquals(other.characterName)
         }
 
-        @OptIn(ExperimentalUnsignedTypes::class)
+        @OptIn(ExperimentalUnsignedTypes::class, ExperimentalUuidApi::class)
         override fun hashCode(): Int {
             val prime = 31
             var result = 1
-            result = prime * result + accountGuid.contentHashCode()
+            result = prime * result + accountGuid.hashCode()
             result = prime * result + characterName.contentHashCode()
             return result
         }
@@ -969,6 +986,7 @@ public sealed class ChatLink {
         }
 
         @ExperimentalUnsignedTypes
+        @ExperimentalUuidApi
         override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
             putByte(IDENTIFIER.toUByte())
             put3Bytes(objectiveId)

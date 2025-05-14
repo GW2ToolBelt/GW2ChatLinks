@@ -23,8 +23,11 @@
 package com.gw2tb.gw2chatlinks
 
 import kotlin.test.*
+import kotlin.uuid.ExperimentalUuidApi
+import kotlin.uuid.Uuid
 
 @ExperimentalUnsignedTypes
+@ExperimentalUuidApi
 class ChatLinkTests {
 
     private fun <T> assertDoesNotThrow(block: () -> T): T {
@@ -140,7 +143,7 @@ class ChatLinkTests {
 
     @Test
     fun testDecodeUserLink() {
-        val accountGUID = ubyteArrayOf(0x1u, 0x02u, 0x03u, 0x04u, 0x05u, 0x06u, 0x07u, 0x08u, 0x09u, 0x0Au, 0x0Bu, 0x0Cu, 0x0Du, 0x0Eu, 0x0Fu, 0x10u)
+        val accountGUID = Uuid.parse("04030201-0605-0807-090A-0B0C0D0E0F10")
         val characterName = ubyteArrayOf(0x45u, 0x0u, 0x61u, 0x0u, 0x73u, 0x0u, 0x74u, 0x0u, 0x65u, 0x0u, 0x72u, 0x0u)
 
         assertEquals(ChatLink.User(accountGuid = accountGUID, characterName = characterName), assertDoesNotThrow(decodeChatLink("[&CAECAwQFBgcICQoLDA0ODxBFAGEAcwB0AGUAcgAAAA==]")))
@@ -148,7 +151,7 @@ class ChatLinkTests {
 
     @Test
     fun testEncodeUserLink() {
-        val accountGUID = ubyteArrayOf(0x1u, 0x02u, 0x03u, 0x04u, 0x05u, 0x06u, 0x07u, 0x08u, 0x09u, 0x0Au, 0x0Bu, 0x0Cu, 0x0Du, 0x0Eu, 0x0Fu, 0x10u)
+        val accountGUID = Uuid.parse("04030201-0605-0807-090A-0B0C0D0E0F10")
         val characterName = ubyteArrayOf(0x45u, 0x0u, 0x61u, 0x0u, 0x73u, 0x0u, 0x74u, 0x0u, 0x65u, 0x0u, 0x72u, 0x0u)
 
         assertEquals("[&CAECAwQFBgcICQoLDA0ODxBFAGEAcwB0AGUAcgAAAA==]", assertDoesNotThrow(encodeChatLink(ChatLink.User(accountGuid = accountGUID, characterName = characterName))))

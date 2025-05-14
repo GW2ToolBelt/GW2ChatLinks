@@ -21,15 +21,21 @@
  */
 package com.gw2tb.gw2chatlinks.internal
 
+import kotlin.uuid.ExperimentalUuidApi
+import kotlin.uuid.Uuid
+
 @ExperimentalUnsignedTypes
+@ExperimentalUuidApi
 internal fun buildArray(size: Int, block: ArrayBuilder.() -> Unit): UByteArray =
     UByteArray(size).also { ArrayBuilder(it).block() }
 
 @ExperimentalUnsignedTypes
+@ExperimentalUuidApi
 internal fun <T> parseArray(array: UByteArray, block: ArrayParser.() -> T): T =
     ArrayParser(array).block()
 
 @ExperimentalUnsignedTypes
+@ExperimentalUuidApi
 internal class ArrayBuilder(private val array: UByteArray) {
 
     var position: Int = 0
@@ -56,9 +62,30 @@ internal class ArrayBuilder(private val array: UByteArray) {
         array[position++] = (data shr 24).toUByte()
     }
 
+    fun putUuid(data: Uuid) {
+        val bytes = data.toUByteArray()
+
+        for (i in 3 downTo 0) {
+            array[position++] = bytes[i]
+        }
+
+        for (i in 5 downTo 4) {
+            array[position++] = bytes[i]
+        }
+
+        for (i in 7 downTo 6) {
+            array[position++] = bytes[i]
+        }
+
+        for (i in 8..15) {
+            array[position++] = bytes[i]
+        }
+    }
+
 }
 
 @ExperimentalUnsignedTypes
+@ExperimentalUuidApi
 internal class ArrayParser(private val array: UByteArray) {
 
     var position: Int = 0
@@ -81,6 +108,40 @@ internal class ArrayParser(private val array: UByteArray) {
 
     fun nextPaddedIdentifier() = next3Bytes().also {
         nextByte().let { check(it == 0u.toUByte()) { "Expected zero byte but found: $it" } }
+    }
+
+    fun nextUuid(): Uuid {
+        /*
+         * Anet encodes UUIDs in a slightly odd way:
+         * 04030201-0605-0807-090A-0B0C0D0E0F10
+         *
+         * is encoded as:
+         * - 01 02 03 04
+         * - 05 06
+         * - 07 08
+         * - 09 0A
+         * - 0B 0C 0D 0E 0F 10
+         */
+
+        val bytes = UByteArray(16)
+
+        for (i in 3 downTo 0) {
+            bytes[i] = nextByte()
+        }
+
+        for (i in 5 downTo 4) {
+            bytes[i] = nextByte()
+        }
+
+        for (i in 7 downTo 6) {
+            bytes[i] = nextByte()
+        }
+
+        for (i in 8..15) {
+            bytes[i] = nextByte()
+        }
+
+        return Uuid.fromUByteArray(bytes)
     }
 
 }
