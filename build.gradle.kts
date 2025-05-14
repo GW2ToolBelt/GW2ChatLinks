@@ -61,11 +61,33 @@ kotlin {
     }
 
     jvm {
-        withJava()
-
         compilerOptions {
             jvmTarget = JvmTarget.JVM_11
             freeCompilerArgs.add("-Xjdk-release=11")
+        }
+
+        compilations.configureEach {
+            compileJavaTaskProvider!!.configure {
+                options.javaModuleVersion = "$version"
+                options.release = 11
+            }
+        }
+
+        compilations.named("main") {
+            compileJavaTaskProvider!!.configure {
+                options.compilerArgumentProviders += object : CommandLineArgumentProvider {
+
+                    @InputFiles
+                    @PathSensitive(PathSensitivity.RELATIVE)
+                    val kotlinClasses = project.tasks.named<KotlinCompile>("compileKotlinJvm").flatMap(KotlinCompile::destinationDirectory)
+
+                    override fun asArguments() = listOf(
+                        "--patch-module",
+                        "com.gw2tb.gw2chatlinks=${kotlinClasses.get().asFile.absolutePath}"
+                    )
+
+                }
+            }
         }
     }
 
@@ -163,26 +185,6 @@ dokka {
 }
 
 tasks {
-    withType<JavaCompile>().configureEach {
-        options.javaModuleVersion = "$version"
-        options.release = 11
-    }
-
-    named<JavaCompile>("compileJava") {
-        options.compilerArgumentProviders += object : CommandLineArgumentProvider {
-
-            @InputFiles
-            @PathSensitive(PathSensitivity.RELATIVE)
-            val kotlinClasses = this@tasks.named<KotlinCompile>("compileKotlinJvm").flatMap(KotlinCompile::destinationDirectory)
-
-            override fun asArguments() = listOf(
-                "--patch-module",
-                "com.gw2tb.gw2chatlinks=${kotlinClasses.get().asFile.absolutePath}"
-            )
-
-        }
-    }
-
     withType<Jar>().configureEach {
         archiveBaseName = "gw2chatlinks"
 
