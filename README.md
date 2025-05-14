@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/badge/license-MIT-green.svg?style=for-the-badge&label=License)](https://github.com/GW2Toolbelt/GW2ChatLinks/blob/master/LICENSE)
 [![Maven Central](https://img.shields.io/maven-central/v/com.gw2tb.gw2chatlinks/gw2chatlinks.svg?style=for-the-badge&label=Maven%20Central)](https://maven-badges.herokuapp.com/maven-central/com.gw2tb.gw2chatlinks/gw2chatlinks)
 [![Documentation](https://img.shields.io/maven-central/v/com.gw2tb.gw2chatlinks/gw2chatlinks.svg?style=for-the-badge&label=Documentation&color=blue)](https://gw2toolbelt.github.io/GW2ChatLinks/)
-![Kotlin](https://img.shields.io/badge/Kotlin-1%2E9-green.svg?style=for-the-badge&color=a97bff&logo=Kotlin)
+![Kotlin](https://img.shields.io/badge/Kotlin-2%2E1-green.svg?style=for-the-badge&color=a97bff&logo=Kotlin)
 ![Java](https://img.shields.io/badge/Java-11-green.svg?style=for-the-badge&color=b07219&logo=Java)
 
 GW2ChatLinks is a Kotlin multiplatform library for de- and encoding Guild Wars 2
