@@ -1,7 +1,8 @@
-### 1.1.0
+### 2.0.0
 
-_Released 2025 May 14_
+_Released 2025 May 15_
 
-#### Improvements
+#### Breaking Changes
 
-- Added support for achievement chat links via `ChatLink.Achievement`. [[GH-136](https://github.com/GW2ToolBelt/GW2ChatLinks/issues/136)]
+- Migrated `ChatLink.User` to use Kotlin's experimental `Uuid` for `accountGuid`.
+- The required version of Kotlin was bumped from `1.9` to `2.1`.
