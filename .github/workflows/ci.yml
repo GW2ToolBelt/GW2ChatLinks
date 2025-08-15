@@ -140,11 +140,11 @@ jobs:
       actions: write
     steps:
       - name: Cleanup
-        uses: GeekyEggo/delete-artifact@f275313e70c08f6120db482d7a6b98377786765b
+        uses: GeekyEggo/delete-artifact@f275313e70c08f6120db482d7a6b98377786765b # v5
         with:
           name: macos-latest-${{ env.WORKSPACE_ARTIFACT }}
 
       - name: Cleanup
-        uses: GeekyEggo/delete-artifact@f275313e70c08f6120db482d7a6b98377786765b
+        uses: GeekyEggo/delete-artifact@f275313e70c08f6120db482d7a6b98377786765b #v5
         with:
           name: ubuntu-latest-${{ env.WORKSPACE_ARTIFACT }}
