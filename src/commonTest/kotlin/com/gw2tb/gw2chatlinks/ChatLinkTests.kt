@@ -385,4 +385,100 @@ class ChatLinkTests {
         assertEquals("[&DuMbAAA=]", assertDoesNotThrow(encodeChatLink(ChatLink.Achievement(achievementId = 7139u))))
     }
 
+    @Test
+    fun testDecodeFashionTemplateLink() {
+        val fashionTemplate = ChatLink.FashionTemplate(
+            aquabreatherSkinId = 13275u,
+            backpackSkinId = 7811u,
+            backpackColorIds = listOf(1u, 1u, 1u, 1u),
+            chestSkinId = 7662u,
+            chestColorIds = listOf(686u, 117u, 88u, 474u),
+            bootsSkinId = 7486u,
+            bootsColorIds = listOf(686u, 342u, 472u, 686u),
+            glovesSkinId = 6718u,
+            glovesColorIds = listOf(88u, 384u, 474u, 472u),
+            helmetSkinId = 2047u,
+            helmetColorIds = listOf(67u, 443u, 480u, 1u),
+            leggingsSkinId = 7619u,
+            leggingsColorIds = listOf(472u, 88u, 342u, 342u),
+            shouldersSkinId = 6686u,
+            shouldersColorIds = listOf(88u, 443u, 474u, 472u),
+            outfitId = 5u,
+            outfitColorIds = listOf(2u, 15u, 474u, 377u),
+            firstAquaticWeaponSkinId = 4671u,
+            secondAquaticWeaponSkinId = 0u,
+            firstMainhandWeaponSkinId = 4678u,
+            firstOffhandWeaponSkinId = 0u,
+            secondMainhandWeaponSkinId = 6552u,
+            secondOffhandWeaponSkinId = 10032u,
+            visibility = ChatLink.FashionTemplate.Visibility(
+                isAquabreatherVisible = true,
+                isBackpackVisible = false,
+                isChestVisible = true,
+                areBootsVisible = true,
+                areGlovesVisible = false,
+                isHelmetVisible = true,
+                areLeggingsVisible = true,
+                areShouldersVisible = false,
+                isOutfitVisible = false,
+                isFirstAquaticWeaponVisible = true,
+                isSecondAquaticWeaponVisible = true,
+                isFirstMainhandWeaponVisible = true,
+                isFirstOffhandWeaponVisible = true,
+                isSecondMainhandWeaponVisible = true,
+                isSecondOffhandWeaponVisible = true
+            )
+        )
+
+        assertEquals(fashionTemplate, assertDoesNotThrow(decodeChatLink("[&D9szgx4BAAEAAQABAO4drgJ1AFgA2gE+Ha4CVgHYAa4CPhpYAIAB2gHYAf8HQwC7AeABAQDDHdgBWABWAVYBHhpYALsB2gHYAQUAAgAPANoBeQE/EgAARhIAAJgZMCdtfg==]")))
+    }
+
+    @Test
+    fun testEncodeFashionTemplateLink() {
+        val fashionTemplate = ChatLink.FashionTemplate(
+            aquabreatherSkinId = 13275u,
+            backpackSkinId = 7811u,
+            backpackColorIds = listOf(1u, 1u, 1u, 1u),
+            chestSkinId = 7662u,
+            chestColorIds = listOf(686u, 117u, 88u, 474u),
+            bootsSkinId = 7486u,
+            bootsColorIds = listOf(686u, 342u, 472u, 686u),
+            glovesSkinId = 6718u,
+            glovesColorIds = listOf(88u, 384u, 474u, 472u),
+            helmetSkinId = 2047u,
+            helmetColorIds = listOf(67u, 443u, 480u, 1u),
+            leggingsSkinId = 7619u,
+            leggingsColorIds = listOf(472u, 88u, 342u, 342u),
+            shouldersSkinId = 6686u,
+            shouldersColorIds = listOf(88u, 443u, 474u, 472u),
+            outfitId = 5u,
+            outfitColorIds = listOf(2u, 15u, 474u, 377u),
+            firstAquaticWeaponSkinId = 4671u,
+            secondAquaticWeaponSkinId = 0u,
+            firstMainhandWeaponSkinId = 4678u,
+            firstOffhandWeaponSkinId = 0u,
+            secondMainhandWeaponSkinId = 6552u,
+            secondOffhandWeaponSkinId = 10032u,
+            visibility = ChatLink.FashionTemplate.Visibility(
+                isAquabreatherVisible = true,
+                isBackpackVisible = false,
+                isChestVisible = true,
+                areBootsVisible = true,
+                areGlovesVisible = false,
+                isHelmetVisible = true,
+                areLeggingsVisible = true,
+                areShouldersVisible = false,
+                isOutfitVisible = false,
+                isFirstAquaticWeaponVisible = true,
+                isSecondAquaticWeaponVisible = true,
+                isFirstMainhandWeaponVisible = true,
+                isFirstOffhandWeaponVisible = true,
+                isSecondMainhandWeaponVisible = true,
+                isSecondOffhandWeaponVisible = true
+            )
+        )
+
+        assertEquals("[&D9szgx4BAAEAAQABAO4drgJ1AFgA2gE+Ha4CVgHYAa4CPhpYAIAB2gHYAf8HQwC7AeABAQDDHdgBWABWAVYBHhpYALsB2gHYAQUAAgAPANoBeQE/EgAARhIAAJgZMCdtfg==]", assertDoesNotThrow(encodeChatLink(fashionTemplate)))
+    }
+
 }

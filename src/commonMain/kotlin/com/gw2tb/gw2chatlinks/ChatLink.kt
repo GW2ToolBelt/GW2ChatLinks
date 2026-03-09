@@ -24,6 +24,7 @@ package com.gw2tb.gw2chatlinks
 import com.gw2tb.gw2chatlinks.internal.*
 import kotlin.io.encoding.Base64
 import kotlin.io.encoding.ExperimentalEncodingApi
+import kotlin.jvm.JvmInline
 import kotlin.jvm.JvmName
 import kotlin.uuid.ExperimentalUuidApi
 import kotlin.uuid.Uuid
@@ -153,6 +154,34 @@ public fun decodeChatLink(
                 )
             }
             ChatLink.Achievement.IDENTIFIER -> ChatLink.Achievement(achievementId = nextPaddedIdentifier())
+            ChatLink.FashionTemplate.IDENTIFIER -> {
+                ChatLink.FashionTemplate(
+                    aquabreatherSkinId = nextShort(),
+                    backpackSkinId = nextShort(),
+                    backpackColorIds = List(4) { nextShort() },
+                    chestSkinId = nextShort(),
+                    chestColorIds = List(4) { nextShort() },
+                    bootsSkinId = nextShort(),
+                    bootsColorIds = List(4) { nextShort() },
+                    glovesSkinId = nextShort(),
+                    glovesColorIds = List(4) { nextShort() },
+                    helmetSkinId = nextShort(),
+                    helmetColorIds = List(4) { nextShort() },
+                    leggingsSkinId = nextShort(),
+                    leggingsColorIds = List(4) { nextShort() },
+                    shouldersSkinId = nextShort(),
+                    shouldersColorIds = List(4) { nextShort() },
+                    outfitId = nextShort(),
+                    outfitColorIds = List(4) { nextShort() },
+                    firstAquaticWeaponSkinId = nextShort(),
+                    secondAquaticWeaponSkinId = nextShort(),
+                    firstMainhandWeaponSkinId = nextShort(),
+                    firstOffhandWeaponSkinId = nextShort(),
+                    secondMainhandWeaponSkinId = nextShort(),
+                    secondOffhandWeaponSkinId = nextShort(),
+                    visibility = ChatLink.FashionTemplate.Visibility(nextShort())
+                )
+            }
             else -> error("Unsupported chat link format: ${identifier.toString(16)}")
         }
     }
@@ -220,7 +249,6 @@ public sealed class ChatLink {
         }
 
         @ExperimentalUnsignedTypes
-        @ExperimentalUuidApi
         override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
             putByte(IDENTIFIER.toUByte())
             put3Bytes(achievementId)
@@ -311,7 +339,6 @@ public sealed class ChatLink {
         }
 
         @ExperimentalUnsignedTypes
-        @ExperimentalUuidApi
         override fun asUByteArray(): UByteArray = buildArray(BASE_BYTE_SIZE + (weapons.size * UShort.SIZE_BYTES) + (weaponSkillOverrides.size * UInt.SIZE_BYTES)) {
             putByte(IDENTIFIER.toUByte())
             putByte(professionId)
@@ -380,7 +407,6 @@ public sealed class ChatLink {
             }
 
             @ExperimentalUnsignedTypes
-            @ExperimentalUuidApi
             internal abstract fun ArrayBuilder.putContext()
 
         }
@@ -408,7 +434,6 @@ public sealed class ChatLink {
             }
 
             @ExperimentalUnsignedTypes
-            @ExperimentalUuidApi
             override fun ArrayBuilder.putContext() {
                 pets.forEach { petId -> putByte(petId) }
                 aquaticPets.forEach { petId -> putByte(petId) }
@@ -452,7 +477,6 @@ public sealed class ChatLink {
             }
 
             @ExperimentalUnsignedTypes
-            @ExperimentalUuidApi
             override fun ArrayBuilder.putContext() {
                 legends.forEach { legendId -> putByte(legendId) }
                 aquaticLegends.forEach { legendId -> putByte(legendId) }
@@ -490,10 +514,359 @@ public sealed class ChatLink {
         }
 
         @ExperimentalUnsignedTypes
-        @ExperimentalUuidApi
         override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
             putByte(IDENTIFIER.toUByte())
             putInt(amount)
+        }
+
+    }
+
+    /**
+     * A fashion template.
+     *
+     * Only the shape of the parameters (e.g. list sizes) is validated and not the actual data (e.g. ID validity).
+     *
+     * @param aquabreatherSkinId            the ID of the aquabreather's skin
+     * @param backpackSkinId                the ID of the backpack's skin
+     * @param backpackColorIds              the IDs of the backpack's colors
+     * @param chestSkinId                   the ID of the chest armor's skin
+     * @param chestColorIds                 the IDs of the chest armor's colors
+     * @param bootsSkinId                   the ID of the boots' skin
+     * @param bootsColorIds                 the IDs of the boots' colors
+     * @param glovesSkinId                  the ID of the gloves' skin
+     * @param glovesColorIds                the IDs of the gloves' colors
+     * @param helmetSkinId                  the ID of the helmet's skin
+     * @param helmetColorIds                the IDs of the helmet's colors
+     * @param leggingsSkinId                the ID of the leggings' skin
+     * @param leggingsColorIds              the IDs of the leggings' colors
+     * @param shouldersSkinId               the ID of the shoulders' skin
+     * @param shouldersColorIds             the IDs of the shoulders' colors
+     * @param outfitId                      the ID of the outfit
+     * @param outfitColorIds                the IDs of the outfit's colors
+     * @param firstAquaticWeaponSkinId      the ID of the first aquatic weapon's skin
+     * @param secondAquaticWeaponSkinId     the ID of the second aquatic weapon's skin
+     * @param firstMainhandWeaponSkinId     the ID of the first primary weapon's skin
+     * @param firstOffhandWeaponSkinId      the ID of the first secondary weapon's skin
+     * @param secondMainhandWeaponSkinId    the ID of the second primary weapon's skin
+     * @param secondOffhandWeaponSkinId     the ID of the second secondary weapon's skin
+     * @param visibility                    the visibility settings for various equipment pieces
+     *
+     * @throws IllegalArgumentException if any parameter value does not match its expected shape
+     *
+     * @since   2.1.0
+     */
+    public data class FashionTemplate(
+        val aquabreatherSkinId: UShort,
+        val backpackSkinId: UShort,
+        val backpackColorIds: List<UShort>,
+        val chestSkinId: UShort,
+        val chestColorIds: List<UShort>,
+        val bootsSkinId: UShort,
+        val bootsColorIds: List<UShort>,
+        val glovesSkinId: UShort,
+        val glovesColorIds: List<UShort>,
+        val helmetSkinId: UShort,
+        val helmetColorIds: List<UShort>,
+        val leggingsSkinId: UShort,
+        val leggingsColorIds: List<UShort>,
+        val shouldersSkinId: UShort,
+        val shouldersColorIds: List<UShort>,
+        val outfitId: UShort,
+        val outfitColorIds: List<UShort>,
+        val firstAquaticWeaponSkinId: UShort,
+        val secondAquaticWeaponSkinId: UShort,
+        val firstMainhandWeaponSkinId: UShort,
+        val firstOffhandWeaponSkinId: UShort,
+        val secondMainhandWeaponSkinId: UShort,
+        val secondOffhandWeaponSkinId: UShort,
+        val visibility: Visibility
+    ) : ChatLink() {
+
+        internal companion object {
+            const val IDENTIFIER = 0x0F
+
+            /*
+             *    1 identifier
+             * +  2 aquabreatherSkinId
+             * +  2 backpackSkinId
+             * +  8 backpackColorIds
+             * +  2 chestSkinId
+             * +  8 chestColorIds
+             * +  2 bootsSkinId
+             * +  8 bootsColorIds
+             * +  2 glovesSkinId
+             * +  8 glovesColorIds
+             * +  2 helmetSkinId
+             * +  8 helmetColorIds
+             * +  2 leggingsSkinId
+             * +  8 leggingsColorIds
+             * +  2 shouldersSkinId
+             * +  8 shouldersColorIds
+             * +  2 outfitId
+             * +  8 outfitColorIds
+             * +  2 firstAquaticWeaponSkinId
+             * +  2 secondAquaticWeaponSkinId
+             * +  2 firstMainhandWeaponSkinId
+             * +  2 firstOffhandWeaponSkinId
+             * +  2 secondMainhandWeaponSkinId
+             * +  2 secondOffhandWeaponSkinId
+             * +  2 visibility
+             */
+            const val BYTE_SIZE = 97
+        }
+
+        init {
+            require(backpackColorIds.size == 4) { "FashionTemplate `backpackColorIds` must contain exactly four color IDs" }
+            require(chestColorIds.size == 4) { "FashionTemplate `chestColorIds` must contain exactly four color IDs" }
+            require(bootsColorIds.size == 4) { "FashionTemplate `bootsColorIds` must contain exactly four color IDs" }
+            require(glovesColorIds.size == 4) { "FashionTemplate `glovesColorIds` must contain exactly four color IDs" }
+            require(helmetColorIds.size == 4) { "FashionTemplate `helmetColorIds` must contain exactly four color IDs" }
+            require(leggingsColorIds.size == 4) { "FashionTemplate `leggingsColorIds` must contain exactly four color IDs" }
+            require(shouldersColorIds.size == 4) { "FashionTemplate `shouldersColorIds` must contain exactly four color IDs" }
+            require(outfitColorIds.size == 4) { "FashionTemplate `outfitColorIds` must contain exactly four color IDs" }
+        }
+
+        @ExperimentalUnsignedTypes
+        override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
+            putByte(IDENTIFIER.toUByte())
+            putShort(aquabreatherSkinId)
+            putShort(backpackSkinId)
+            backpackColorIds.forEach(::putShort)
+            putShort(chestSkinId)
+            chestColorIds.forEach(::putShort)
+            putShort(bootsSkinId)
+            bootsColorIds.forEach(::putShort)
+            putShort(glovesSkinId)
+            glovesColorIds.forEach(::putShort)
+            putShort(helmetSkinId)
+            helmetColorIds.forEach(::putShort)
+            putShort(leggingsSkinId)
+            leggingsColorIds.forEach(::putShort)
+            putShort(shouldersSkinId)
+            shouldersColorIds.forEach(::putShort)
+            putShort(outfitId)
+            outfitColorIds.forEach(::putShort)
+            putShort(firstAquaticWeaponSkinId)
+            putShort(secondAquaticWeaponSkinId)
+            putShort(firstMainhandWeaponSkinId)
+            putShort(firstOffhandWeaponSkinId)
+            putShort(secondMainhandWeaponSkinId)
+            putShort(secondOffhandWeaponSkinId)
+            putShort(visibility.bits)
+        }
+
+        /**
+         * The visibility flags of a fashion template.
+         *
+         * @param bits  the raw bits
+         *
+         * @since   2.1.0
+         */
+        @JvmInline
+        public value class Visibility(public val bits: UShort) {
+
+            private companion object {
+                private const val AQUABREATHER_MASK = 0x0001u
+                private const val BACKPACK_MASK = 0x0002u
+                private const val CHEST_MASK = 0x0004u
+                private const val BOOTS_MASK = 0x0008u
+                private const val GLOVES_MASK = 0x0010u
+                private const val HELMET_MASK = 0x0020u
+                private const val LEGGINGS_MASK = 0x0040u
+                private const val SHOULDERS_MASK = 0x0080u
+                private const val OUTFIT_MASK = 0x0100u
+                private const val FIRST_AQUATIC_WEAPON_MASK = 0x0200u
+                private const val SECOND_AQUATIC_WEAPON_MASK = 0x0400u
+                private const val FIRST_MAINHAND_WEAPON_MASK = 0x0800u
+                private const val FIRST_OFFHAND_WEAPON_MASK = 0x1000u
+                private const val SECOND_MAINHAND_WEAPON_MASK = 0x2000u
+                private const val SECOND_OFFHAND_WEAPON_MASK = 0x4000u
+            }
+
+            /**
+             * Constructs a new visibility bitset for a fashion template.
+             *
+             * @param isAquabreatherVisible         whether the aquabreather is visible
+             * @param isBackpackVisible             whether the backpack is visible
+             * @param isChestVisible                whether the chest armor is visible
+             * @param areBootsVisible              whether the boots are visible
+             * @param areGlovesVisible              whether the gloves are visible
+             * @param isHelmetVisible               whether the helmet is visible
+             * @param areLeggingsVisible            whether the leggings are visible
+             * @param areShouldersVisible           whether the shoulders are visible
+             * @param isOutfitVisible               whether the outfit is visible
+             * @param isFirstAquaticWeaponVisible   whether the first aquatic weapon is visible
+             * @param isSecondAquaticWeaponVisible  whether the second aquatic weapon is visible
+             * @param isFirstMainhandWeaponVisible  whether the first primary weapon is visible
+             * @param isFirstOffhandWeaponVisible   whether the first secondary weapon is visible
+             * @param isSecondMainhandWeaponVisible whether the second primary weapon is visible
+             * @param isSecondOffhandWeaponVisible whether the second secondary weapon is visible
+             *
+             * @since   2.1.0
+             */
+            public constructor(
+                isAquabreatherVisible: Boolean,
+                isBackpackVisible: Boolean,
+                isChestVisible: Boolean,
+                areBootsVisible: Boolean,
+                areGlovesVisible: Boolean,
+                isHelmetVisible: Boolean,
+                areLeggingsVisible: Boolean,
+                areShouldersVisible: Boolean,
+                isOutfitVisible: Boolean,
+                isFirstAquaticWeaponVisible: Boolean,
+                isSecondAquaticWeaponVisible: Boolean,
+                isFirstMainhandWeaponVisible: Boolean,
+                isFirstOffhandWeaponVisible: Boolean,
+                isSecondMainhandWeaponVisible: Boolean,
+                isSecondOffhandWeaponVisible: Boolean
+            ) : this(Unit.let {
+                var bits = 0u
+
+                if (isAquabreatherVisible) bits = bits or AQUABREATHER_MASK
+                if (isBackpackVisible) bits = bits or BACKPACK_MASK
+                if (isChestVisible) bits = bits or CHEST_MASK
+                if (areBootsVisible) bits = bits or BOOTS_MASK
+                if (areGlovesVisible) bits = bits or GLOVES_MASK
+                if (isHelmetVisible) bits = bits or HELMET_MASK
+                if (areLeggingsVisible) bits = bits or LEGGINGS_MASK
+                if (areShouldersVisible) bits = bits or SHOULDERS_MASK
+                if (isOutfitVisible) bits = bits or OUTFIT_MASK
+                if (isFirstAquaticWeaponVisible) bits = bits or FIRST_AQUATIC_WEAPON_MASK
+                if (isSecondAquaticWeaponVisible) bits = bits or SECOND_AQUATIC_WEAPON_MASK
+                if (isFirstMainhandWeaponVisible) bits = bits or FIRST_MAINHAND_WEAPON_MASK
+                if (isFirstOffhandWeaponVisible) bits = bits or FIRST_OFFHAND_WEAPON_MASK
+                if (isSecondMainhandWeaponVisible) bits = bits or SECOND_MAINHAND_WEAPON_MASK
+                if (isSecondOffhandWeaponVisible) bits = bits or SECOND_OFFHAND_WEAPON_MASK
+
+                bits.toUShort()
+            })
+
+            /**
+             * Returns whether the aquabreather is visible.
+             *
+             * @since   2.1.0
+             */
+            public val isAquabreatherVisible: Boolean get() = (bits.toUInt() and AQUABREATHER_MASK) != 0u
+
+            /**
+             * Returns whether the backpack is visible.
+             *
+             * @since   2.1.0
+             */
+            public val isBackpackVisible: Boolean get() = (bits.toUInt() and BACKPACK_MASK) != 0u
+
+            /**
+             * Returns whether the chest armor is visible.
+             *
+             * @since   2.1.0
+             */
+            public val isChestVisible: Boolean get() = (bits.toUInt() and CHEST_MASK) != 0u
+
+            /**
+             * Returns whether the boots are visible.
+             *
+             * @since   2.1.0
+             */
+            public val areBootsVisible: Boolean get() = (bits.toUInt() and BOOTS_MASK) != 0u
+
+            /**
+             * Returns whether the gloves are visible.
+             *
+             * @since   2.1.0
+             */
+            public val areGlovesVisible: Boolean get() = (bits.toUInt() and GLOVES_MASK) != 0u
+
+            /**
+             * Returns whether the helmet is visible.
+             *
+             * @since   2.1.0
+             */
+            public val isHelmetVisible: Boolean get() = (bits.toUInt() and HELMET_MASK) != 0u
+
+            /**
+             * Returns whether the leggings are visible.
+             *
+             * @since   2.1.0
+             */
+            public val areLeggingsVisible: Boolean get() = (bits.toUInt() and LEGGINGS_MASK) != 0u
+
+            /**
+             * Returns whether the shoulder armor is visible.
+             *
+             * @since   2.1.0
+             */
+            public val areShouldersVisible: Boolean get() = (bits.toUInt() and SHOULDERS_MASK) != 0u
+
+            /**
+             * Returns whether the outfit is visible.
+             *
+             * @since   2.1.0
+             */
+            public val isOutfitVisible: Boolean get() = (bits.toUInt() and OUTFIT_MASK) != 0u
+
+            /**
+             * Returns whether the first aquatic weapon is visible.
+             *
+             * @since   2.1.0
+             */
+            public val isFirstAquaticWeaponVisible: Boolean get() = (bits.toUInt() and FIRST_AQUATIC_WEAPON_MASK) != 0u
+
+            /**
+             * Returns whether the second aquatic weapon is visible.
+             *
+             * @since   2.1.0
+             */
+            public val isSecondAquaticWeaponVisible: Boolean get() = (bits.toUInt() and SECOND_AQUATIC_WEAPON_MASK) != 0u
+
+            /**
+             * Returns whether the first primary weapon is visible.
+             *
+             * @since   2.1.0
+             */
+            public val isFirstMainhandWeaponVisible: Boolean get() = (bits.toUInt() and FIRST_MAINHAND_WEAPON_MASK) != 0u
+
+            /**
+             * Returns whether the first secondary weapon is visible.
+             *
+             * @since   2.1.0
+             */
+            public val isFirstOffhandWeaponVisible: Boolean get() = (bits.toUInt() and FIRST_OFFHAND_WEAPON_MASK) != 0u
+
+            /**
+             * Returns whether the second primary weapon is visible.
+             *
+             * @since   2.1.0
+             */
+            public val isSecondMainhandWeaponVisible: Boolean get() = (bits.toUInt() and SECOND_MAINHAND_WEAPON_MASK) != 0u
+
+            /**
+             * Returns whether the second secondary weapon is visible.
+             *
+             * @since   2.1.0
+             */
+            public val isSecondOffhandWeaponVisible: Boolean get() = (bits.toUInt() and SECOND_OFFHAND_WEAPON_MASK) != 0u
+
+            override fun toString(): String = buildString {
+                append("Visibility(")
+                append("isAquabreatherVisible=$isAquabreatherVisible,")
+                append(" isBackpackVisible=$isBackpackVisible,")
+                append(" isChestVisible=$isChestVisible,")
+                append(" areBootsVisible=$areBootsVisible,")
+                append(" areGlovesVisible=$areGlovesVisible,")
+                append(" isHelmetVisible=$isHelmetVisible,")
+                append(" areLeggingsVisible=$areLeggingsVisible,")
+                append(" areShouldersVisible=$areShouldersVisible,")
+                append(" isOutfitVisible=$isOutfitVisible,")
+                append(" isFirstAquaticWeaponVisible=$isFirstAquaticWeaponVisible,")
+                append(" isSecondAquaticWeaponVisible=$isSecondAquaticWeaponVisible,")
+                append(" isFirstMainhandWeaponVisible=$isFirstMainhandWeaponVisible,")
+                append(" isFirstOffhandWeaponVisible=$isFirstOffhandWeaponVisible,")
+                append(" isSecondMainhandWeaponVisible=$isSecondMainhandWeaponVisible,")
+                append(" isSecondOffhandWeaponVisible=$isSecondOffhandWeaponVisible")
+                append(")")
+            }
+
         }
 
     }
@@ -550,7 +923,6 @@ public sealed class ChatLink {
         }
 
         @ExperimentalUnsignedTypes
-        @ExperimentalUuidApi
         override fun asUByteArray(): UByteArray = buildArray(
             size = BASE_SIZE
                 + (if (skinId != null) 4 else 0)
@@ -619,7 +991,6 @@ public sealed class ChatLink {
         }
 
         @ExperimentalUnsignedTypes
-        @ExperimentalUuidApi
         override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
             putByte(IDENTIFIER.toUByte())
             put3Bytes(textId)
@@ -660,7 +1031,6 @@ public sealed class ChatLink {
         }
 
         @ExperimentalUnsignedTypes
-        @ExperimentalUuidApi
         override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
             putByte(IDENTIFIER.toUByte())
             put3Bytes(outfitId)
@@ -701,7 +1071,6 @@ public sealed class ChatLink {
         }
 
         @ExperimentalUnsignedTypes
-        @ExperimentalUuidApi
         override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
             putByte(IDENTIFIER.toUByte())
             put3Bytes(poiId)
@@ -759,7 +1128,6 @@ public sealed class ChatLink {
         }
 
         @ExperimentalUnsignedTypes
-        @ExperimentalUuidApi
         override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
             putByte(IDENTIFIER.toUByte())
             put3Bytes(recipeId)
@@ -800,7 +1168,6 @@ public sealed class ChatLink {
         }
 
         @ExperimentalUnsignedTypes
-        @ExperimentalUuidApi
         override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
             putByte(IDENTIFIER.toUByte())
             put3Bytes(skillId)
@@ -841,7 +1208,6 @@ public sealed class ChatLink {
         }
 
         @ExperimentalUnsignedTypes
-        @ExperimentalUuidApi
         override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
             putByte(IDENTIFIER.toUByte())
             put3Bytes(skinId)
@@ -882,7 +1248,6 @@ public sealed class ChatLink {
         }
 
         @ExperimentalUnsignedTypes
-        @ExperimentalUuidApi
         override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
             putByte(IDENTIFIER.toUByte())
             put3Bytes(traitId)
@@ -986,7 +1351,6 @@ public sealed class ChatLink {
         }
 
         @ExperimentalUnsignedTypes
-        @ExperimentalUuidApi
         override fun asUByteArray(): UByteArray = buildArray(BYTE_SIZE) {
             putByte(IDENTIFIER.toUByte())
             put3Bytes(objectiveId)

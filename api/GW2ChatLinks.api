@@ -102,6 +102,95 @@ public final class com/gw2tb/gw2chatlinks/ChatLink$Coin : com/gw2tb/gw2chatlinks
 	public fun toString ()Ljava/lang/String;
 }
 
+public final class com/gw2tb/gw2chatlinks/ChatLink$FashionTemplate : com/gw2tb/gw2chatlinks/ChatLink {
+	public static final field BYTE_SIZE I
+	public static final field IDENTIFIER I
+	public synthetic fun <init> (SSLjava/util/List;SLjava/util/List;SLjava/util/List;SLjava/util/List;SLjava/util/List;SLjava/util/List;SLjava/util/List;SLjava/util/List;SSSSSSSLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-Mh2AYeg ()S
+	public final fun component10-Mh2AYeg ()S
+	public final fun component11 ()Ljava/util/List;
+	public final fun component12-Mh2AYeg ()S
+	public final fun component13 ()Ljava/util/List;
+	public final fun component14-Mh2AYeg ()S
+	public final fun component15 ()Ljava/util/List;
+	public final fun component16-Mh2AYeg ()S
+	public final fun component17 ()Ljava/util/List;
+	public final fun component18-Mh2AYeg ()S
+	public final fun component19-Mh2AYeg ()S
+	public final fun component2-Mh2AYeg ()S
+	public final fun component20-Mh2AYeg ()S
+	public final fun component21-Mh2AYeg ()S
+	public final fun component22-Mh2AYeg ()S
+	public final fun component23-Mh2AYeg ()S
+	public final fun component24-4f-jLK0 ()S
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4-Mh2AYeg ()S
+	public final fun component5 ()Ljava/util/List;
+	public final fun component6-Mh2AYeg ()S
+	public final fun component7 ()Ljava/util/List;
+	public final fun component8-Mh2AYeg ()S
+	public final fun component9 ()Ljava/util/List;
+	public final fun copy-olql3oY (SSLjava/util/List;SLjava/util/List;SLjava/util/List;SLjava/util/List;SLjava/util/List;SLjava/util/List;SLjava/util/List;SLjava/util/List;SSSSSSS)Lcom/gw2tb/gw2chatlinks/ChatLink$FashionTemplate;
+	public static synthetic fun copy-olql3oY$default (Lcom/gw2tb/gw2chatlinks/ChatLink$FashionTemplate;SSLjava/util/List;SLjava/util/List;SLjava/util/List;SLjava/util/List;SLjava/util/List;SLjava/util/List;SLjava/util/List;SLjava/util/List;SSSSSSSILjava/lang/Object;)Lcom/gw2tb/gw2chatlinks/ChatLink$FashionTemplate;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAquabreatherSkinId-Mh2AYeg ()S
+	public final fun getBackpackColorIds ()Ljava/util/List;
+	public final fun getBackpackSkinId-Mh2AYeg ()S
+	public final fun getBootsColorIds ()Ljava/util/List;
+	public final fun getBootsSkinId-Mh2AYeg ()S
+	public final fun getChestColorIds ()Ljava/util/List;
+	public final fun getChestSkinId-Mh2AYeg ()S
+	public final fun getFirstAquaticWeaponSkinId-Mh2AYeg ()S
+	public final fun getFirstMainhandWeaponSkinId-Mh2AYeg ()S
+	public final fun getFirstOffhandWeaponSkinId-Mh2AYeg ()S
+	public final fun getGlovesColorIds ()Ljava/util/List;
+	public final fun getGlovesSkinId-Mh2AYeg ()S
+	public final fun getHelmetColorIds ()Ljava/util/List;
+	public final fun getHelmetSkinId-Mh2AYeg ()S
+	public final fun getLeggingsColorIds ()Ljava/util/List;
+	public final fun getLeggingsSkinId-Mh2AYeg ()S
+	public final fun getOutfitColorIds ()Ljava/util/List;
+	public final fun getOutfitId-Mh2AYeg ()S
+	public final fun getSecondAquaticWeaponSkinId-Mh2AYeg ()S
+	public final fun getSecondMainhandWeaponSkinId-Mh2AYeg ()S
+	public final fun getSecondOffhandWeaponSkinId-Mh2AYeg ()S
+	public final fun getShouldersColorIds ()Ljava/util/List;
+	public final fun getShouldersSkinId-Mh2AYeg ()S
+	public final fun getVisibility-4f-jLK0 ()S
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/gw2tb/gw2chatlinks/ChatLink$FashionTemplate$Visibility {
+	public static final synthetic fun box-impl (S)Lcom/gw2tb/gw2chatlinks/ChatLink$FashionTemplate$Visibility;
+	public static fun constructor-impl (S)S
+	public static fun constructor-impl (ZZZZZZZZZZZZZZZ)S
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (SLjava/lang/Object;)Z
+	public static final fun equals-impl0 (SS)Z
+	public static final fun getAreBootsVisible-impl (S)Z
+	public static final fun getAreGlovesVisible-impl (S)Z
+	public static final fun getAreLeggingsVisible-impl (S)Z
+	public static final fun getAreShouldersVisible-impl (S)Z
+	public final fun getBits-Mh2AYeg ()S
+	public fun hashCode ()I
+	public static fun hashCode-impl (S)I
+	public static final fun isAquabreatherVisible-impl (S)Z
+	public static final fun isBackpackVisible-impl (S)Z
+	public static final fun isChestVisible-impl (S)Z
+	public static final fun isFirstAquaticWeaponVisible-impl (S)Z
+	public static final fun isFirstMainhandWeaponVisible-impl (S)Z
+	public static final fun isFirstOffhandWeaponVisible-impl (S)Z
+	public static final fun isHelmetVisible-impl (S)Z
+	public static final fun isOutfitVisible-impl (S)Z
+	public static final fun isSecondAquaticWeaponVisible-impl (S)Z
+	public static final fun isSecondMainhandWeaponVisible-impl (S)Z
+	public static final fun isSecondOffhandWeaponVisible-impl (S)Z
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (S)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()S
+}
+
 public final class com/gw2tb/gw2chatlinks/ChatLink$Item : com/gw2tb/gw2chatlinks/ChatLink {
 	public static final field BASE_SIZE I
 	public static final field FIRST_UPGRADE_SLOT_IN_USE I

@@ -25,17 +25,14 @@ import kotlin.uuid.ExperimentalUuidApi
 import kotlin.uuid.Uuid
 
 @ExperimentalUnsignedTypes
-@ExperimentalUuidApi
 internal fun buildArray(size: Int, block: ArrayBuilder.() -> Unit): UByteArray =
     UByteArray(size).also { ArrayBuilder(it).block() }
 
 @ExperimentalUnsignedTypes
-@ExperimentalUuidApi
 internal fun <T> parseArray(array: UByteArray, block: ArrayParser.() -> T): T =
     ArrayParser(array).block()
 
 @ExperimentalUnsignedTypes
-@ExperimentalUuidApi
 internal class ArrayBuilder(private val array: UByteArray) {
 
     var position: Int = 0
@@ -62,6 +59,7 @@ internal class ArrayBuilder(private val array: UByteArray) {
         array[position++] = (data shr 24).toUByte()
     }
 
+    @ExperimentalUuidApi
     fun putUuid(data: Uuid) {
         val bytes = data.toUByteArray()
 
@@ -85,7 +83,6 @@ internal class ArrayBuilder(private val array: UByteArray) {
 }
 
 @ExperimentalUnsignedTypes
-@ExperimentalUuidApi
 internal class ArrayParser(private val array: UByteArray) {
 
     var position: Int = 0
@@ -110,6 +107,7 @@ internal class ArrayParser(private val array: UByteArray) {
         nextByte().let { check(it == 0u.toUByte()) { "Expected zero byte but found: $it" } }
     }
 
+    @ExperimentalUuidApi
     fun nextUuid(): Uuid {
         /*
          * Anet encodes UUIDs in a slightly odd way:
