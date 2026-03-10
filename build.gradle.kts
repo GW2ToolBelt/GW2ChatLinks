@@ -25,7 +25,6 @@ import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.plugin.mpp.*
-import org.jetbrains.kotlin.gradle.targets.js.yarn.*
 import org.jetbrains.kotlin.gradle.targets.jvm.*
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
@@ -36,9 +35,6 @@ plugins {
     alias(buildDeps.plugins.kotlin.multiplatform)
     id("com.gw2tb.maven-publish-conventions")
 }
-
-yarn.lockFileName = "kotlin-yarn.lock"
-yarn.lockFileDirectory = rootDir
 
 java {
     toolchain {
