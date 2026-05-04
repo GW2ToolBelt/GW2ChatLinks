@@ -6,7 +6,7 @@
 #
 babel==2.18.0
     # via mkdocs-material
-backrefs==6.2
+backrefs==7.0
     # via mkdocs-material
 certifi==2026.4.22
     # via requests
@@ -54,7 +54,7 @@ packaging==26.2
     # via mkdocs
 paginate==0.5.7
     # via mkdocs-material
-pathspec==1.1.0
+pathspec==1.1.1
     # via mkdocs
 platformdirs==4.9.6
     # via mkdocs-get-deps
