@@ -24,12 +24,12 @@ import groovy.util.NodeList
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
+import org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation
 import org.jetbrains.kotlin.gradle.plugin.mpp.*
 import org.jetbrains.kotlin.gradle.targets.jvm.*
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    alias(buildDeps.plugins.binary.compatibility.validator)
     alias(buildDeps.plugins.dokka)
 //    alias(buildDeps.plugins.dokka.javadoc)
     alias(buildDeps.plugins.kotlin.multiplatform)
@@ -45,6 +45,9 @@ java {
 kotlin {
     explicitApi()
     applyDefaultHierarchyTemplate()
+
+    @OptIn(ExperimentalAbiValidation::class)
+    abiValidation()
 
     compilerOptions {
         apiVersion = KotlinVersion.KOTLIN_2_1

@@ -1,0 +1,472 @@
+// Klib ABI Dump
+// Targets: [androidNativeArm32, androidNativeArm64, androidNativeX64, androidNativeX86, iosArm64, iosSimulatorArm64, iosX64, js, linuxArm64, linuxX64, macosArm64, macosX64, mingwX64, tvosArm64, tvosSimulatorArm64, tvosX64, wasmJs, wasmWasi, watchosArm32, watchosArm64, watchosDeviceArm64, watchosSimulatorArm64, watchosX64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <com.gw2tb.gw2chatlinks:GW2ChatLinks>
+open annotation class com.gw2tb.gw2chatlinks/ExperimentalChatLinks : kotlin/Annotation { // com.gw2tb.gw2chatlinks/ExperimentalChatLinks|null[0]
+    constructor <init>() // com.gw2tb.gw2chatlinks/ExperimentalChatLinks.<init>|<init>(){}[0]
+}
+
+final enum class com.gw2tb.gw2chatlinks/Weapon : kotlin/Enum<com.gw2tb.gw2chatlinks/Weapon> { // com.gw2tb.gw2chatlinks/Weapon|null[0]
+    enum entry AXE // com.gw2tb.gw2chatlinks/Weapon.AXE|null[0]
+    enum entry DAGGER // com.gw2tb.gw2chatlinks/Weapon.DAGGER|null[0]
+    enum entry FOCUS // com.gw2tb.gw2chatlinks/Weapon.FOCUS|null[0]
+    enum entry GREATSWORD // com.gw2tb.gw2chatlinks/Weapon.GREATSWORD|null[0]
+    enum entry HAMMER // com.gw2tb.gw2chatlinks/Weapon.HAMMER|null[0]
+    enum entry LONGBOW // com.gw2tb.gw2chatlinks/Weapon.LONGBOW|null[0]
+    enum entry MACE // com.gw2tb.gw2chatlinks/Weapon.MACE|null[0]
+    enum entry PISTOL // com.gw2tb.gw2chatlinks/Weapon.PISTOL|null[0]
+    enum entry RIFLE // com.gw2tb.gw2chatlinks/Weapon.RIFLE|null[0]
+    enum entry SCEPTER // com.gw2tb.gw2chatlinks/Weapon.SCEPTER|null[0]
+    enum entry SHIELD // com.gw2tb.gw2chatlinks/Weapon.SHIELD|null[0]
+    enum entry SHORTBOW // com.gw2tb.gw2chatlinks/Weapon.SHORTBOW|null[0]
+    enum entry STAFF // com.gw2tb.gw2chatlinks/Weapon.STAFF|null[0]
+    enum entry SWORD // com.gw2tb.gw2chatlinks/Weapon.SWORD|null[0]
+    enum entry TORCH // com.gw2tb.gw2chatlinks/Weapon.TORCH|null[0]
+    enum entry UNKNOWN // com.gw2tb.gw2chatlinks/Weapon.UNKNOWN|null[0]
+    enum entry WARHORN // com.gw2tb.gw2chatlinks/Weapon.WARHORN|null[0]
+
+    final val entries // com.gw2tb.gw2chatlinks/Weapon.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.gw2tb.gw2chatlinks/Weapon> // com.gw2tb.gw2chatlinks/Weapon.entries.<get-entries>|<get-entries>#static(){}[0]
+    final val paletteId // com.gw2tb.gw2chatlinks/Weapon.paletteId|{}paletteId[0]
+        final fun <get-paletteId>(): kotlin/UShort // com.gw2tb.gw2chatlinks/Weapon.paletteId.<get-paletteId>|<get-paletteId>(){}[0]
+
+    final fun valueOf(kotlin/String): com.gw2tb.gw2chatlinks/Weapon // com.gw2tb.gw2chatlinks/Weapon.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.gw2tb.gw2chatlinks/Weapon> // com.gw2tb.gw2chatlinks/Weapon.values|values#static(){}[0]
+
+    final object Companion { // com.gw2tb.gw2chatlinks/Weapon.Companion|null[0]
+        final fun valueOf(kotlin/UShort): com.gw2tb.gw2chatlinks/Weapon // com.gw2tb.gw2chatlinks/Weapon.Companion.valueOf|valueOf(kotlin.UShort){}[0]
+    }
+}
+
+open enum class com.gw2tb.gw2chatlinks/Profession : kotlin/Enum<com.gw2tb.gw2chatlinks/Profession> { // com.gw2tb.gw2chatlinks/Profession|null[0]
+    enum entry ELEMENTALIST // com.gw2tb.gw2chatlinks/Profession.ELEMENTALIST|null[0]
+    enum entry ENGINEER // com.gw2tb.gw2chatlinks/Profession.ENGINEER|null[0]
+    enum entry GUARDIAN // com.gw2tb.gw2chatlinks/Profession.GUARDIAN|null[0]
+    enum entry MESMER // com.gw2tb.gw2chatlinks/Profession.MESMER|null[0]
+    enum entry NECROMANCER // com.gw2tb.gw2chatlinks/Profession.NECROMANCER|null[0]
+    enum entry RANGER // com.gw2tb.gw2chatlinks/Profession.RANGER|null[0]
+    enum entry REVENANT // com.gw2tb.gw2chatlinks/Profession.REVENANT|null[0]
+    enum entry THIEF // com.gw2tb.gw2chatlinks/Profession.THIEF|null[0]
+    enum entry UNKNOWN // com.gw2tb.gw2chatlinks/Profession.UNKNOWN|null[0]
+    enum entry WARRIOR // com.gw2tb.gw2chatlinks/Profession.WARRIOR|null[0]
+
+    final val entries // com.gw2tb.gw2chatlinks/Profession.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.gw2tb.gw2chatlinks/Profession> // com.gw2tb.gw2chatlinks/Profession.entries.<get-entries>|<get-entries>#static(){}[0]
+    final val paletteId // com.gw2tb.gw2chatlinks/Profession.paletteId|{}paletteId[0]
+        final fun <get-paletteId>(): kotlin/UByte // com.gw2tb.gw2chatlinks/Profession.paletteId.<get-paletteId>|<get-paletteId>(){}[0]
+    final val professionId // com.gw2tb.gw2chatlinks/Profession.professionId|{}professionId[0]
+        final fun <get-professionId>(): kotlin/String // com.gw2tb.gw2chatlinks/Profession.professionId.<get-professionId>|<get-professionId>(){}[0]
+
+    final fun valueOf(kotlin/String): com.gw2tb.gw2chatlinks/Profession // com.gw2tb.gw2chatlinks/Profession.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.gw2tb.gw2chatlinks/Profession> // com.gw2tb.gw2chatlinks/Profession.values|values#static(){}[0]
+
+    final object Companion { // com.gw2tb.gw2chatlinks/Profession.Companion|null[0]
+        final fun valueOf(kotlin/UByte): com.gw2tb.gw2chatlinks/Profession // com.gw2tb.gw2chatlinks/Profession.Companion.valueOf|valueOf(kotlin.UByte){}[0]
+        final inline fun valueOf(com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate): com.gw2tb.gw2chatlinks/Profession // com.gw2tb.gw2chatlinks/Profession.Companion.valueOf|valueOf(com.gw2tb.gw2chatlinks.ChatLink.BuildTemplate){}[0]
+    }
+}
+
+final class com.gw2tb.gw2chatlinks/EncodingUnsupportedException : kotlin/UnsupportedOperationException // com.gw2tb.gw2chatlinks/EncodingUnsupportedException|null[0]
+
+sealed class com.gw2tb.gw2chatlinks/ChatLink { // com.gw2tb.gw2chatlinks/ChatLink|null[0]
+    final class Achievement : com.gw2tb.gw2chatlinks/ChatLink { // com.gw2tb.gw2chatlinks/ChatLink.Achievement|null[0]
+        constructor <init>(kotlin/UInt) // com.gw2tb.gw2chatlinks/ChatLink.Achievement.<init>|<init>(kotlin.UInt){}[0]
+
+        final val achievementId // com.gw2tb.gw2chatlinks/ChatLink.Achievement.achievementId|{}achievementId[0]
+            final fun <get-achievementId>(): kotlin/UInt // com.gw2tb.gw2chatlinks/ChatLink.Achievement.achievementId.<get-achievementId>|<get-achievementId>(){}[0]
+
+        final fun component1(): kotlin/UInt // com.gw2tb.gw2chatlinks/ChatLink.Achievement.component1|component1(){}[0]
+        final fun copy(kotlin/UInt = ...): com.gw2tb.gw2chatlinks/ChatLink.Achievement // com.gw2tb.gw2chatlinks/ChatLink.Achievement.copy|copy(kotlin.UInt){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.Achievement.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.gw2tb.gw2chatlinks/ChatLink.Achievement.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.gw2tb.gw2chatlinks/ChatLink.Achievement.toString|toString(){}[0]
+    }
+
+    final class BuildTemplate : com.gw2tb.gw2chatlinks/ChatLink { // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate|null[0]
+        constructor <init>(com.gw2tb.gw2chatlinks/Profession, kotlin.collections/List<com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.Specialization>, kotlin.collections/List<kotlin/UShort>, kotlin.collections/List<kotlin/UShort>, com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.ProfessionContext?, kotlin.collections/List<kotlin/UShort> = ..., kotlin.collections/List<kotlin/UInt> = ...) // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.<init>|<init>(com.gw2tb.gw2chatlinks.Profession;kotlin.collections.List<com.gw2tb.gw2chatlinks.ChatLink.BuildTemplate.Specialization>;kotlin.collections.List<kotlin.UShort>;kotlin.collections.List<kotlin.UShort>;com.gw2tb.gw2chatlinks.ChatLink.BuildTemplate.ProfessionContext?;kotlin.collections.List<kotlin.UShort>;kotlin.collections.List<kotlin.UInt>){}[0]
+        constructor <init>(kotlin/UByte, kotlin.collections/List<com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.Specialization>, kotlin.collections/List<kotlin/UShort>, kotlin.collections/List<kotlin/UShort>, com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.ProfessionContext?, kotlin.collections/List<kotlin/UShort> = ..., kotlin.collections/List<kotlin/UInt> = ...) // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.<init>|<init>(kotlin.UByte;kotlin.collections.List<com.gw2tb.gw2chatlinks.ChatLink.BuildTemplate.Specialization>;kotlin.collections.List<kotlin.UShort>;kotlin.collections.List<kotlin.UShort>;com.gw2tb.gw2chatlinks.ChatLink.BuildTemplate.ProfessionContext?;kotlin.collections.List<kotlin.UShort>;kotlin.collections.List<kotlin.UInt>){}[0]
+
+        final val aquaticSkills // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.aquaticSkills|{}aquaticSkills[0]
+            final fun <get-aquaticSkills>(): kotlin.collections/List<kotlin/UShort> // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.aquaticSkills.<get-aquaticSkills>|<get-aquaticSkills>(){}[0]
+        final val professionContext // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.professionContext|{}professionContext[0]
+            final fun <get-professionContext>(): com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.ProfessionContext? // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.professionContext.<get-professionContext>|<get-professionContext>(){}[0]
+        final val professionId // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.professionId|{}professionId[0]
+            final fun <get-professionId>(): kotlin/UByte // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.professionId.<get-professionId>|<get-professionId>(){}[0]
+        final val skills // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.skills|{}skills[0]
+            final fun <get-skills>(): kotlin.collections/List<kotlin/UShort> // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.skills.<get-skills>|<get-skills>(){}[0]
+        final val specializations // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.specializations|{}specializations[0]
+            final fun <get-specializations>(): kotlin.collections/List<com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.Specialization> // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.specializations.<get-specializations>|<get-specializations>(){}[0]
+        final val weaponSkillOverrides // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.weaponSkillOverrides|{}weaponSkillOverrides[0]
+            final fun <get-weaponSkillOverrides>(): kotlin.collections/List<kotlin/UInt> // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.weaponSkillOverrides.<get-weaponSkillOverrides>|<get-weaponSkillOverrides>(){}[0]
+        final val weapons // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.weapons|{}weapons[0]
+            final fun <get-weapons>(): kotlin.collections/List<kotlin/UShort> // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.weapons.<get-weapons>|<get-weapons>(){}[0]
+
+        final fun component1(): kotlin/UByte // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.component1|component1(){}[0]
+        final fun component2(): kotlin.collections/List<com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.Specialization> // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.component2|component2(){}[0]
+        final fun component3(): kotlin.collections/List<kotlin/UShort> // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.component3|component3(){}[0]
+        final fun component4(): kotlin.collections/List<kotlin/UShort> // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.component4|component4(){}[0]
+        final fun component5(): com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.ProfessionContext? // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.component5|component5(){}[0]
+        final fun component6(): kotlin.collections/List<kotlin/UShort> // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.component6|component6(){}[0]
+        final fun component7(): kotlin.collections/List<kotlin/UInt> // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.component7|component7(){}[0]
+        final fun copy(kotlin/UByte = ..., kotlin.collections/List<com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.Specialization> = ..., kotlin.collections/List<kotlin/UShort> = ..., kotlin.collections/List<kotlin/UShort> = ..., com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.ProfessionContext? = ..., kotlin.collections/List<kotlin/UShort> = ..., kotlin.collections/List<kotlin/UInt> = ...): com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.copy|copy(kotlin.UByte;kotlin.collections.List<com.gw2tb.gw2chatlinks.ChatLink.BuildTemplate.Specialization>;kotlin.collections.List<kotlin.UShort>;kotlin.collections.List<kotlin.UShort>;com.gw2tb.gw2chatlinks.ChatLink.BuildTemplate.ProfessionContext?;kotlin.collections.List<kotlin.UShort>;kotlin.collections.List<kotlin.UInt>){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.toString|toString(){}[0]
+
+        final class RangerContext : com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.ProfessionContext { // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RangerContext|null[0]
+            constructor <init>(kotlin.collections/List<kotlin/UByte>, kotlin.collections/List<kotlin/UByte>) // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RangerContext.<init>|<init>(kotlin.collections.List<kotlin.UByte>;kotlin.collections.List<kotlin.UByte>){}[0]
+
+            final val aquaticPets // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RangerContext.aquaticPets|{}aquaticPets[0]
+                final fun <get-aquaticPets>(): kotlin.collections/List<kotlin/UByte> // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RangerContext.aquaticPets.<get-aquaticPets>|<get-aquaticPets>(){}[0]
+            final val pets // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RangerContext.pets|{}pets[0]
+                final fun <get-pets>(): kotlin.collections/List<kotlin/UByte> // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RangerContext.pets.<get-pets>|<get-pets>(){}[0]
+
+            final fun component1(): kotlin.collections/List<kotlin/UByte> // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RangerContext.component1|component1(){}[0]
+            final fun component2(): kotlin.collections/List<kotlin/UByte> // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RangerContext.component2|component2(){}[0]
+            final fun copy(kotlin.collections/List<kotlin/UByte> = ..., kotlin.collections/List<kotlin/UByte> = ...): com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RangerContext // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RangerContext.copy|copy(kotlin.collections.List<kotlin.UByte>;kotlin.collections.List<kotlin.UByte>){}[0]
+            final fun equals(kotlin/Any?): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RangerContext.equals|equals(kotlin.Any?){}[0]
+            final fun hashCode(): kotlin/Int // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RangerContext.hashCode|hashCode(){}[0]
+            final fun toString(): kotlin/String // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RangerContext.toString|toString(){}[0]
+        }
+
+        final class RevenantContext : com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.ProfessionContext { // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RevenantContext|null[0]
+            constructor <init>(kotlin.collections/List<kotlin/UByte>, kotlin.collections/List<kotlin/UByte>, kotlin.collections/List<kotlin/UShort>, kotlin.collections/List<kotlin/UShort>) // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RevenantContext.<init>|<init>(kotlin.collections.List<kotlin.UByte>;kotlin.collections.List<kotlin.UByte>;kotlin.collections.List<kotlin.UShort>;kotlin.collections.List<kotlin.UShort>){}[0]
+
+            final val aquaticLegends // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RevenantContext.aquaticLegends|{}aquaticLegends[0]
+                final fun <get-aquaticLegends>(): kotlin.collections/List<kotlin/UByte> // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RevenantContext.aquaticLegends.<get-aquaticLegends>|<get-aquaticLegends>(){}[0]
+            final val inactiveAquaticLegendUtilitySkills // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RevenantContext.inactiveAquaticLegendUtilitySkills|{}inactiveAquaticLegendUtilitySkills[0]
+                final fun <get-inactiveAquaticLegendUtilitySkills>(): kotlin.collections/List<kotlin/UShort> // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RevenantContext.inactiveAquaticLegendUtilitySkills.<get-inactiveAquaticLegendUtilitySkills>|<get-inactiveAquaticLegendUtilitySkills>(){}[0]
+            final val inactiveLegendUtilitySkills // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RevenantContext.inactiveLegendUtilitySkills|{}inactiveLegendUtilitySkills[0]
+                final fun <get-inactiveLegendUtilitySkills>(): kotlin.collections/List<kotlin/UShort> // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RevenantContext.inactiveLegendUtilitySkills.<get-inactiveLegendUtilitySkills>|<get-inactiveLegendUtilitySkills>(){}[0]
+            final val legends // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RevenantContext.legends|{}legends[0]
+                final fun <get-legends>(): kotlin.collections/List<kotlin/UByte> // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RevenantContext.legends.<get-legends>|<get-legends>(){}[0]
+
+            final fun component1(): kotlin.collections/List<kotlin/UByte> // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RevenantContext.component1|component1(){}[0]
+            final fun component2(): kotlin.collections/List<kotlin/UByte> // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RevenantContext.component2|component2(){}[0]
+            final fun component3(): kotlin.collections/List<kotlin/UShort> // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RevenantContext.component3|component3(){}[0]
+            final fun component4(): kotlin.collections/List<kotlin/UShort> // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RevenantContext.component4|component4(){}[0]
+            final fun copy(kotlin.collections/List<kotlin/UByte> = ..., kotlin.collections/List<kotlin/UByte> = ..., kotlin.collections/List<kotlin/UShort> = ..., kotlin.collections/List<kotlin/UShort> = ...): com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RevenantContext // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RevenantContext.copy|copy(kotlin.collections.List<kotlin.UByte>;kotlin.collections.List<kotlin.UByte>;kotlin.collections.List<kotlin.UShort>;kotlin.collections.List<kotlin.UShort>){}[0]
+            final fun equals(kotlin/Any?): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RevenantContext.equals|equals(kotlin.Any?){}[0]
+            final fun hashCode(): kotlin/Int // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RevenantContext.hashCode|hashCode(){}[0]
+            final fun toString(): kotlin/String // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.RevenantContext.toString|toString(){}[0]
+        }
+
+        final class Specialization { // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.Specialization|null[0]
+            constructor <init>(kotlin/UByte, kotlin.collections/List<kotlin/UByte?>) // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.Specialization.<init>|<init>(kotlin.UByte;kotlin.collections.List<kotlin.UByte?>){}[0]
+
+            final val majorTraits // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.Specialization.majorTraits|{}majorTraits[0]
+                final fun <get-majorTraits>(): kotlin.collections/List<kotlin/UByte?> // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.Specialization.majorTraits.<get-majorTraits>|<get-majorTraits>(){}[0]
+            final val specializationId // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.Specialization.specializationId|{}specializationId[0]
+                final fun <get-specializationId>(): kotlin/UByte // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.Specialization.specializationId.<get-specializationId>|<get-specializationId>(){}[0]
+
+            final fun component1(): kotlin/UByte // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.Specialization.component1|component1(){}[0]
+            final fun component2(): kotlin.collections/List<kotlin/UByte?> // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.Specialization.component2|component2(){}[0]
+            final fun copy(kotlin/UByte = ..., kotlin.collections/List<kotlin/UByte?> = ...): com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.Specialization // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.Specialization.copy|copy(kotlin.UByte;kotlin.collections.List<kotlin.UByte?>){}[0]
+            final fun equals(kotlin/Any?): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.Specialization.equals|equals(kotlin.Any?){}[0]
+            final fun hashCode(): kotlin/Int // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.Specialization.hashCode|hashCode(){}[0]
+            final fun toString(): kotlin/String // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.Specialization.toString|toString(){}[0]
+        }
+
+        sealed class ProfessionContext // com.gw2tb.gw2chatlinks/ChatLink.BuildTemplate.ProfessionContext|null[0]
+    }
+
+    final class Coin : com.gw2tb.gw2chatlinks/ChatLink { // com.gw2tb.gw2chatlinks/ChatLink.Coin|null[0]
+        constructor <init>(kotlin/UInt) // com.gw2tb.gw2chatlinks/ChatLink.Coin.<init>|<init>(kotlin.UInt){}[0]
+
+        final val amount // com.gw2tb.gw2chatlinks/ChatLink.Coin.amount|{}amount[0]
+            final fun <get-amount>(): kotlin/UInt // com.gw2tb.gw2chatlinks/ChatLink.Coin.amount.<get-amount>|<get-amount>(){}[0]
+
+        final fun component1(): kotlin/UInt // com.gw2tb.gw2chatlinks/ChatLink.Coin.component1|component1(){}[0]
+        final fun copy(kotlin/UInt = ...): com.gw2tb.gw2chatlinks/ChatLink.Coin // com.gw2tb.gw2chatlinks/ChatLink.Coin.copy|copy(kotlin.UInt){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.Coin.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.gw2tb.gw2chatlinks/ChatLink.Coin.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.gw2tb.gw2chatlinks/ChatLink.Coin.toString|toString(){}[0]
+    }
+
+    final class FashionTemplate : com.gw2tb.gw2chatlinks/ChatLink { // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate|null[0]
+        constructor <init>(kotlin/UShort, kotlin/UShort, kotlin.collections/List<kotlin/UShort>, kotlin/UShort, kotlin.collections/List<kotlin/UShort>, kotlin/UShort, kotlin.collections/List<kotlin/UShort>, kotlin/UShort, kotlin.collections/List<kotlin/UShort>, kotlin/UShort, kotlin.collections/List<kotlin/UShort>, kotlin/UShort, kotlin.collections/List<kotlin/UShort>, kotlin/UShort, kotlin.collections/List<kotlin/UShort>, kotlin/UShort, kotlin.collections/List<kotlin/UShort>, kotlin/UShort, kotlin/UShort, kotlin/UShort, kotlin/UShort, kotlin/UShort, kotlin/UShort, com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility) // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.<init>|<init>(kotlin.UShort;kotlin.UShort;kotlin.collections.List<kotlin.UShort>;kotlin.UShort;kotlin.collections.List<kotlin.UShort>;kotlin.UShort;kotlin.collections.List<kotlin.UShort>;kotlin.UShort;kotlin.collections.List<kotlin.UShort>;kotlin.UShort;kotlin.collections.List<kotlin.UShort>;kotlin.UShort;kotlin.collections.List<kotlin.UShort>;kotlin.UShort;kotlin.collections.List<kotlin.UShort>;kotlin.UShort;kotlin.collections.List<kotlin.UShort>;kotlin.UShort;kotlin.UShort;kotlin.UShort;kotlin.UShort;kotlin.UShort;kotlin.UShort;com.gw2tb.gw2chatlinks.ChatLink.FashionTemplate.Visibility){}[0]
+
+        final val aquabreatherSkinId // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.aquabreatherSkinId|{}aquabreatherSkinId[0]
+            final fun <get-aquabreatherSkinId>(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.aquabreatherSkinId.<get-aquabreatherSkinId>|<get-aquabreatherSkinId>(){}[0]
+        final val backpackColorIds // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.backpackColorIds|{}backpackColorIds[0]
+            final fun <get-backpackColorIds>(): kotlin.collections/List<kotlin/UShort> // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.backpackColorIds.<get-backpackColorIds>|<get-backpackColorIds>(){}[0]
+        final val backpackSkinId // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.backpackSkinId|{}backpackSkinId[0]
+            final fun <get-backpackSkinId>(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.backpackSkinId.<get-backpackSkinId>|<get-backpackSkinId>(){}[0]
+        final val bootsColorIds // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.bootsColorIds|{}bootsColorIds[0]
+            final fun <get-bootsColorIds>(): kotlin.collections/List<kotlin/UShort> // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.bootsColorIds.<get-bootsColorIds>|<get-bootsColorIds>(){}[0]
+        final val bootsSkinId // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.bootsSkinId|{}bootsSkinId[0]
+            final fun <get-bootsSkinId>(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.bootsSkinId.<get-bootsSkinId>|<get-bootsSkinId>(){}[0]
+        final val chestColorIds // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.chestColorIds|{}chestColorIds[0]
+            final fun <get-chestColorIds>(): kotlin.collections/List<kotlin/UShort> // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.chestColorIds.<get-chestColorIds>|<get-chestColorIds>(){}[0]
+        final val chestSkinId // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.chestSkinId|{}chestSkinId[0]
+            final fun <get-chestSkinId>(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.chestSkinId.<get-chestSkinId>|<get-chestSkinId>(){}[0]
+        final val firstAquaticWeaponSkinId // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.firstAquaticWeaponSkinId|{}firstAquaticWeaponSkinId[0]
+            final fun <get-firstAquaticWeaponSkinId>(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.firstAquaticWeaponSkinId.<get-firstAquaticWeaponSkinId>|<get-firstAquaticWeaponSkinId>(){}[0]
+        final val firstMainhandWeaponSkinId // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.firstMainhandWeaponSkinId|{}firstMainhandWeaponSkinId[0]
+            final fun <get-firstMainhandWeaponSkinId>(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.firstMainhandWeaponSkinId.<get-firstMainhandWeaponSkinId>|<get-firstMainhandWeaponSkinId>(){}[0]
+        final val firstOffhandWeaponSkinId // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.firstOffhandWeaponSkinId|{}firstOffhandWeaponSkinId[0]
+            final fun <get-firstOffhandWeaponSkinId>(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.firstOffhandWeaponSkinId.<get-firstOffhandWeaponSkinId>|<get-firstOffhandWeaponSkinId>(){}[0]
+        final val glovesColorIds // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.glovesColorIds|{}glovesColorIds[0]
+            final fun <get-glovesColorIds>(): kotlin.collections/List<kotlin/UShort> // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.glovesColorIds.<get-glovesColorIds>|<get-glovesColorIds>(){}[0]
+        final val glovesSkinId // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.glovesSkinId|{}glovesSkinId[0]
+            final fun <get-glovesSkinId>(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.glovesSkinId.<get-glovesSkinId>|<get-glovesSkinId>(){}[0]
+        final val helmetColorIds // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.helmetColorIds|{}helmetColorIds[0]
+            final fun <get-helmetColorIds>(): kotlin.collections/List<kotlin/UShort> // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.helmetColorIds.<get-helmetColorIds>|<get-helmetColorIds>(){}[0]
+        final val helmetSkinId // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.helmetSkinId|{}helmetSkinId[0]
+            final fun <get-helmetSkinId>(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.helmetSkinId.<get-helmetSkinId>|<get-helmetSkinId>(){}[0]
+        final val leggingsColorIds // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.leggingsColorIds|{}leggingsColorIds[0]
+            final fun <get-leggingsColorIds>(): kotlin.collections/List<kotlin/UShort> // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.leggingsColorIds.<get-leggingsColorIds>|<get-leggingsColorIds>(){}[0]
+        final val leggingsSkinId // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.leggingsSkinId|{}leggingsSkinId[0]
+            final fun <get-leggingsSkinId>(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.leggingsSkinId.<get-leggingsSkinId>|<get-leggingsSkinId>(){}[0]
+        final val outfitColorIds // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.outfitColorIds|{}outfitColorIds[0]
+            final fun <get-outfitColorIds>(): kotlin.collections/List<kotlin/UShort> // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.outfitColorIds.<get-outfitColorIds>|<get-outfitColorIds>(){}[0]
+        final val outfitId // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.outfitId|{}outfitId[0]
+            final fun <get-outfitId>(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.outfitId.<get-outfitId>|<get-outfitId>(){}[0]
+        final val secondAquaticWeaponSkinId // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.secondAquaticWeaponSkinId|{}secondAquaticWeaponSkinId[0]
+            final fun <get-secondAquaticWeaponSkinId>(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.secondAquaticWeaponSkinId.<get-secondAquaticWeaponSkinId>|<get-secondAquaticWeaponSkinId>(){}[0]
+        final val secondMainhandWeaponSkinId // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.secondMainhandWeaponSkinId|{}secondMainhandWeaponSkinId[0]
+            final fun <get-secondMainhandWeaponSkinId>(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.secondMainhandWeaponSkinId.<get-secondMainhandWeaponSkinId>|<get-secondMainhandWeaponSkinId>(){}[0]
+        final val secondOffhandWeaponSkinId // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.secondOffhandWeaponSkinId|{}secondOffhandWeaponSkinId[0]
+            final fun <get-secondOffhandWeaponSkinId>(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.secondOffhandWeaponSkinId.<get-secondOffhandWeaponSkinId>|<get-secondOffhandWeaponSkinId>(){}[0]
+        final val shouldersColorIds // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.shouldersColorIds|{}shouldersColorIds[0]
+            final fun <get-shouldersColorIds>(): kotlin.collections/List<kotlin/UShort> // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.shouldersColorIds.<get-shouldersColorIds>|<get-shouldersColorIds>(){}[0]
+        final val shouldersSkinId // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.shouldersSkinId|{}shouldersSkinId[0]
+            final fun <get-shouldersSkinId>(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.shouldersSkinId.<get-shouldersSkinId>|<get-shouldersSkinId>(){}[0]
+        final val visibility // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.visibility|{}visibility[0]
+            final fun <get-visibility>(): com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.visibility.<get-visibility>|<get-visibility>(){}[0]
+
+        final fun component1(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.component1|component1(){}[0]
+        final fun component10(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.component10|component10(){}[0]
+        final fun component11(): kotlin.collections/List<kotlin/UShort> // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.component11|component11(){}[0]
+        final fun component12(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.component12|component12(){}[0]
+        final fun component13(): kotlin.collections/List<kotlin/UShort> // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.component13|component13(){}[0]
+        final fun component14(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.component14|component14(){}[0]
+        final fun component15(): kotlin.collections/List<kotlin/UShort> // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.component15|component15(){}[0]
+        final fun component16(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.component16|component16(){}[0]
+        final fun component17(): kotlin.collections/List<kotlin/UShort> // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.component17|component17(){}[0]
+        final fun component18(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.component18|component18(){}[0]
+        final fun component19(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.component19|component19(){}[0]
+        final fun component2(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.component2|component2(){}[0]
+        final fun component20(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.component20|component20(){}[0]
+        final fun component21(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.component21|component21(){}[0]
+        final fun component22(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.component22|component22(){}[0]
+        final fun component23(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.component23|component23(){}[0]
+        final fun component24(): com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.component24|component24(){}[0]
+        final fun component3(): kotlin.collections/List<kotlin/UShort> // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.component3|component3(){}[0]
+        final fun component4(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.component4|component4(){}[0]
+        final fun component5(): kotlin.collections/List<kotlin/UShort> // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.component5|component5(){}[0]
+        final fun component6(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.component6|component6(){}[0]
+        final fun component7(): kotlin.collections/List<kotlin/UShort> // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.component7|component7(){}[0]
+        final fun component8(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.component8|component8(){}[0]
+        final fun component9(): kotlin.collections/List<kotlin/UShort> // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.component9|component9(){}[0]
+        final fun copy(kotlin/UShort = ..., kotlin/UShort = ..., kotlin.collections/List<kotlin/UShort> = ..., kotlin/UShort = ..., kotlin.collections/List<kotlin/UShort> = ..., kotlin/UShort = ..., kotlin.collections/List<kotlin/UShort> = ..., kotlin/UShort = ..., kotlin.collections/List<kotlin/UShort> = ..., kotlin/UShort = ..., kotlin.collections/List<kotlin/UShort> = ..., kotlin/UShort = ..., kotlin.collections/List<kotlin/UShort> = ..., kotlin/UShort = ..., kotlin.collections/List<kotlin/UShort> = ..., kotlin/UShort = ..., kotlin.collections/List<kotlin/UShort> = ..., kotlin/UShort = ..., kotlin/UShort = ..., kotlin/UShort = ..., kotlin/UShort = ..., kotlin/UShort = ..., kotlin/UShort = ..., com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility = ...): com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.copy|copy(kotlin.UShort;kotlin.UShort;kotlin.collections.List<kotlin.UShort>;kotlin.UShort;kotlin.collections.List<kotlin.UShort>;kotlin.UShort;kotlin.collections.List<kotlin.UShort>;kotlin.UShort;kotlin.collections.List<kotlin.UShort>;kotlin.UShort;kotlin.collections.List<kotlin.UShort>;kotlin.UShort;kotlin.collections.List<kotlin.UShort>;kotlin.UShort;kotlin.collections.List<kotlin.UShort>;kotlin.UShort;kotlin.collections.List<kotlin.UShort>;kotlin.UShort;kotlin.UShort;kotlin.UShort;kotlin.UShort;kotlin.UShort;kotlin.UShort;com.gw2tb.gw2chatlinks.ChatLink.FashionTemplate.Visibility){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.toString|toString(){}[0]
+
+        final value class Visibility { // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility|null[0]
+            constructor <init>(kotlin/Boolean, kotlin/Boolean, kotlin/Boolean, kotlin/Boolean, kotlin/Boolean, kotlin/Boolean, kotlin/Boolean, kotlin/Boolean, kotlin/Boolean, kotlin/Boolean, kotlin/Boolean, kotlin/Boolean, kotlin/Boolean, kotlin/Boolean, kotlin/Boolean) // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.<init>|<init>(kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean){}[0]
+            constructor <init>(kotlin/UShort) // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.<init>|<init>(kotlin.UShort){}[0]
+
+            final val areBootsVisible // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.areBootsVisible|{}areBootsVisible[0]
+                final fun <get-areBootsVisible>(): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.areBootsVisible.<get-areBootsVisible>|<get-areBootsVisible>(){}[0]
+            final val areGlovesVisible // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.areGlovesVisible|{}areGlovesVisible[0]
+                final fun <get-areGlovesVisible>(): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.areGlovesVisible.<get-areGlovesVisible>|<get-areGlovesVisible>(){}[0]
+            final val areLeggingsVisible // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.areLeggingsVisible|{}areLeggingsVisible[0]
+                final fun <get-areLeggingsVisible>(): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.areLeggingsVisible.<get-areLeggingsVisible>|<get-areLeggingsVisible>(){}[0]
+            final val areShouldersVisible // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.areShouldersVisible|{}areShouldersVisible[0]
+                final fun <get-areShouldersVisible>(): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.areShouldersVisible.<get-areShouldersVisible>|<get-areShouldersVisible>(){}[0]
+            final val bits // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.bits|{}bits[0]
+                final fun <get-bits>(): kotlin/UShort // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.bits.<get-bits>|<get-bits>(){}[0]
+            final val isAquabreatherVisible // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.isAquabreatherVisible|{}isAquabreatherVisible[0]
+                final fun <get-isAquabreatherVisible>(): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.isAquabreatherVisible.<get-isAquabreatherVisible>|<get-isAquabreatherVisible>(){}[0]
+            final val isBackpackVisible // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.isBackpackVisible|{}isBackpackVisible[0]
+                final fun <get-isBackpackVisible>(): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.isBackpackVisible.<get-isBackpackVisible>|<get-isBackpackVisible>(){}[0]
+            final val isChestVisible // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.isChestVisible|{}isChestVisible[0]
+                final fun <get-isChestVisible>(): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.isChestVisible.<get-isChestVisible>|<get-isChestVisible>(){}[0]
+            final val isFirstAquaticWeaponVisible // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.isFirstAquaticWeaponVisible|{}isFirstAquaticWeaponVisible[0]
+                final fun <get-isFirstAquaticWeaponVisible>(): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.isFirstAquaticWeaponVisible.<get-isFirstAquaticWeaponVisible>|<get-isFirstAquaticWeaponVisible>(){}[0]
+            final val isFirstMainhandWeaponVisible // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.isFirstMainhandWeaponVisible|{}isFirstMainhandWeaponVisible[0]
+                final fun <get-isFirstMainhandWeaponVisible>(): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.isFirstMainhandWeaponVisible.<get-isFirstMainhandWeaponVisible>|<get-isFirstMainhandWeaponVisible>(){}[0]
+            final val isFirstOffhandWeaponVisible // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.isFirstOffhandWeaponVisible|{}isFirstOffhandWeaponVisible[0]
+                final fun <get-isFirstOffhandWeaponVisible>(): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.isFirstOffhandWeaponVisible.<get-isFirstOffhandWeaponVisible>|<get-isFirstOffhandWeaponVisible>(){}[0]
+            final val isHelmetVisible // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.isHelmetVisible|{}isHelmetVisible[0]
+                final fun <get-isHelmetVisible>(): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.isHelmetVisible.<get-isHelmetVisible>|<get-isHelmetVisible>(){}[0]
+            final val isOutfitVisible // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.isOutfitVisible|{}isOutfitVisible[0]
+                final fun <get-isOutfitVisible>(): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.isOutfitVisible.<get-isOutfitVisible>|<get-isOutfitVisible>(){}[0]
+            final val isSecondAquaticWeaponVisible // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.isSecondAquaticWeaponVisible|{}isSecondAquaticWeaponVisible[0]
+                final fun <get-isSecondAquaticWeaponVisible>(): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.isSecondAquaticWeaponVisible.<get-isSecondAquaticWeaponVisible>|<get-isSecondAquaticWeaponVisible>(){}[0]
+            final val isSecondMainhandWeaponVisible // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.isSecondMainhandWeaponVisible|{}isSecondMainhandWeaponVisible[0]
+                final fun <get-isSecondMainhandWeaponVisible>(): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.isSecondMainhandWeaponVisible.<get-isSecondMainhandWeaponVisible>|<get-isSecondMainhandWeaponVisible>(){}[0]
+            final val isSecondOffhandWeaponVisible // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.isSecondOffhandWeaponVisible|{}isSecondOffhandWeaponVisible[0]
+                final fun <get-isSecondOffhandWeaponVisible>(): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.isSecondOffhandWeaponVisible.<get-isSecondOffhandWeaponVisible>|<get-isSecondOffhandWeaponVisible>(){}[0]
+
+            final fun equals(kotlin/Any?): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.equals|equals(kotlin.Any?){}[0]
+            final fun hashCode(): kotlin/Int // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.hashCode|hashCode(){}[0]
+            final fun toString(): kotlin/String // com.gw2tb.gw2chatlinks/ChatLink.FashionTemplate.Visibility.toString|toString(){}[0]
+        }
+    }
+
+    final class Item : com.gw2tb.gw2chatlinks/ChatLink { // com.gw2tb.gw2chatlinks/ChatLink.Item|null[0]
+        constructor <init>(kotlin/UByte, kotlin/UInt, kotlin/UInt? = ..., kotlin/UInt? = ..., kotlin/UInt? = ...) // com.gw2tb.gw2chatlinks/ChatLink.Item.<init>|<init>(kotlin.UByte;kotlin.UInt;kotlin.UInt?;kotlin.UInt?;kotlin.UInt?){}[0]
+
+        final val amount // com.gw2tb.gw2chatlinks/ChatLink.Item.amount|{}amount[0]
+            final fun <get-amount>(): kotlin/UByte // com.gw2tb.gw2chatlinks/ChatLink.Item.amount.<get-amount>|<get-amount>(){}[0]
+        final val firstUpgradeSlot // com.gw2tb.gw2chatlinks/ChatLink.Item.firstUpgradeSlot|{}firstUpgradeSlot[0]
+            final fun <get-firstUpgradeSlot>(): kotlin/UInt? // com.gw2tb.gw2chatlinks/ChatLink.Item.firstUpgradeSlot.<get-firstUpgradeSlot>|<get-firstUpgradeSlot>(){}[0]
+        final val itemId // com.gw2tb.gw2chatlinks/ChatLink.Item.itemId|{}itemId[0]
+            final fun <get-itemId>(): kotlin/UInt // com.gw2tb.gw2chatlinks/ChatLink.Item.itemId.<get-itemId>|<get-itemId>(){}[0]
+        final val secondUpgradeSlot // com.gw2tb.gw2chatlinks/ChatLink.Item.secondUpgradeSlot|{}secondUpgradeSlot[0]
+            final fun <get-secondUpgradeSlot>(): kotlin/UInt? // com.gw2tb.gw2chatlinks/ChatLink.Item.secondUpgradeSlot.<get-secondUpgradeSlot>|<get-secondUpgradeSlot>(){}[0]
+        final val skinId // com.gw2tb.gw2chatlinks/ChatLink.Item.skinId|{}skinId[0]
+            final fun <get-skinId>(): kotlin/UInt? // com.gw2tb.gw2chatlinks/ChatLink.Item.skinId.<get-skinId>|<get-skinId>(){}[0]
+
+        final fun component1(): kotlin/UByte // com.gw2tb.gw2chatlinks/ChatLink.Item.component1|component1(){}[0]
+        final fun component2(): kotlin/UInt // com.gw2tb.gw2chatlinks/ChatLink.Item.component2|component2(){}[0]
+        final fun component3(): kotlin/UInt? // com.gw2tb.gw2chatlinks/ChatLink.Item.component3|component3(){}[0]
+        final fun component4(): kotlin/UInt? // com.gw2tb.gw2chatlinks/ChatLink.Item.component4|component4(){}[0]
+        final fun component5(): kotlin/UInt? // com.gw2tb.gw2chatlinks/ChatLink.Item.component5|component5(){}[0]
+        final fun copy(kotlin/UByte = ..., kotlin/UInt = ..., kotlin/UInt? = ..., kotlin/UInt? = ..., kotlin/UInt? = ...): com.gw2tb.gw2chatlinks/ChatLink.Item // com.gw2tb.gw2chatlinks/ChatLink.Item.copy|copy(kotlin.UByte;kotlin.UInt;kotlin.UInt?;kotlin.UInt?;kotlin.UInt?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.Item.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.gw2tb.gw2chatlinks/ChatLink.Item.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.gw2tb.gw2chatlinks/ChatLink.Item.toString|toString(){}[0]
+    }
+
+    final class NpcText : com.gw2tb.gw2chatlinks/ChatLink { // com.gw2tb.gw2chatlinks/ChatLink.NpcText|null[0]
+        constructor <init>(kotlin/UInt) // com.gw2tb.gw2chatlinks/ChatLink.NpcText.<init>|<init>(kotlin.UInt){}[0]
+
+        final val textId // com.gw2tb.gw2chatlinks/ChatLink.NpcText.textId|{}textId[0]
+            final fun <get-textId>(): kotlin/UInt // com.gw2tb.gw2chatlinks/ChatLink.NpcText.textId.<get-textId>|<get-textId>(){}[0]
+
+        final fun component1(): kotlin/UInt // com.gw2tb.gw2chatlinks/ChatLink.NpcText.component1|component1(){}[0]
+        final fun copy(kotlin/UInt = ...): com.gw2tb.gw2chatlinks/ChatLink.NpcText // com.gw2tb.gw2chatlinks/ChatLink.NpcText.copy|copy(kotlin.UInt){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.NpcText.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.gw2tb.gw2chatlinks/ChatLink.NpcText.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.gw2tb.gw2chatlinks/ChatLink.NpcText.toString|toString(){}[0]
+    }
+
+    final class Outfit : com.gw2tb.gw2chatlinks/ChatLink { // com.gw2tb.gw2chatlinks/ChatLink.Outfit|null[0]
+        constructor <init>(kotlin/UInt) // com.gw2tb.gw2chatlinks/ChatLink.Outfit.<init>|<init>(kotlin.UInt){}[0]
+
+        final val outfitId // com.gw2tb.gw2chatlinks/ChatLink.Outfit.outfitId|{}outfitId[0]
+            final fun <get-outfitId>(): kotlin/UInt // com.gw2tb.gw2chatlinks/ChatLink.Outfit.outfitId.<get-outfitId>|<get-outfitId>(){}[0]
+
+        final fun component1(): kotlin/UInt // com.gw2tb.gw2chatlinks/ChatLink.Outfit.component1|component1(){}[0]
+        final fun copy(kotlin/UInt = ...): com.gw2tb.gw2chatlinks/ChatLink.Outfit // com.gw2tb.gw2chatlinks/ChatLink.Outfit.copy|copy(kotlin.UInt){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.Outfit.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.gw2tb.gw2chatlinks/ChatLink.Outfit.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.gw2tb.gw2chatlinks/ChatLink.Outfit.toString|toString(){}[0]
+    }
+
+    final class Poi : com.gw2tb.gw2chatlinks/ChatLink { // com.gw2tb.gw2chatlinks/ChatLink.Poi|null[0]
+        constructor <init>(kotlin/UInt) // com.gw2tb.gw2chatlinks/ChatLink.Poi.<init>|<init>(kotlin.UInt){}[0]
+
+        final val poiId // com.gw2tb.gw2chatlinks/ChatLink.Poi.poiId|{}poiId[0]
+            final fun <get-poiId>(): kotlin/UInt // com.gw2tb.gw2chatlinks/ChatLink.Poi.poiId.<get-poiId>|<get-poiId>(){}[0]
+
+        final fun component1(): kotlin/UInt // com.gw2tb.gw2chatlinks/ChatLink.Poi.component1|component1(){}[0]
+        final fun copy(kotlin/UInt = ...): com.gw2tb.gw2chatlinks/ChatLink.Poi // com.gw2tb.gw2chatlinks/ChatLink.Poi.copy|copy(kotlin.UInt){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.Poi.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.gw2tb.gw2chatlinks/ChatLink.Poi.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.gw2tb.gw2chatlinks/ChatLink.Poi.toString|toString(){}[0]
+    }
+
+    final class Recipe : com.gw2tb.gw2chatlinks/ChatLink { // com.gw2tb.gw2chatlinks/ChatLink.Recipe|null[0]
+        constructor <init>(kotlin/UInt) // com.gw2tb.gw2chatlinks/ChatLink.Recipe.<init>|<init>(kotlin.UInt){}[0]
+
+        final val recipeId // com.gw2tb.gw2chatlinks/ChatLink.Recipe.recipeId|{}recipeId[0]
+            final fun <get-recipeId>(): kotlin/UInt // com.gw2tb.gw2chatlinks/ChatLink.Recipe.recipeId.<get-recipeId>|<get-recipeId>(){}[0]
+
+        final fun component1(): kotlin/UInt // com.gw2tb.gw2chatlinks/ChatLink.Recipe.component1|component1(){}[0]
+        final fun copy(kotlin/UInt = ...): com.gw2tb.gw2chatlinks/ChatLink.Recipe // com.gw2tb.gw2chatlinks/ChatLink.Recipe.copy|copy(kotlin.UInt){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.Recipe.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.gw2tb.gw2chatlinks/ChatLink.Recipe.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.gw2tb.gw2chatlinks/ChatLink.Recipe.toString|toString(){}[0]
+    }
+
+    final class Skill : com.gw2tb.gw2chatlinks/ChatLink { // com.gw2tb.gw2chatlinks/ChatLink.Skill|null[0]
+        constructor <init>(kotlin/UInt) // com.gw2tb.gw2chatlinks/ChatLink.Skill.<init>|<init>(kotlin.UInt){}[0]
+
+        final val skillId // com.gw2tb.gw2chatlinks/ChatLink.Skill.skillId|{}skillId[0]
+            final fun <get-skillId>(): kotlin/UInt // com.gw2tb.gw2chatlinks/ChatLink.Skill.skillId.<get-skillId>|<get-skillId>(){}[0]
+
+        final fun component1(): kotlin/UInt // com.gw2tb.gw2chatlinks/ChatLink.Skill.component1|component1(){}[0]
+        final fun copy(kotlin/UInt = ...): com.gw2tb.gw2chatlinks/ChatLink.Skill // com.gw2tb.gw2chatlinks/ChatLink.Skill.copy|copy(kotlin.UInt){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.Skill.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.gw2tb.gw2chatlinks/ChatLink.Skill.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.gw2tb.gw2chatlinks/ChatLink.Skill.toString|toString(){}[0]
+    }
+
+    final class Skin : com.gw2tb.gw2chatlinks/ChatLink { // com.gw2tb.gw2chatlinks/ChatLink.Skin|null[0]
+        constructor <init>(kotlin/UInt) // com.gw2tb.gw2chatlinks/ChatLink.Skin.<init>|<init>(kotlin.UInt){}[0]
+
+        final val skinId // com.gw2tb.gw2chatlinks/ChatLink.Skin.skinId|{}skinId[0]
+            final fun <get-skinId>(): kotlin/UInt // com.gw2tb.gw2chatlinks/ChatLink.Skin.skinId.<get-skinId>|<get-skinId>(){}[0]
+
+        final fun component1(): kotlin/UInt // com.gw2tb.gw2chatlinks/ChatLink.Skin.component1|component1(){}[0]
+        final fun copy(kotlin/UInt = ...): com.gw2tb.gw2chatlinks/ChatLink.Skin // com.gw2tb.gw2chatlinks/ChatLink.Skin.copy|copy(kotlin.UInt){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.Skin.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.gw2tb.gw2chatlinks/ChatLink.Skin.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.gw2tb.gw2chatlinks/ChatLink.Skin.toString|toString(){}[0]
+    }
+
+    final class Trait : com.gw2tb.gw2chatlinks/ChatLink { // com.gw2tb.gw2chatlinks/ChatLink.Trait|null[0]
+        constructor <init>(kotlin/UInt) // com.gw2tb.gw2chatlinks/ChatLink.Trait.<init>|<init>(kotlin.UInt){}[0]
+
+        final val traitId // com.gw2tb.gw2chatlinks/ChatLink.Trait.traitId|{}traitId[0]
+            final fun <get-traitId>(): kotlin/UInt // com.gw2tb.gw2chatlinks/ChatLink.Trait.traitId.<get-traitId>|<get-traitId>(){}[0]
+
+        final fun component1(): kotlin/UInt // com.gw2tb.gw2chatlinks/ChatLink.Trait.component1|component1(){}[0]
+        final fun copy(kotlin/UInt = ...): com.gw2tb.gw2chatlinks/ChatLink.Trait // com.gw2tb.gw2chatlinks/ChatLink.Trait.copy|copy(kotlin.UInt){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.Trait.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.gw2tb.gw2chatlinks/ChatLink.Trait.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.gw2tb.gw2chatlinks/ChatLink.Trait.toString|toString(){}[0]
+    }
+
+    final class User : com.gw2tb.gw2chatlinks/ChatLink { // com.gw2tb.gw2chatlinks/ChatLink.User|null[0]
+        constructor <init>(kotlin.uuid/Uuid, kotlin/UByteArray) // com.gw2tb.gw2chatlinks/ChatLink.User.<init>|<init>(kotlin.uuid.Uuid;kotlin.UByteArray){}[0]
+
+        final val accountGuid // com.gw2tb.gw2chatlinks/ChatLink.User.accountGuid|{}accountGuid[0]
+            final fun <get-accountGuid>(): kotlin.uuid/Uuid // com.gw2tb.gw2chatlinks/ChatLink.User.accountGuid.<get-accountGuid>|<get-accountGuid>(){}[0]
+        final val characterName // com.gw2tb.gw2chatlinks/ChatLink.User.characterName|{}characterName[0]
+            final fun <get-characterName>(): kotlin/UByteArray // com.gw2tb.gw2chatlinks/ChatLink.User.characterName.<get-characterName>|<get-characterName>(){}[0]
+
+        final fun component1(): kotlin.uuid/Uuid // com.gw2tb.gw2chatlinks/ChatLink.User.component1|component1(){}[0]
+        final fun component2(): kotlin/UByteArray // com.gw2tb.gw2chatlinks/ChatLink.User.component2|component2(){}[0]
+        final fun copy(kotlin.uuid/Uuid = ..., kotlin/UByteArray = ...): com.gw2tb.gw2chatlinks/ChatLink.User // com.gw2tb.gw2chatlinks/ChatLink.User.copy|copy(kotlin.uuid.Uuid;kotlin.UByteArray){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.User.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.gw2tb.gw2chatlinks/ChatLink.User.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.gw2tb.gw2chatlinks/ChatLink.User.toString|toString(){}[0]
+    }
+
+    final class WvwObjective : com.gw2tb.gw2chatlinks/ChatLink { // com.gw2tb.gw2chatlinks/ChatLink.WvwObjective|null[0]
+        constructor <init>(kotlin/UInt, kotlin/UInt) // com.gw2tb.gw2chatlinks/ChatLink.WvwObjective.<init>|<init>(kotlin.UInt;kotlin.UInt){}[0]
+
+        final val apiId // com.gw2tb.gw2chatlinks/ChatLink.WvwObjective.apiId|{}apiId[0]
+            final fun <get-apiId>(): kotlin/String // com.gw2tb.gw2chatlinks/ChatLink.WvwObjective.apiId.<get-apiId>|<get-apiId>(){}[0]
+        final val mapId // com.gw2tb.gw2chatlinks/ChatLink.WvwObjective.mapId|{}mapId[0]
+            final fun <get-mapId>(): kotlin/UInt // com.gw2tb.gw2chatlinks/ChatLink.WvwObjective.mapId.<get-mapId>|<get-mapId>(){}[0]
+        final val objectiveId // com.gw2tb.gw2chatlinks/ChatLink.WvwObjective.objectiveId|{}objectiveId[0]
+            final fun <get-objectiveId>(): kotlin/UInt // com.gw2tb.gw2chatlinks/ChatLink.WvwObjective.objectiveId.<get-objectiveId>|<get-objectiveId>(){}[0]
+
+        final fun component1(): kotlin/UInt // com.gw2tb.gw2chatlinks/ChatLink.WvwObjective.component1|component1(){}[0]
+        final fun component2(): kotlin/UInt // com.gw2tb.gw2chatlinks/ChatLink.WvwObjective.component2|component2(){}[0]
+        final fun copy(kotlin/UInt = ..., kotlin/UInt = ...): com.gw2tb.gw2chatlinks/ChatLink.WvwObjective // com.gw2tb.gw2chatlinks/ChatLink.WvwObjective.copy|copy(kotlin.UInt;kotlin.UInt){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.WvwObjective.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.gw2tb.gw2chatlinks/ChatLink.WvwObjective.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.gw2tb.gw2chatlinks/ChatLink.WvwObjective.toString|toString(){}[0]
+    }
+
+    final object PvpGame : com.gw2tb.gw2chatlinks/ChatLink { // com.gw2tb.gw2chatlinks/ChatLink.PvpGame|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.gw2tb.gw2chatlinks/ChatLink.PvpGame.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.gw2tb.gw2chatlinks/ChatLink.PvpGame.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.gw2tb.gw2chatlinks/ChatLink.PvpGame.toString|toString(){}[0]
+    }
+}
+
+final fun com.gw2tb.gw2chatlinks/decodeChatLink(kotlin/String): kotlin/Result<com.gw2tb.gw2chatlinks/ChatLink> // com.gw2tb.gw2chatlinks/decodeChatLink|decodeChatLink(kotlin.String){}[0]
+final fun com.gw2tb.gw2chatlinks/encodeChatLink(com.gw2tb.gw2chatlinks/ChatLink): kotlin/Result<kotlin/String> // com.gw2tb.gw2chatlinks/encodeChatLink|encodeChatLink(com.gw2tb.gw2chatlinks.ChatLink){}[0]
