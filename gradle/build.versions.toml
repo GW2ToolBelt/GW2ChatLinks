@@ -1,6 +1,6 @@
 [versions]
 dokka = "2.2.0"
-kotlin = "2.4.0"
+kotlin = "2.4.10"
 
 
 [plugins]
